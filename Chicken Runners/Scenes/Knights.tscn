@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Textures/download-2.png" type="Texture" id=1]
+[ext_resource path="res://Scenes/Knights.gd" type="Script" id=2]
+
+[node name="Knights" type="Sprite"]
+position = Vector2( 30, 22 )
+scale = Vector2( 0.176101, 0.248428 )
+texture = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( 164.678, 92.5822, -159, 92.5822, -170.357, -84.5317, 170.357, -84.5317 )
