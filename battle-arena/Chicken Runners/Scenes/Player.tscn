@@ -1,10 +1,13 @@
-[gd_scene load_steps=70 format=2]
+[gd_scene load_steps=108 format=2]
 
 [ext_resource path="res://Textures/Player/spritesheet2.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=2]
 [ext_resource path="res://Scripts/StateMachine.gd" type="Script" id=3]
 [ext_resource path="res://Scripts/Idle.gd" type="Script" id=4]
 [ext_resource path="res://Scripts/Run.gd" type="Script" id=5]
+[ext_resource path="res://Scenes/MeleeAttack.gd" type="Script" id=6]
+[ext_resource path="res://Scripts/Roll.gd" type="Script" id=7]
+[ext_resource path="res://Scripts/RangedAttack.gd" type="Script" id=8]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 16.0
@@ -12,7 +15,6 @@ height = 28.0
 
 [sub_resource type="Animation" id=2]
 resource_name = "BackBow"
-length = 1.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -24,6 +26,20 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("StateMachine/RangedAttack")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "attack_animation_finished"
+} ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -58,6 +74,20 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25 ]
 }
+tracks/1/type = "method"
+tracks/1/path = NodePath("StateMachine/RangedAttack")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "attack_animation_finished"
+} ]
+}
 
 [sub_resource type="Animation" id=5]
 resource_name = "BackLeftIdle"
@@ -78,7 +108,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=6]
 resource_name = "BackLeftRoll"
-length = 0.7
+length = 0.8
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -108,6 +138,20 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 42, 43, 44, 45, 46, 47, 48 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("StateMachine/MeleeAttack")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.7 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "attack_animation_finished"
+} ]
 }
 
 [sub_resource type="Animation" id=9]
@@ -141,6 +185,20 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("StateMachine/RangedAttack")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "attack_animation_finished"
+} ]
 }
 
 [sub_resource type="Animation" id=11]
@@ -178,7 +236,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=16]
 resource_name = "BackRightSlash"
-length = 1.1
+length = 0.7
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -190,6 +248,20 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 87, 88, 89, 90, 91, 92, 93 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("StateMachine/MeleeAttack")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.7 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "attack_animation_finished"
+} ]
 }
 
 [sub_resource type="Animation" id=13]
@@ -240,6 +312,20 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 117, 118, 119, 120, 121, 122, 123 ]
 }
+tracks/1/type = "method"
+tracks/1/path = NodePath("StateMachine/MeleeAttack")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.7 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "attack_animation_finished"
+} ]
+}
 
 [sub_resource type="Animation" id=17]
 resource_name = "BackWalk"
@@ -273,6 +359,20 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145 ]
 }
+tracks/1/type = "method"
+tracks/1/path = NodePath("StateMachine/RangedAttack")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "attack_animation_finished"
+} ]
+}
 
 [sub_resource type="Animation" id=19]
 resource_name = "FrontIdle"
@@ -305,6 +405,20 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("StateMachine/RangedAttack")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "attack_animation_finished"
+} ]
 }
 
 [sub_resource type="Animation" id=21]
@@ -342,6 +456,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=23]
 resource_name = "FrontLeftSlash"
+length = 0.7
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -353,6 +468,20 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 177, 178, 179, 180, 181, 182, 183 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("StateMachine/MeleeAttack")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.7 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "attack_animation_finished"
+} ]
 }
 
 [sub_resource type="Animation" id=24]
@@ -386,6 +515,20 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 197, 196, 198, 199, 201, 205, 202, 203, 204 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("StateMachine/RangedAttack")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.9 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "attack_animation_finished"
+} ]
 }
 
 [sub_resource type="Animation" id=26]
@@ -436,6 +579,20 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 222, 223, 224, 225, 226, 227, 228 ]
 }
+tracks/1/type = "method"
+tracks/1/path = NodePath("StateMachine/MeleeAttack")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.7 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "attack_animation_finished"
+} ]
+}
 
 [sub_resource type="Animation" id=29]
 resource_name = "FrontRightWalk"
@@ -485,6 +642,20 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 250, 252, 256, 253, 254, 255, 258, 257 ]
 }
+tracks/1/type = "method"
+tracks/1/path = NodePath("StateMachine/MeleeAttack")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.8 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "attack_animation_finished"
+} ]
+}
 
 [sub_resource type="Animation" id=32]
 resource_name = "FrontWalk"
@@ -517,9 +688,24 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 270, 271, 272, 274, 275, 277, 278, 279, 276 ]
 }
+tracks/1/type = "method"
+tracks/1/path = NodePath("StateMachine/RangedAttack")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.9 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "attack_animation_finished"
+} ]
+}
 
 [sub_resource type="Animation" id=34]
 resource_name = "LeftIdle"
+length = 0.4
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -552,6 +738,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=36]
 resource_name = "LeftSlash"
+length = 0.7
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -563,6 +750,20 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 297, 298, 299, 302, 303, 301, 300 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("StateMachine/MeleeAttack")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.7 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "attack_animation_finished"
+} ]
 }
 
 [sub_resource type="Animation" id=37]
@@ -610,6 +811,20 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 315, 320, 318, 317, 319, 321, 322, 323, 324, 325 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("StateMachine/RangedAttack")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "attack_animation_finished"
+} ]
 }
 
 [sub_resource type="Animation" id=39]
@@ -677,6 +892,20 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 343, 344, 345, 346, 347, 348 ]
 }
+tracks/1/type = "method"
+tracks/1/path = NodePath("StateMachine/MeleeAttack")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.6 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "attack_animation_finished"
+} ]
+}
 
 [sub_resource type="AnimationNodeAnimation" id=49]
 animation = "LeftIdle"
@@ -700,7 +929,7 @@ animation = "BackRightIdle"
 animation = "BackLeftIdle"
 
 [sub_resource type="AnimationNodeAnimation" id=56]
-animation = "FrontLeftWalk"
+animation = "FrontLeftIdle"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id=43]
 blend_point_0/node = SubResource( 49 )
@@ -719,6 +948,49 @@ blend_point_6/node = SubResource( 55 )
 blend_point_6/pos = Vector2( -0.7, -0.6 )
 blend_point_7/node = SubResource( 56 )
 blend_point_7/pos = Vector2( -0.7, 0.6 )
+blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id=66]
+animation = "LeftSlash"
+
+[sub_resource type="AnimationNodeAnimation" id=67]
+animation = "BackSlash"
+
+[sub_resource type="AnimationNodeAnimation" id=68]
+animation = "RightSlash"
+
+[sub_resource type="AnimationNodeAnimation" id=69]
+animation = "FrontSlash"
+
+[sub_resource type="AnimationNodeAnimation" id=70]
+animation = "BackRightSlash"
+
+[sub_resource type="AnimationNodeAnimation" id=71]
+animation = "FrontRightSlash"
+
+[sub_resource type="AnimationNodeAnimation" id=72]
+animation = "BackLeftSlash"
+
+[sub_resource type="AnimationNodeAnimation" id=73]
+animation = "FrontLeftSlash"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=65]
+blend_point_0/node = SubResource( 66 )
+blend_point_0/pos = Vector2( -1, 0 )
+blend_point_1/node = SubResource( 67 )
+blend_point_1/pos = Vector2( 0, -1 )
+blend_point_2/node = SubResource( 68 )
+blend_point_2/pos = Vector2( 1, 0 )
+blend_point_3/node = SubResource( 69 )
+blend_point_3/pos = Vector2( 0, 1 )
+blend_point_4/node = SubResource( 70 )
+blend_point_4/pos = Vector2( 0.7, -0.6 )
+blend_point_5/node = SubResource( 71 )
+blend_point_5/pos = Vector2( 0.7, 0.6 )
+blend_point_6/node = SubResource( 72 )
+blend_point_6/pos = Vector2( -0.7, -0.5 )
+blend_point_7/node = SubResource( 73 )
+blend_point_7/pos = Vector2( -0.7, 0.5 )
 blend_mode = 1
 
 [sub_resource type="AnimationNodeAnimation" id=57]
@@ -764,17 +1036,126 @@ blend_point_7/node = SubResource( 64 )
 blend_point_7/pos = Vector2( -0.7, 0.6 )
 blend_mode = 1
 
+[sub_resource type="AnimationNodeAnimation" id=78]
+animation = "BackBow"
+
+[sub_resource type="AnimationNodeAnimation" id=79]
+animation = "FrontBow"
+
+[sub_resource type="AnimationNodeAnimation" id=80]
+animation = "RightBow"
+
+[sub_resource type="AnimationNodeAnimation" id=81]
+animation = "LeftBow"
+
+[sub_resource type="AnimationNodeAnimation" id=82]
+animation = "BackLeftBow"
+
+[sub_resource type="AnimationNodeAnimation" id=83]
+animation = "BackRightBow"
+
+[sub_resource type="AnimationNodeAnimation" id=84]
+animation = "FrontRightBow"
+
+[sub_resource type="AnimationNodeAnimation" id=85]
+animation = "FrontLeftBow"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=86]
+blend_point_0/node = SubResource( 78 )
+blend_point_0/pos = Vector2( 0, -1 )
+blend_point_1/node = SubResource( 79 )
+blend_point_1/pos = Vector2( 0, 1 )
+blend_point_2/node = SubResource( 80 )
+blend_point_2/pos = Vector2( 1, 0 )
+blend_point_3/node = SubResource( 81 )
+blend_point_3/pos = Vector2( -1, 0 )
+blend_point_4/node = SubResource( 82 )
+blend_point_4/pos = Vector2( -0.7, -0.6 )
+blend_point_5/node = SubResource( 83 )
+blend_point_5/pos = Vector2( 0.7, -0.6 )
+blend_point_6/node = SubResource( 84 )
+blend_point_6/pos = Vector2( 0.7, 0.6 )
+blend_point_7/node = SubResource( 85 )
+blend_point_7/pos = Vector2( -0.7, 0.6 )
+blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id=89]
+animation = "FrontRoll"
+
+[sub_resource type="AnimationNodeAnimation" id=90]
+animation = "BackRoll"
+
+[sub_resource type="AnimationNodeAnimation" id=91]
+animation = "RightRoll"
+
+[sub_resource type="AnimationNodeAnimation" id=92]
+animation = "LeftRoll"
+
+[sub_resource type="AnimationNodeAnimation" id=93]
+animation = "FrontLeftRoll"
+
+[sub_resource type="AnimationNodeAnimation" id=94]
+animation = "BackLeftRoll"
+
+[sub_resource type="AnimationNodeAnimation" id=95]
+animation = "BackRightRoll"
+
+[sub_resource type="AnimationNodeAnimation" id=96]
+animation = "FrontRightRoll"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=97]
+blend_point_0/node = SubResource( 89 )
+blend_point_0/pos = Vector2( 0, 1 )
+blend_point_1/node = SubResource( 90 )
+blend_point_1/pos = Vector2( 0, -1 )
+blend_point_2/node = SubResource( 91 )
+blend_point_2/pos = Vector2( 1, 0 )
+blend_point_3/node = SubResource( 92 )
+blend_point_3/pos = Vector2( -1, 0 )
+blend_point_4/node = SubResource( 93 )
+blend_point_4/pos = Vector2( -0.7, 0.6 )
+blend_point_5/node = SubResource( 94 )
+blend_point_5/pos = Vector2( -0.7, -0.6 )
+blend_point_6/node = SubResource( 95 )
+blend_point_6/pos = Vector2( 0.7, -0.6 )
+blend_point_7/node = SubResource( 96 )
+blend_point_7/pos = Vector2( 0.7, 0.6 )
+blend_mode = 1
+
 [sub_resource type="AnimationNodeStateMachineTransition" id=45]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=46]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id=74]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=75]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=76]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=77]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=87]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=88]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=98]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=99]
+
 [sub_resource type="AnimationNodeStateMachine" id=47]
 states/Idle/node = SubResource( 43 )
-states/Idle/position = Vector2( 115, 75.5 )
+states/Idle/position = Vector2( 114.5, 75.5 )
+states/MeleeAttack/node = SubResource( 65 )
+states/MeleeAttack/position = Vector2( 233.65, 193.693 )
 states/Move/node = SubResource( 44 )
 states/Move/position = Vector2( 375.5, 85.5 )
-transitions = [ "Move", "Idle", SubResource( 45 ), "Idle", "Move", SubResource( 46 ) ]
+states/RangedAttack/node = SubResource( 86 )
+states/RangedAttack/position = Vector2( -145.7, 186.679 )
+states/Roll/node = SubResource( 97 )
+states/Roll/position = Vector2( 42.0499, 186.639 )
+transitions = [ "Move", "Idle", SubResource( 45 ), "Idle", "Move", SubResource( 46 ), "MeleeAttack", "Idle", SubResource( 74 ), "Idle", "MeleeAttack", SubResource( 75 ), "MeleeAttack", "Move", SubResource( 76 ), "Move", "MeleeAttack", SubResource( 77 ), "RangedAttack", "Idle", SubResource( 87 ), "Idle", "RangedAttack", SubResource( 88 ), "Idle", "Roll", SubResource( 98 ), "Roll", "Idle", SubResource( 99 ) ]
 start_node = "Idle"
+graph_offset = Vector2( -261, 17.8148 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=48]
 
@@ -837,10 +1218,12 @@ anims/RightSlash = SubResource( 42 )
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource( 47 )
 anim_player = NodePath("../AnimationPlayer")
-active = true
 parameters/playback = SubResource( 48 )
 parameters/Idle/blend_position = Vector2( 0, 0 )
+parameters/MeleeAttack/blend_position = Vector2( 0, 0 )
 parameters/Move/blend_position = Vector2( 0, 0 )
+parameters/RangedAttack/blend_position = Vector2( 0, 0 )
+parameters/Roll/blend_position = Vector2( 0, 0 )
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource( 3 )
@@ -851,3 +1234,12 @@ script = ExtResource( 4 )
 
 [node name="Run" type="Node" parent="StateMachine"]
 script = ExtResource( 5 )
+
+[node name="MeleeAttack" type="Node" parent="StateMachine"]
+script = ExtResource( 6 )
+
+[node name="Roll" type="Node" parent="StateMachine"]
+script = ExtResource( 7 )
+
+[node name="RangedAttack" type="Node" parent="StateMachine"]
+script = ExtResource( 8 )

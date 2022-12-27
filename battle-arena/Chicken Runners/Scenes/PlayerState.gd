@@ -6,9 +6,6 @@ onready var velocity = Vector2.ZERO
 onready var animationTree
 onready var animationState
 
-const ACCEL = 400
-const MAX_SPEED = 130
-const FRICTION = 600
 
 func _ready():
 	yield(owner, "ready")
