@@ -12,5 +12,6 @@ margin_bottom = -560.0
 [node name="Node2D" type="Node2D" parent="."]
 
 [node name="Level" parent="." instance=ExtResource( 1 )]
+modulate = Color( 0.745098, 0.745098, 0.745098, 1 )
 
 [node name="Player" parent="Level" instance=ExtResource( 2 )]

@@ -3,6 +3,11 @@ extends PlayerState
 export (float) var roll_time = 0.8
 var current_roll_time: float =  0
 var roll_direction = Vector2.ZERO
+export (int) var ROLL_SPEED = 150
+var roll_multiplier = 120
+
+
+
 
 func enter(_msg := {}):
 	animationState.travel("Roll")
@@ -23,10 +28,10 @@ func update(delta: float) -> void:
 		state_machine.transition_to("RangedAttack")
 	else:
 		state_machine.transition_to("Idle")
-
 	
+
 func physics_update(delta: float):
-	player.velocity = roll_direction * player.ROLL_SPEED
+	player.velocity = player.velocity.move_toward(player.ROLL_SPEED * roll_direction, player.ROLL_ACCEL *  delta)
 	player.velocity = player.move_and_slide(player.velocity)
 	
 func handle_input(_event: InputEvent):
