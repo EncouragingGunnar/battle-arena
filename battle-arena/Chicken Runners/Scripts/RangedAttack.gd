@@ -1,8 +1,10 @@
 extends PlayerState
 
+
 func enter(_msg := {}):
 	player.velocity = Vector2.ZERO
 	animationState.travel("RangedAttack")
+
 
 func update(_delta: float):
 	pass
@@ -10,6 +12,13 @@ func update(_delta: float):
 func attack_animation_finished():
 	state_machine.transition_to("Idle")
 	
+func shoot_arrow():
+	var arrow = player.Arrow.instance()
+	arrow.position = player.arrowPosition.global_position
+	arrow.arrow_direction = animationTree.get("parameters/RangedAttack/blend_position")
+	player.add_child(arrow)
+
+
 func physics_update(delta: float):
 	pass
 

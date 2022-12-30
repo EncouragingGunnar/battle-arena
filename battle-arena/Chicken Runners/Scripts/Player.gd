@@ -16,9 +16,14 @@ onready var animationPlayer = $AnimationPlayer
 onready var animationTree = $AnimationTree
 onready var animationState = animationTree.get("parameters/playback")
 onready var stateMachine = $StateMachine
+onready var Arrow = preload("res://Scenes/Arrow.tscn")
+onready var arrowPosition = $ArrowStartPosition
+onready var swordHitbox = $SlashHitboxPosition/Hitbox
 
 func _ready():
 	animationTree.active = true
+	swordHitbox.set_deferred("monitoring", false)
+	swordHitbox.set_deferred("monitorable", false)
 
 
 

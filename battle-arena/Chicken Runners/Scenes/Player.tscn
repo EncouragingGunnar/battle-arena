@@ -26,7 +26,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
+"values": [ 0, 3, 2, 1, 4, 5, 6, 7, 8, 9 ]
 }
 tracks/1/type = "method"
 tracks/1/path = NodePath("StateMachine/RangedAttack")
@@ -35,12 +35,27 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 1 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0.6, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
 "values": [ {
+"args": [  ],
+"method": "shoot_arrow"
+}, {
 "args": [  ],
 "method": "attack_animation_finished"
 } ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ArrowStartPosition:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, -54 ) ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -82,12 +97,27 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 1.1 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0.7, 1.1 ),
+"transitions": PoolRealArray( 1, 1 ),
 "values": [ {
+"args": [  ],
+"method": "shoot_arrow"
+}, {
 "args": [  ],
 "method": "attack_animation_finished"
 } ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ArrowStartPosition:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -21, -23 ) ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -206,12 +236,27 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 1.1 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0.8, 1.1 ),
+"transitions": PoolRealArray( 1, 1 ),
 "values": [ {
+"args": [  ],
+"method": "shoot_arrow"
+}, {
 "args": [  ],
 "method": "attack_animation_finished"
 } ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ArrowStartPosition:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 22, -25 ) ]
 }
 
 [sub_resource type="Animation" id=11]
@@ -394,7 +439,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145 ]
+"values": [ 135, 136, 137, 138, 140, 139, 141, 142, 143, 144, 145 ]
 }
 tracks/1/type = "method"
 tracks/1/path = NodePath("StateMachine/RangedAttack")
@@ -403,12 +448,27 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 1.1 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0.7, 1.1 ),
+"transitions": PoolRealArray( 1, 1 ),
 "values": [ {
+"args": [  ],
+"method": "shoot_arrow"
+}, {
 "args": [  ],
 "method": "attack_animation_finished"
 } ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ArrowStartPosition:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -2, 41 ) ]
 }
 
 [sub_resource type="Animation" id=19]
@@ -450,12 +510,27 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 1.1 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0.7, 1.1 ),
+"transitions": PoolRealArray( 1, 1 ),
 "values": [ {
+"args": [  ],
+"method": "shoot_arrow"
+}, {
 "args": [  ],
 "method": "attack_animation_finished"
 } ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ArrowStartPosition:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -14, 23 ) ]
 }
 
 [sub_resource type="Animation" id=21]
@@ -572,12 +647,27 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.9 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0.7, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
 "values": [ {
+"args": [  ],
+"method": "shoot_arrow"
+}, {
 "args": [  ],
 "method": "attack_animation_finished"
 } ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ArrowStartPosition:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 12, 22 ) ]
 }
 
 [sub_resource type="Animation" id=26]
@@ -768,12 +858,27 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.9 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0.6, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
 "values": [ {
+"args": [  ],
+"method": "shoot_arrow"
+}, {
 "args": [  ],
 "method": "attack_animation_finished"
 } ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ArrowStartPosition:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -36, 5 ) ]
 }
 
 [sub_resource type="Animation" id=34]
@@ -894,6 +999,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [ 0.0 ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("ArrowStartPosition:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, -54 ) ]
+}
 
 [sub_resource type="Animation" id=38]
 resource_name = "RightBow"
@@ -916,12 +1033,27 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 1 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0.6, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
 "values": [ {
+"args": [  ],
+"method": "shoot_arrow"
+}, {
 "args": [  ],
 "method": "attack_animation_finished"
 } ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ArrowStartPosition:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 35, 4 ) ]
 }
 
 [sub_resource type="Animation" id=39]
@@ -1365,5 +1497,8 @@ collision_mask = 2
 [node name="CollisionShape2D" parent="SlashHitboxPosition/Hitbox" index="0"]
 position = Vector2( 24, 0 )
 shape = SubResource( 100 )
+
+[node name="ArrowStartPosition" type="Position2D" parent="."]
+position = Vector2( 1, -54 )
 
 [editable path="SlashHitboxPosition/Hitbox"]
