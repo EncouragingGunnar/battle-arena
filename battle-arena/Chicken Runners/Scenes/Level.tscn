@@ -629,7 +629,7 @@ visible = false
 navpoly = SubResource( 20 )
 
 [node name="Skeleton" parent="MapNavigation" instance=ExtResource( 4 )]
-position = Vector2( 194, 102 )
+position = Vector2( 310, 102 )
 
 [node name="Skeleton2" parent="MapNavigation" instance=ExtResource( 4 )]
 position = Vector2( 370, 333 )

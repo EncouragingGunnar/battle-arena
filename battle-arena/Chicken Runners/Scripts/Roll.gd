@@ -5,8 +5,7 @@ var current_roll_time: float =  0
 var roll_direction = Vector2.ZERO
 export (int) var ROLL_SPEED = 150
 var roll_multiplier = 120
-
-
+onready var rollTimer = $RollTimer
 
 
 func enter(_msg := {}):
@@ -14,6 +13,7 @@ func enter(_msg := {}):
 	current_roll_time = roll_time
 	roll_direction = animationTree.get("parameters/Roll/blend_position")
 	player.velocity = Vector2.ZERO
+	player.can_roll = false
 	
 func update(delta: float) -> void:
 	current_roll_time -= delta
@@ -22,12 +22,16 @@ func update(delta: float) -> void:
 	
 	if Input.is_action_pressed("ui_down") or Input.is_action_pressed("ui_up") or Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right"):
 		state_machine.transition_to("Run")
-	elif Input.is_action_just_pressed("MeleeAttack"):
+		return
+	if Input.is_action_pressed("MeleeAttack"):
 		state_machine.transition_to("MeleeAttack")
-	elif Input.is_action_just_pressed("RangedAttack"):
+		return
+	if Input.is_action_pressed("RangedAttack"):
 		state_machine.transition_to("RangedAttack")
+		return
 	else:
 		state_machine.transition_to("Idle")
+		return
 	
 
 func physics_update(delta: float):
@@ -38,4 +42,5 @@ func handle_input(_event: InputEvent):
 	pass
 
 func exit():
-	pass
+	rollTimer.start()
+	player.can_roll = false

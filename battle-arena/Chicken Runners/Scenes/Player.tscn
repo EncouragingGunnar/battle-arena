@@ -1,4 +1,4 @@
-[gd_scene load_steps=110 format=2]
+[gd_scene load_steps=112 format=2]
 
 [ext_resource path="res://Textures/Player/spritesheet2.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=2]
@@ -196,6 +196,30 @@ tracks/2/keys = {
 "update": 0,
 "values": [ 225.0 ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("SlashHitboxPosition/Hitbox:monitoring")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("SlashHitboxPosition/Hitbox:monitorable")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
 
 [sub_resource type="Animation" id=9]
 resource_name = "BackLeftWalk"
@@ -333,6 +357,30 @@ tracks/2/keys = {
 "update": 0,
 "values": [ 315.0 ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("SlashHitboxPosition/Hitbox:monitoring")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("SlashHitboxPosition/Hitbox:monitorable")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
 
 [sub_resource type="Animation" id=13]
 resource_name = "BackRightWalk"
@@ -407,6 +455,30 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ 270.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("SlashHitboxPosition/Hitbox:monitoring")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("SlashHitboxPosition/Hitbox:monitorable")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
 }
 
 [sub_resource type="Animation" id=17]
@@ -607,6 +679,30 @@ tracks/2/keys = {
 "update": 0,
 "values": [ 135.0 ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("SlashHitboxPosition/Hitbox:monitoring")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("SlashHitboxPosition/Hitbox:monitorable")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
 
 [sub_resource type="Animation" id=24]
 resource_name = "FrontLeftWalk"
@@ -744,6 +840,30 @@ tracks/2/keys = {
 "update": 0,
 "values": [ 45.0 ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("SlashHitboxPosition/Hitbox:monitoring")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("SlashHitboxPosition/Hitbox:monitorable")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
 
 [sub_resource type="Animation" id=29]
 resource_name = "FrontRightWalk"
@@ -818,6 +938,30 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ 90.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("SlashHitboxPosition/Hitbox:monitoring")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.5, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("SlashHitboxPosition/Hitbox:monitorable")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.5, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
 }
 
 [sub_resource type="Animation" id=32]
@@ -955,6 +1099,30 @@ tracks/2/keys = {
 "update": 0,
 "values": [ 180.0 ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("SlashHitboxPosition/Hitbox:monitoring")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("SlashHitboxPosition/Hitbox:monitorable")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
 
 [sub_resource type="Animation" id=37]
 resource_name = "LeftWalk"
@@ -1010,6 +1178,54 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( 1, -54 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("SlashHitboxPosition/Hitbox/CollisionShape2D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("SlashHitboxPosition/Hitbox:monitoring")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("SlashHitboxPosition/Hitbox:monitorable")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
 }
 
 [sub_resource type="Animation" id=38]
@@ -1146,6 +1362,30 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ 0.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("SlashHitboxPosition/Hitbox:monitoring")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.3, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("SlashHitboxPosition/Hitbox:monitorable")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.3, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
 }
 
 [sub_resource type="AnimationNodeAnimation" id=49]
@@ -1383,20 +1623,24 @@ blend_mode = 1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=99]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id=101]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=102]
+
 [sub_resource type="AnimationNodeStateMachine" id=47]
 states/Idle/node = SubResource( 43 )
 states/Idle/position = Vector2( 114.5, 75.5 )
 states/MeleeAttack/node = SubResource( 65 )
-states/MeleeAttack/position = Vector2( 233.65, 193.693 )
+states/MeleeAttack/position = Vector2( 252.65, 293.693 )
 states/Move/node = SubResource( 44 )
 states/Move/position = Vector2( 375.5, 85.5 )
 states/RangedAttack/node = SubResource( 86 )
 states/RangedAttack/position = Vector2( -145.7, 186.679 )
 states/Roll/node = SubResource( 97 )
-states/Roll/position = Vector2( 42.0499, 186.639 )
-transitions = [ "Move", "Idle", SubResource( 45 ), "Idle", "Move", SubResource( 46 ), "MeleeAttack", "Idle", SubResource( 74 ), "Idle", "MeleeAttack", SubResource( 75 ), "MeleeAttack", "Move", SubResource( 76 ), "Move", "MeleeAttack", SubResource( 77 ), "RangedAttack", "Idle", SubResource( 87 ), "Idle", "RangedAttack", SubResource( 88 ), "Idle", "Roll", SubResource( 98 ), "Roll", "Idle", SubResource( 99 ) ]
+states/Roll/position = Vector2( 85.0499, 202.139 )
+transitions = [ "Move", "Idle", SubResource( 45 ), "Idle", "Move", SubResource( 46 ), "MeleeAttack", "Idle", SubResource( 74 ), "Idle", "MeleeAttack", SubResource( 75 ), "MeleeAttack", "Move", SubResource( 76 ), "Move", "MeleeAttack", SubResource( 77 ), "RangedAttack", "Idle", SubResource( 87 ), "Idle", "RangedAttack", SubResource( 88 ), "Idle", "Roll", SubResource( 98 ), "Roll", "Idle", SubResource( 99 ), "Move", "Roll", SubResource( 101 ), "Roll", "Move", SubResource( 102 ) ]
 start_node = "Idle"
-graph_offset = Vector2( -261, 17.8148 )
+graph_offset = Vector2( -336.69, 106.772 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=48]
 
@@ -1486,6 +1730,9 @@ script = ExtResource( 6 )
 [node name="Roll" type="Node" parent="StateMachine"]
 script = ExtResource( 7 )
 
+[node name="RollTimer" type="Timer" parent="StateMachine/Roll"]
+wait_time = 0.2
+
 [node name="RangedAttack" type="Node" parent="StateMachine"]
 script = ExtResource( 8 )
 
@@ -1500,5 +1747,8 @@ shape = SubResource( 100 )
 
 [node name="ArrowStartPosition" type="Position2D" parent="."]
 position = Vector2( 1, -54 )
+
+[connection signal="timeout" from="StateMachine/Roll/RollTimer" to="." method="_on_RollTimer_timeout"]
+[connection signal="body_entered" from="SlashHitboxPosition/Hitbox" to="StateMachine/MeleeAttack" method="_on_Hitbox_body_entered"]
 
 [editable path="SlashHitboxPosition/Hitbox"]

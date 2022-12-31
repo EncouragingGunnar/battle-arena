@@ -12,7 +12,7 @@ func update(_delta: float):
 		state_machine.transition_to("MeleeAttack")
 	if Input.is_action_just_pressed("RangedAttack"):
 		state_machine.transition_to("RangedAttack")
-	if Input.is_action_just_pressed("Roll"):
+	if Input.is_action_just_pressed("Roll") and player.can_roll:
 		state_machine.transition_to("Roll")
 	
 func physics_update(_delta: float):
