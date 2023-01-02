@@ -1,4 +1,4 @@
-[gd_scene load_steps=112 format=2]
+[gd_scene load_steps=116 format=2]
 
 [ext_resource path="res://Textures/Player/spritesheet2.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=2]
@@ -9,10 +9,16 @@
 [ext_resource path="res://Scripts/Roll.gd" type="Script" id=7]
 [ext_resource path="res://Scripts/RangedAttack.gd" type="Script" id=8]
 [ext_resource path="res://Scenes/Hitbox.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Textures/Enemies/Hitflash.gdshader" type="Shader" id=10]
+[ext_resource path="res://Scenes/Hurtbox.tscn" type="PackedScene" id=11]
 
-[sub_resource type="CapsuleShape2D" id=1]
-radius = 16.0
-height = 28.0
+[sub_resource type="ShaderMaterial" id=103]
+shader = ExtResource( 10 )
+shader_param/hit_opacity = 0.0
+
+[sub_resource type="CapsuleShape2D" id=104]
+radius = 12.0
+height = 34.0
 
 [sub_resource type="Animation" id=2]
 resource_name = "BackBow"
@@ -223,7 +229,7 @@ tracks/4/keys = {
 
 [sub_resource type="Animation" id=9]
 resource_name = "BackLeftWalk"
-length = 1.2
+length = 0.9
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -232,10 +238,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59 ]
+"values": [ 49, 50, 51, 52, 53, 54, 59, 55, 57 ]
 }
 
 [sub_resource type="Animation" id=10]
@@ -384,7 +390,7 @@ tracks/4/keys = {
 
 [sub_resource type="Animation" id=13]
 resource_name = "BackRightWalk"
-length = 0.6
+length = 0.5
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -393,10 +399,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 95, 97, 98, 99, 100, 106 ]
+"values": [ 95, 97, 98, 99, 100 ]
 }
 
 [sub_resource type="Animation" id=14]
@@ -706,7 +712,7 @@ tracks/4/keys = {
 
 [sub_resource type="Animation" id=24]
 resource_name = "FrontLeftWalk"
-length = 0.7
+length = 0.6
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -715,10 +721,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 184, 186, 187, 188, 189, 190, 191 ]
+"values": [ 184, 186, 187, 188, 189, 190 ]
 }
 
 [sub_resource type="Animation" id=25]
@@ -867,7 +873,7 @@ tracks/4/keys = {
 
 [sub_resource type="Animation" id=29]
 resource_name = "FrontRightWalk"
-length = 0.8
+length = 0.7
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -876,10 +882,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 229, 231, 232, 233, 235, 236, 237, 238 ]
+"values": [ 229, 231, 232, 233, 236, 237, 238 ]
 }
 
 [sub_resource type="Animation" id=30]
@@ -966,6 +972,7 @@ tracks/4/keys = {
 
 [sub_resource type="Animation" id=32]
 resource_name = "FrontWalk"
+length = 0.9
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -974,10 +981,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 260, 261, 262, 263, 264, 265, 266, 267, 268, 269 ]
+"values": [ 260, 261, 262, 263, 264, 265, 266, 267, 268 ]
 }
 
 [sub_resource type="Animation" id=33]
@@ -1126,7 +1133,7 @@ tracks/4/keys = {
 
 [sub_resource type="Animation" id=37]
 resource_name = "LeftWalk"
-length = 0.7
+length = 0.6
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -1135,10 +1142,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 306, 307, 308, 309, 310, 311, 314 ]
+"values": [ 306, 307, 308, 309, 310, 311 ]
 }
 
 [sub_resource type="Animation" id=7]
@@ -1180,7 +1187,7 @@ tracks/2/keys = {
 "values": [ Vector2( 1, -54 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("CollisionShape2D:disabled")
+tracks/3/path = NodePath("SlashHitboxPosition/Hitbox/CollisionShape2D:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -1192,7 +1199,7 @@ tracks/3/keys = {
 "values": [ false ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("SlashHitboxPosition/Hitbox/CollisionShape2D:disabled")
+tracks/4/path = NodePath("SlashHitboxPosition/Hitbox:monitoring")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -1201,27 +1208,15 @@ tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ false ]
+"values": [ true ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("SlashHitboxPosition/Hitbox:monitoring")
+tracks/5/path = NodePath("SlashHitboxPosition/Hitbox:monitorable")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ true ]
-}
-tracks/6/type = "value"
-tracks/6/path = NodePath("SlashHitboxPosition/Hitbox:monitorable")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
@@ -1287,23 +1282,6 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 326, 327, 328, 329 ]
-}
-
-[sub_resource type="Animation" id=40]
-resource_name = "RightMovement"
-length = 0.7
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 350, 352, 353, 354, 355, 357, 359 ]
 }
 
 [sub_resource type="Animation" id=41]
@@ -1386,6 +1364,23 @@ tracks/4/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=40]
+resource_name = "RightWalk"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 350, 352, 353, 354, 355, 357 ]
 }
 
 [sub_resource type="AnimationNodeAnimation" id=49]
@@ -1478,7 +1473,7 @@ blend_mode = 1
 animation = "LeftWalk"
 
 [sub_resource type="AnimationNodeAnimation" id=58]
-animation = "RightMovement"
+animation = "RightWalk"
 
 [sub_resource type="AnimationNodeAnimation" id=59]
 animation = "BackWalk"
@@ -1640,26 +1635,32 @@ states/Roll/node = SubResource( 97 )
 states/Roll/position = Vector2( 85.0499, 202.139 )
 transitions = [ "Move", "Idle", SubResource( 45 ), "Idle", "Move", SubResource( 46 ), "MeleeAttack", "Idle", SubResource( 74 ), "Idle", "MeleeAttack", SubResource( 75 ), "MeleeAttack", "Move", SubResource( 76 ), "Move", "MeleeAttack", SubResource( 77 ), "RangedAttack", "Idle", SubResource( 87 ), "Idle", "RangedAttack", SubResource( 88 ), "Idle", "Roll", SubResource( 98 ), "Roll", "Idle", SubResource( 99 ), "Move", "Roll", SubResource( 101 ), "Roll", "Move", SubResource( 102 ) ]
 start_node = "Idle"
-graph_offset = Vector2( -336.69, 106.772 )
+graph_offset = Vector2( -167.49, -3.658 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=48]
 
 [sub_resource type="CapsuleShape2D" id=100]
-radius = 15.0
+radius = 18.0
 height = 44.0
 
-[node name="Player" type="KinematicBody2D"]
+[sub_resource type="CapsuleShape2D" id=105]
+radius = 8.0
+height = 14.0
+
+[node name="Player" type="KinematicBody2D" groups=["Player"]]
 collision_mask = 8
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
+material = SubResource( 103 )
 scale = Vector2( 3, 3 )
 texture = ExtResource( 1 )
 hframes = 60
 vframes = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
+visible = false
+shape = SubResource( 104 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/BackBow = SubResource( 2 )
@@ -1700,19 +1701,19 @@ anims/LeftWalk = SubResource( 37 )
 anims/RESET = SubResource( 7 )
 anims/RightBow = SubResource( 38 )
 anims/RightIdle = SubResource( 39 )
-anims/RightMovement = SubResource( 40 )
 anims/RightRoll = SubResource( 41 )
 anims/RightSlash = SubResource( 42 )
+anims/RightWalk = SubResource( 40 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource( 47 )
 anim_player = NodePath("../AnimationPlayer")
 parameters/playback = SubResource( 48 )
-parameters/Idle/blend_position = Vector2( 0, 0 )
-parameters/MeleeAttack/blend_position = Vector2( 0, 0 )
-parameters/Move/blend_position = Vector2( 0, 0 )
-parameters/RangedAttack/blend_position = Vector2( 0, 0 )
-parameters/Roll/blend_position = Vector2( 0, 0 )
+parameters/Idle/blend_position = Vector2( 0, 1 )
+parameters/MeleeAttack/blend_position = Vector2( 0, 1 )
+parameters/Move/blend_position = Vector2( 0.994226, 0 )
+parameters/RangedAttack/blend_position = Vector2( 0, 1 )
+parameters/Roll/blend_position = Vector2( 0, 1 )
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource( 3 )
@@ -1739,16 +1740,30 @@ script = ExtResource( 8 )
 [node name="SlashHitboxPosition" type="Position2D" parent="."]
 
 [node name="Hitbox" parent="SlashHitboxPosition" instance=ExtResource( 9 )]
-collision_mask = 2
+collision_layer = 0
+collision_mask = 18
+damage = 15
+knockbackStrength = 200
 
 [node name="CollisionShape2D" parent="SlashHitboxPosition/Hitbox" index="0"]
-position = Vector2( 24, 0 )
+position = Vector2( 28, 0 )
 shape = SubResource( 100 )
 
 [node name="ArrowStartPosition" type="Position2D" parent="."]
 position = Vector2( 1, -54 )
 
+[node name="Hurtbox" parent="." instance=ExtResource( 11 )]
+collision_layer = 4
+collision_mask = 0
+knockbackResistance = 2
+invincibilityTime = 1.0
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+position = Vector2( 0, 8 )
+shape = SubResource( 105 )
+
 [connection signal="timeout" from="StateMachine/Roll/RollTimer" to="." method="_on_RollTimer_timeout"]
-[connection signal="body_entered" from="SlashHitboxPosition/Hitbox" to="StateMachine/MeleeAttack" method="_on_Hitbox_body_entered"]
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
 
 [editable path="SlashHitboxPosition/Hitbox"]
+[editable path="Hurtbox"]

@@ -13,10 +13,14 @@ func _ready():
 func _physics_process(delta):
 	position += arrow_direction * MOVE_SPEED * delta
 
+func _on_Hitbox_area_entered(area):
+	if area.has_method("set_knockback_stats"):
+		area.set_knockback_stats(knockback_strength)
+	if area.has_method("take_damage"):
+		area.take_damage(bow_damage)
+	queue_free()
+
 
 func _on_Hitbox_body_entered(body):
-	if body.has_method("set_knockback_stats"):
-		body.set_knockback_stats(knockback_strength)
-	if body.is_in_group("Enemy"):
-		body.take_damage(bow_damage)
-	queue_free()
+	if body.is_in_group("WorldObject"):
+		queue_free()

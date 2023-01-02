@@ -2,11 +2,8 @@ extends PlayerState
 
 export (float) var roll_time = 0.8
 var current_roll_time: float =  0
-var roll_direction = Vector2.ZERO
-export (int) var ROLL_SPEED = 150
-var roll_multiplier = 120
 onready var rollTimer = $RollTimer
-
+var roll_direction = Vector2()
 
 func enter(_msg := {}):
 	animationState.travel("Roll")

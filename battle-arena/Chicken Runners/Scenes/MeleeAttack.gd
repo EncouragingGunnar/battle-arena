@@ -21,8 +21,3 @@ func handle_input(_event: InputEvent):
 func exit():
 	pass
 
-
-func _on_Hitbox_body_entered(body):
-	if body.is_in_group("Enemy"):
-		body.take_damage(player.melee_damage)
-	body.set_knockback_stats(player.knockback_strength)
