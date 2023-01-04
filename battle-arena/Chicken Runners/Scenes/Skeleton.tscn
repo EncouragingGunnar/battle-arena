@@ -49,16 +49,16 @@ animations = [ {
 "frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
 "loop": true,
 "name": "Idle",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [ SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
 "loop": true,
 "name": "Run",
-"speed": 8.0
+"speed": 10.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=10]
-extents = Vector2( 5, 7.5 )
+[sub_resource type="CircleShape2D" id=22]
+radius = 5.02494
 
 [sub_resource type="RectangleShape2D" id=11]
 extents = Vector2( 5, 7.5 )
@@ -71,16 +71,18 @@ scale = Vector2( 3, 3 )
 collision_layer = 16
 collision_mask = 24
 script = ExtResource( 3 )
+wanderRange = 40
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 material = SubResource( 19 )
 frames = SubResource( 9 )
-animation = "Idle"
+animation = "Run"
+frame = 3
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 0.5 )
-shape = SubResource( 10 )
+shape = SubResource( 22 )
 
 [node name="Hurtbox" parent="." instance=ExtResource( 2 )]
 collision_layer = 2
@@ -106,13 +108,13 @@ percent_visible = false
 [node name="Tween" type="Tween" parent="ProgressBar"]
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-path_desired_distance = 2.0
-target_desired_distance = 2.0
+path_desired_distance = 10.0
+target_desired_distance = 5.0
 path_max_distance = 20.0
 
 [node name="PathTimer" type="Timer" parent="."]
-wait_time = 0.1
-autostart = true
+wait_time = 0.5
+one_shot = true
 
 [node name="LineOfSight" type="RayCast2D" parent="."]
 enabled = true
@@ -126,10 +128,21 @@ damage = 15
 knockbackStrength = 200
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
+position = Vector2( 0, 0.333333 )
 shape = SubResource( 21 )
 
+[node name="WanderTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="VisibilityEnabler2D" type="VisibilityEnabler2D" parent="."]
+pause_animated_sprites = false
+process_parent = true
+physics_process_parent = true
+
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
+[connection signal="timeout" from="PathTimer" to="." method="_on_PathTimer_timeout"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_Hitbox_body_entered"]
+[connection signal="timeout" from="WanderTimer" to="." method="_on_WanderTimer_timeout"]
 
 [editable path="Hurtbox"]
 [editable path="Hitbox"]

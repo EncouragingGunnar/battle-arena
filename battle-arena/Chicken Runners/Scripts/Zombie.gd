@@ -7,12 +7,17 @@ var current_hp
 var knockbackImpulse
 var can_update_pathfinding = true
 var idle_states = [IDLE, WANDER]
+var distancetoPlayer: int
+var can_attack = true
 
 const MAX_SPEED = 60
 const ACCEL = 200
+const MAX_DISTANCE_TO_PLAYER = 150
+const MIN_DISTANCE_TO_PLAYER = 75
 
 export (int) var wanderRange = 10
 export var path_to_player = NodePath()
+export (int) var spearspeed = 100
 
 onready var player = get_node(path_to_player)
 onready var hurtbox = $Hurtbox
@@ -23,19 +28,22 @@ onready var agent = $NavigationAgent2D
 onready var pathTimer: Timer = $PathTimer
 onready var sight = $LineOfSight
 onready var wanderTimer = $WanderTimer
+onready var attackTimer = $AttackTimer
+onready var spear = preload("res://Scenes/Spear.tscn")
 onready var startPosition = global_position
 onready var targetPosition = global_position
 
 enum {
 	IDLE,
 	WANDER,
-	CHASE
+	MOVE
 }
 
 var state = IDLE
 
 func _ready():
 	current_hp = max_hp
+	update_distance_to_player()
 	
 func take_damage(damage):
 	if healthBar.visible == false:
@@ -70,19 +78,27 @@ func _physics_process(delta):
 			velocity = velocity.move_toward(Vector2.ZERO, ACCEL * delta)
 			if is_instance_valid(player):
 				sight.look_at(player.global_position)
-				if can_see_player():
-					state = CHASE	
+				if can_see_player() and distancetoPlayer > MAX_DISTANCE_TO_PLAYER:
+					state = MOVE
+				if can_see_player() and distancetoPlayer < MIN_DISTANCE_TO_PLAYER:
+					state = MOVE
+				if can_see_player() and can_attack:
+					can_attack = false
+					throw_spear()
+					attackTimer.start()
+				if not can_see_player() and wanderTimer.time_left == 0:		
+					state = idle_states[randi() % idle_states.size()]
+					wanderTimer.start(rand_range(1, 3))
 			
-			
-			if wanderTimer.time_left == 0:
-				state = idle_states[randi() % idle_states.size()]
-				wanderTimer.start(rand_range(1, 3))
+				
 				
 		WANDER:
 			if is_instance_valid(player):
 				sight.look_at(player.global_position)
-				if can_see_player():
-					state = CHASE
+				if can_see_player() and distancetoPlayer > MAX_DISTANCE_TO_PLAYER:
+					state = MOVE
+				if can_see_player() and distancetoPlayer < MIN_DISTANCE_TO_PLAYER:
+					state = MOVE
 			if wanderTimer.time_left == 0:
 				state = idle_states[randi() % idle_states.size()]			
 				wanderTimer.start(rand_range(1, 3))
@@ -94,18 +110,27 @@ func _physics_process(delta):
 			if agent.is_navigation_finished():
 				state = idle_states[randi() % idle_states.size()]
 				wanderTimer.start(rand_range(1, 3))
-		CHASE:
+		MOVE:
+			if distancetoPlayer < MAX_DISTANCE_TO_PLAYER and distancetoPlayer > MIN_DISTANCE_TO_PLAYER:
+					state = IDLE
 			if is_instance_valid(player):
 				sight.look_at(player.global_position)
-				if can_see_player():
+				if not can_see_player():
+					state = IDLE
+				
+				if can_see_player() and distancetoPlayer > MAX_DISTANCE_TO_PLAYER:
 					update_pathfinding(player.global_position)
 					var direction = global_position.direction_to(agent.get_next_location())
 					velocity = velocity.move_toward(direction * MAX_SPEED, ACCEL *  delta)
-					sprite.play("Run")
-				else:
-					state = IDLE
+					sprite.play("Run")	
 				
-
+				if can_see_player() and distancetoPlayer < MIN_DISTANCE_TO_PLAYER:
+					update_pathfinding((global_position - player.global_position).normalized() * 100)
+					var direction = global_position.direction_to(agent.get_next_location())
+					velocity = velocity.move_toward(direction * MAX_SPEED, ACCEL *  delta)
+					sprite.play("Run")		
+						
+				
 	sprite.flip_h = velocity.x < 0
 	velocity = move_and_slide(velocity)
 		
@@ -131,11 +156,29 @@ func can_see_player() -> bool:
 func _on_PathTimer_timeout():
 	can_update_pathfinding = true
 	
+	
 func update_target_position():
 	targetPosition = startPosition + Vector2(rand_range(-wanderRange, wanderRange), rand_range(-wanderRange, wanderRange))
 
+func update_distance_to_player():
+	if is_instance_valid(player):
+		distancetoPlayer = (player.position - global_position).length()
+
 func _on_WanderTimer_timeout():
-	if state != CHASE:
+	if state != MOVE:
 		update_target_position()
 		update_pathfinding(targetPosition)
 
+func _on_UpdateDistanceTimer_timeout():
+	update_distance_to_player()
+
+
+func _on_AttackTimer_timeout():
+	can_attack = true
+	
+func throw_spear() -> void:
+	var projectile = spear.instance()
+	projectile.position = global_position
+	projectile.spear_speed = 200
+	projectile.direction = global_position.direction_to(player.global_position)
+	add_child(projectile)

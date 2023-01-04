@@ -3,7 +3,7 @@ extends PlayerState
 
 func enter(_msg := {}):
 	player.velocity = Vector2.ZERO
-	animationState.travel("RangedAttack")
+	player.animationState.travel("RangedAttack")
 
 
 func update(_delta: float):
@@ -17,7 +17,7 @@ func shoot_arrow():
 	arrow.knockback_strength = player.player_knockback_strength
 	arrow.bow_damage = player.bow_damage
 	arrow.position = player.arrowPosition.global_position
-	arrow.arrow_direction = animationTree.get("parameters/RangedAttack/blend_position")
+	arrow.arrow_direction = player.animationTree.get("parameters/RangedAttack/blend_position")
 	player.add_child(arrow)
 
 

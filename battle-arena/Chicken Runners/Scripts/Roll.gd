@@ -6,9 +6,9 @@ onready var rollTimer = $RollTimer
 var roll_direction = Vector2()
 
 func enter(_msg := {}):
-	animationState.travel("Roll")
+	player.animationState.travel("Roll")
 	current_roll_time = roll_time
-	roll_direction = animationTree.get("parameters/Roll/blend_position")
+	roll_direction = player.animationTree.get("parameters/Roll/blend_position")
 	player.velocity = Vector2.ZERO
 	player.can_roll = false
 	

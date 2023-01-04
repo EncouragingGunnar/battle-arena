@@ -25,7 +25,7 @@ onready var animationState = animationTree.get("parameters/playback")
 onready var stateMachine = $StateMachine
 onready var Arrow = preload("res://Scenes/Arrow.tscn")
 onready var arrowPosition = $ArrowStartPosition
-onready var swordHitbox = $SlashHitboxPosition/Hitbox
+onready var swordHitbox = $SlashHitboxPosition/Hitbox/CollisionShape2D
 onready var collisionShape = $CollisionShape2D
 onready var hurtbox = $Hurtbox
 onready var sprite = $Sprite
@@ -33,9 +33,9 @@ onready var sprite = $Sprite
 var can_roll = true
 
 func _ready():
+	randomize()
 	animationTree.active = true
-	swordHitbox.set_deferred("monitoring", false)
-	swordHitbox.set_deferred("monitorable", false)
+	swordHitbox.set_deferred("disabled", true)
 	current_hp = max_hp
 
 func _on_RollTimer_timeout():

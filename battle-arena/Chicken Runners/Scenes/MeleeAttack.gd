@@ -2,7 +2,7 @@ extends PlayerState
 
 func enter(_msg := {}):
 	player.velocity = Vector2.ZERO
-	animationState.travel("MeleeAttack")
+	player.animationState.travel("MeleeAttack")
 	
 
 func update(_delta: float):

@@ -12,8 +12,8 @@ func _ready():
 	player = owner as Player
 	assert(player != null)
 	
-	animationTree = player.get_node("AnimationTree")
-	animationState = animationTree.get("parameters/playback")
+	#animationTree = player.get_node("AnimationTree")
+	#animationState = animationTree.get("parameters/playback")
 
 	
 func update(_delta: float):
