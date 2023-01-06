@@ -138,4 +138,3 @@ func _on_WanderTimer_timeout():
 	if state != CHASE:
 		update_target_position()
 		update_pathfinding(targetPosition)
-

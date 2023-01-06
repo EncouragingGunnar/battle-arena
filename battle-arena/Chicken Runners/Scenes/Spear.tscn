@@ -13,9 +13,9 @@ scale = Vector2( 2, 1.5 )
 script = ExtResource( 2 )
 
 [node name="Hitbox" parent="." instance=ExtResource( 3 )]
-collision_layer = 0
-collision_mask = 12
-damage = 20
+collision_layer = 128
+collision_mask = 76
+damage = 10
 knockbackStrength = 100
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]

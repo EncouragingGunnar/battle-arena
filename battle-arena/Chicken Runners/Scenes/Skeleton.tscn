@@ -77,7 +77,7 @@ wanderRange = 40
 material = SubResource( 19 )
 frames = SubResource( 9 )
 animation = "Run"
-frame = 3
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

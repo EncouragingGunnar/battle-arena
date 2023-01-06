@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=2]
+[gd_scene load_steps=61 format=2]
 
 [ext_resource path="res://Textures/WYdv41.png" type="Texture" id=1]
 [ext_resource path="res://Textures/0f6a29db-2521-4e60-899f-1795dfa4906e.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/Camera.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/Zombie.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/Big Zombie.tscn" type="PackedScene" id=8]
 
 [sub_resource type="ConvexPolygonShape2D" id=22]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
@@ -604,6 +605,10 @@ navpoly = SubResource( 71 )
 [node name="Zombie" parent="MapNavigation" instance=ExtResource( 7 )]
 position = Vector2( 398, 199 )
 wanderRange = 40
+path_to_player = NodePath("../../Player")
+
+[node name="Big Zombie" parent="MapNavigation" groups=["Enemy"] instance=ExtResource( 8 )]
+position = Vector2( 719, 481 )
 path_to_player = NodePath("../../Player")
 
 [node name="Player" parent="." instance=ExtResource( 5 )]

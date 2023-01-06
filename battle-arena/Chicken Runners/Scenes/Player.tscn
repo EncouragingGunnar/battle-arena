@@ -1644,7 +1644,7 @@ script = ExtResource( 8 )
 [node name="SlashHitboxPosition" type="Position2D" parent="."]
 
 [node name="Hitbox" parent="SlashHitboxPosition" instance=ExtResource( 9 )]
-collision_layer = 0
+collision_layer = 64
 collision_mask = 18
 damage = 15
 knockbackStrength = 200
