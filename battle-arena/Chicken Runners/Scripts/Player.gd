@@ -19,8 +19,8 @@ var knockbackImpulse = Vector2()
 var max_hp = 100
 var current_hp
 
-onready var animationPlayer = $AnimationPlayer
-onready var animationTree = $AnimationTree
+onready var animationPlayer = $AnimationPlayer2
+onready var animationTree = $AnimationTree2
 onready var animationState = animationTree.get("parameters/playback")
 onready var stateMachine = $StateMachine
 onready var Arrow = preload("res://Scenes/Arrow.tscn")
@@ -28,7 +28,7 @@ onready var arrowPosition = $ArrowStartPosition
 onready var swordHitbox = $SlashHitboxPosition/Hitbox/CollisionShape2D
 onready var collisionShape = $CollisionShape2D
 onready var hurtbox = $Hurtbox
-onready var sprite = $Sprite
+onready var sprite = $Sprite2
 
 var can_roll = true
 

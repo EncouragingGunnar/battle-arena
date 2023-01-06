@@ -608,7 +608,7 @@ wanderRange = 40
 path_to_player = NodePath("../../Player")
 
 [node name="Big Zombie" parent="MapNavigation" groups=["Enemy"] instance=ExtResource( 8 )]
-position = Vector2( 719, 481 )
+position = Vector2( 781, 497 )
 path_to_player = NodePath("../../Player")
 
 [node name="Player" parent="." instance=ExtResource( 5 )]

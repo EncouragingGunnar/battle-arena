@@ -16,7 +16,7 @@ func physics_update(delta: float):
 	if input_vector != Vector2.ZERO:
 		player.animationTree.set("parameters/Idle/blend_position", input_vector)
 		player.animationTree.set("parameters/Move/blend_position", input_vector)
-		player.animationTree.set("parameters/MeleeAttack/blend_position", input_vector)
+		player.animationTree.set("parameters/Attack1/blend_position", input_vector)
 		player.animationTree.set("parameters/Roll/blend_position", input_vector)
 		player.animationTree.set("parameters/RangedAttack/blend_position", input_vector)
 		player.animationState.travel("Move")
