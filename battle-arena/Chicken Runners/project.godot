@@ -42,6 +42,10 @@ config/name="Chicken Runners"
 run/main_scene="res://Scenes/World.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Transition="*res://Scenes/Transition.tscn"
+
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true

@@ -17,6 +17,8 @@ func physics_update(delta: float):
 		player.animationTree.set("parameters/Idle/blend_position", input_vector)
 		player.animationTree.set("parameters/Move/blend_position", input_vector)
 		player.animationTree.set("parameters/Attack1/blend_position", input_vector)
+		player.animationTree.set("parameters/Attack2/blend_position", input_vector)
+		player.animationTree.set("parameters/Attack3/blend_position", input_vector)
 		player.animationTree.set("parameters/Roll/blend_position", input_vector)
 		player.animationTree.set("parameters/RangedAttack/blend_position", input_vector)
 		player.animationState.travel("Move")
@@ -34,7 +36,7 @@ func physics_update(delta: float):
 
 func handle_input(_event: InputEvent):
 	if Input.is_action_just_pressed("MeleeAttack"):
-		state_machine.transition_to("MeleeAttack")
+		state_machine.transition_to("Attack1")
 	if Input.is_action_just_pressed("RangedAttack"):
 		state_machine.transition_to("RangedAttack")
 	if Input.is_action_just_pressed("Roll") and player.can_roll:

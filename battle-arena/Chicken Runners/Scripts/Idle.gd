@@ -9,7 +9,7 @@ func update(_delta: float):
 	if Input.is_action_just_pressed("ui_down") or Input.is_action_just_pressed("ui_up") or Input.is_action_just_pressed("ui_left") or Input.is_action_just_pressed("ui_right"):
 		state_machine.transition_to("Run")
 	if Input.is_action_just_pressed("MeleeAttack"):
-		state_machine.transition_to("MeleeAttack")
+		state_machine.transition_to("Attack1")
 	if Input.is_action_just_pressed("RangedAttack"):
 		state_machine.transition_to("RangedAttack")
 	if Input.is_action_just_pressed("Roll") and player.can_roll:

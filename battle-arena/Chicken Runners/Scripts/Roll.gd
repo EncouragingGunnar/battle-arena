@@ -21,7 +21,7 @@ func update(delta: float) -> void:
 		state_machine.transition_to("Run")
 		return
 	if Input.is_action_pressed("MeleeAttack"):
-		state_machine.transition_to("MeleeAttack")
+		state_machine.transition_to("Attack1")
 		return
 	if Input.is_action_pressed("RangedAttack"):
 		state_machine.transition_to("RangedAttack")
