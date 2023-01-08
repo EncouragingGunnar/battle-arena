@@ -39,6 +39,11 @@ var state = IDLE
 func _ready():
 	current_hp = max_hp
 	attackTimer.start()
+
+func drop_coin():
+	var coin = preload("res://Scenes/Coin.tscn").instance()
+	coin.position = global_position
+	get_parent().add_child(coin)
 	
 func take_damage(damage):
 	if healthBar.visible == false:
@@ -51,6 +56,8 @@ func take_damage(damage):
 		die()
 		
 func die():
+	for i in range(5):
+		call_deferred("drop_coin")
 	queue_free()
 
 func set_knockback_stats(impulse):
@@ -86,9 +93,9 @@ func _physics_process(delta):
 						
 				elif attackTimer.time_left < attackTimer.wait_time / 2:
 					velocity = Vector2.ZERO
-					chargeTween.interpolate_property(self, "position", startPosition, global_position, attackTimer.wait_time / 2, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+					chargeTween.interpolate_property(self, "position", global_position, startPosition, attackTimer.wait_time / 2, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 					chargeTween.start()
-					yield(chargeTween, "tween_completed")
+				
 					state = attackStates[randi() % attackStates.size()]
 					attackTimer.start()
 

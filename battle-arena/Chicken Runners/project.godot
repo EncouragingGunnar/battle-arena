@@ -38,13 +38,14 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Chicken Runners"
+config/name="Battle Arena"
 run/main_scene="res://Scenes/World.tscn"
-config/icon="res://icon.png"
+config/icon="res://Side Portrait Small.png"
 
 [autoload]
 
 Transition="*res://Scenes/Transition.tscn"
+Globals="*res://Scenes/Globals.tscn"
 
 [gui]
 
@@ -130,6 +131,7 @@ Roll={
 2d_physics/layer_6="EnemyHitbox"
 2d_physics/layer_7="PlayerHitbox"
 2d_physics/layer_8="Projectile"
+2d_physics/layer_9="Pickups"
 
 [physics]
 

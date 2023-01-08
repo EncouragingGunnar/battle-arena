@@ -23,6 +23,7 @@ onready var agent = $NavigationAgent2D
 onready var pathTimer: Timer = $PathTimer
 onready var sight = $LineOfSight
 onready var wanderTimer = $WanderTimer
+onready var tween = $Tween
 onready var startPosition = global_position
 onready var targetPosition = global_position
 
@@ -47,7 +48,14 @@ func take_damage(damage):
 	if current_hp <= 0:
 		die()
 		
+func drop_coin():
+	var coin = preload("res://Scenes/Coin.tscn").instance()
+	coin.position = global_position
+	get_parent().add_child(coin)
+
+
 func die():
+	call_deferred("drop_coin")
 	queue_free()
 
 func set_knockback_stats(impulse):

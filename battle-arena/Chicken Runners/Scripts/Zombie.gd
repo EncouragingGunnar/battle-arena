@@ -45,6 +45,11 @@ func _ready():
 	current_hp = max_hp
 	update_distance_to_player()
 	
+func drop_coin():
+	var coin = preload("res://Scenes/Coin.tscn").instance()
+	coin.position = global_position
+	get_parent().add_child(coin)
+	
 func take_damage(damage):
 	if healthBar.visible == false:
 		healthBar.visible = true
@@ -56,6 +61,7 @@ func take_damage(damage):
 		die()
 		
 func die():
+	call_deferred("drop_coin")
 	queue_free()
 
 func set_knockback_stats(impulse):

@@ -77,7 +77,6 @@ wanderRange = 40
 material = SubResource( 19 )
 frames = SubResource( 9 )
 animation = "Run"
-frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -138,6 +137,8 @@ one_shot = true
 pause_animated_sprites = false
 process_parent = true
 physics_process_parent = true
+
+[node name="Tween" type="Tween" parent="."]
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
 [connection signal="timeout" from="PathTimer" to="." method="_on_PathTimer_timeout"]

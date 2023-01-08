@@ -14,6 +14,8 @@ var bow_damage = 10
 var hitstun = 0
 var canInput = true
 
+var coin = 0
+
 var velocity = Vector2()
 var knockbackImpulse = Vector2()
 
@@ -71,3 +73,6 @@ func _on_Hurtbox_area_entered(area):
 
 func input_ready():
 	canInput = true
+	
+func collect_coin():
+	Globals.coins += 1
