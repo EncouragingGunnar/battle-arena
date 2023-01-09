@@ -9,6 +9,7 @@ var can_update_pathfinding = true
 var idle_states = [IDLE, WANDER]
 var distancetoPlayer: int
 var can_attack = true
+var experience_dropped = 80
 
 const MAX_SPEED = 60
 const ACCEL = 200
@@ -61,6 +62,7 @@ func take_damage(damage):
 		die()
 		
 func die():
+	player.gain_experience(experience_dropped)
 	call_deferred("drop_coin")
 	queue_free()
 
@@ -188,3 +190,4 @@ func throw_spear() -> void:
 	projectile.spear_speed = 200
 	projectile.direction = global_position.direction_to(player.global_position)
 	add_child(projectile)
+	

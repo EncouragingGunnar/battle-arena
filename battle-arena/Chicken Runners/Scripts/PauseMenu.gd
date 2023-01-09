@@ -15,3 +15,7 @@ func _input(event):
 func _on_Button_pressed():
 	get_tree().paused = !get_tree().paused
 	hide()
+
+
+func _on_QuitButton_pressed():
+	get_tree().quit()

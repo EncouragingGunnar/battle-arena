@@ -7,6 +7,7 @@ var current_hp
 var knockbackImpulse
 var can_update_pathfinding = true
 var idle_states = [IDLE, WANDER]
+var experience_dropped = 40
 
 const MAX_SPEED = 60
 const ACCEL = 200
@@ -55,6 +56,7 @@ func drop_coin():
 
 
 func die():
+	player.gain_experience(experience_dropped)
 	call_deferred("drop_coin")
 	queue_free()
 

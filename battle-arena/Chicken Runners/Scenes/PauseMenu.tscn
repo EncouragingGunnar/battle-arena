@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Scripts/PauseMenu.gd" type="Script" id=1]
 [ext_resource path="res://fonts and themes/font.ttf" type="DynamicFontData" id=2]
@@ -14,13 +14,28 @@ font_data = ExtResource( 2 )
 [sub_resource type="StyleBoxLine" id=4]
 color = Color( 1, 1, 1, 1 )
 
-[sub_resource type="StyleBoxEmpty" id=5]
+[sub_resource type="StyleBoxLine" id=8]
 
-[sub_resource type="StyleBoxEmpty" id=6]
+[sub_resource type="StyleBoxLine" id=9]
 
 [sub_resource type="StyleBoxEmpty" id=7]
 
 [sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="DynamicFont" id=10]
+size = 40
+font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxLine" id=11]
+color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="StyleBoxLine" id=12]
+
+[sub_resource type="StyleBoxLine" id=13]
+
+[sub_resource type="StyleBoxEmpty" id=14]
+
+[sub_resource type="StyleBoxEmpty" id=15]
 
 [node name="PauseMenu" type="Control"]
 pause_mode = 2
@@ -58,10 +73,32 @@ margin_right = 190.0
 margin_bottom = 97.0
 custom_fonts/font = SubResource( 2 )
 custom_styles/hover = SubResource( 4 )
-custom_styles/pressed = SubResource( 5 )
-custom_styles/focus = SubResource( 6 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/focus = SubResource( 9 )
 custom_styles/disabled = SubResource( 7 )
 custom_styles/normal = SubResource( 3 )
 text = "Resume Game"
 
+[node name="VBoxContainer" type="VBoxContainer" parent="Background"]
+anchor_left = 0.961
+anchor_top = 0.946
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -0.0640259
+margin_top = -7.60004
+
+[node name="QuitButton" type="Button" parent="Background"]
+margin_left = 884.0
+margin_top = 518.0
+margin_right = 1014.0
+margin_bottom = 568.0
+custom_fonts/font = SubResource( 10 )
+custom_styles/hover = SubResource( 11 )
+custom_styles/pressed = SubResource( 12 )
+custom_styles/focus = SubResource( 13 )
+custom_styles/disabled = SubResource( 14 )
+custom_styles/normal = SubResource( 15 )
+text = "Quit"
+
 [connection signal="pressed" from="Background/CenterContainer/VBoxContainer/ResumeButton" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="Background/QuitButton" to="." method="_on_QuitButton_pressed"]

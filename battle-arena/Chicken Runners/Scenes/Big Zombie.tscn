@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Scripts/Big Zombie.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Hitbox.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Textures/Enemies/ProgressBarTheme.tres" type="Theme" id=4]
 [ext_resource path="res://Textures/Enemies/Big Zombie.png" type="Texture" id=5]
 [ext_resource path="res://Textures/Enemies/Hitflash.gdshader" type="Shader" id=6]
+[ext_resource path="res://Scenes/HitEffect.tscn" type="PackedScene" id=7]
 
 [sub_resource type="ShaderMaterial" id=11]
 resource_local_to_scene = true
@@ -85,7 +86,8 @@ shape = SubResource( 10 )
 collision_layer = 2
 collision_mask = 192
 knockbackResistance = 100
-invincibilityTime = 0.5
+invincibilityTime = 0.3
+hitEffect = ExtResource( 7 )
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
 position = Vector2( 0, 3.5 )

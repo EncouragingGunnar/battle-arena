@@ -41,7 +41,7 @@ modulate = Color( 1, 1, 1, 0 )
 margin_right = 1025.0
 margin_bottom = 604.0
 mouse_filter = 2
-color = Color( 0.337255, 0.164706, 0.164706, 1 )
+color = Color( 0.219608, 0.207843, 0.223529, 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 1 )

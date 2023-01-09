@@ -1,6 +1,11 @@
 class_name Player
 extends KinematicBody2D
 
+signal health_changed(health)
+signal mana_changed(mana)
+signal coins_changed(coins)
+signal xp_changed()
+
 export var ACCEL = 650
 export var MAX_SPEED = 100
 export var FRICTION = 650
@@ -14,7 +19,10 @@ var bow_damage = 10
 var hitstun = 0
 var canInput = true
 
-var coin = 0
+var level = 1
+var experience = 0
+var experience_required = get_required_xp_to_level_up(level + 1)
+
 
 var velocity = Vector2()
 var knockbackImpulse = Vector2()
@@ -29,9 +37,12 @@ onready var stateMachine = $StateMachine
 onready var Arrow = preload("res://Scenes/Arrow.tscn")
 onready var arrowPosition = $ArrowStartPosition
 onready var swordHitbox = $SlashHitboxPosition/Hitbox1/CollisionShape2D
+onready var swordHitbox2 = $SlashHitboxPosition/Hitbox2/CollisionShape2D
 onready var collisionShape = $CollisionShape2D
 onready var hurtbox = $Hurtbox
 onready var sprite = $Sprite2
+
+
 
 var can_roll = true
 
@@ -39,6 +50,7 @@ func _ready():
 	randomize()
 	animationTree.active = true
 	swordHitbox.set_deferred("disabled", true)
+	swordHitbox2.set_deferred("disabled", true)
 	current_hp = max_hp
 
 func _on_RollTimer_timeout():
@@ -46,12 +58,13 @@ func _on_RollTimer_timeout():
 
 func take_damage(damage):
 	current_hp -= damage
-	print(current_hp)
+	emit_signal("health_changed", current_hp)
 	if current_hp <= 0:
 		die()
 		
 func die():
 	queue_free()
+	Transition.load_scene("res://Scenes/GameOverMenu.tscn")
 	
 func set_knockback_stats(impulse):
 	knockbackImpulse = impulse
@@ -76,3 +89,20 @@ func input_ready():
 	
 func collect_coin():
 	Globals.coins += 1
+	emit_signal("coins_changed", Globals.coins)
+	
+func get_required_xp_to_level_up(level):
+	return round(pow(level, 1.4) * 10)
+	
+func gain_experience(experience_gained):
+	experience += experience_gained
+	while experience >= experience_required:
+		experience -= experience_required
+		level_up()
+	emit_signal("xp_changed")
+	
+
+		
+func level_up():
+	level += 1
+	experience_required = get_required_xp_to_level_up(level + 1)

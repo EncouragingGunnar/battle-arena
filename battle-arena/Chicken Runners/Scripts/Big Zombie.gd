@@ -7,6 +7,7 @@ var current_hp
 var knockbackImpulse
 var attackStates = [IDLE, CHARGE, SPAWN]
 var chargedIntoWall = false
+var experience_dropped = 400
 
 const CHARGE_MAX_SPEED = 400
 const CHARGE_ACCEL = 800
@@ -56,7 +57,8 @@ func take_damage(damage):
 		die()
 		
 func die():
-	for i in range(5):
+	player.gain_experience(experience_dropped)
+	for _i in range(5):
 		call_deferred("drop_coin")
 	queue_free()
 
