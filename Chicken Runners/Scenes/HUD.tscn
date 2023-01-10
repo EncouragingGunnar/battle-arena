@@ -1,0 +1,148 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Textures/GUI/health.png" type="Texture" id=1]
+[ext_resource path="res://fonts and themes/font.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Textures/GUI/no health.png" type="Texture" id=3]
+[ext_resource path="res://Textures/GUI/coin_anim_f0.png" type="Texture" id=4]
+[ext_resource path="res://Scripts/HUD.gd" type="Script" id=5]
+
+[sub_resource type="DynamicFont" id=2]
+size = 28
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=1]
+size = 28
+font_data = ExtResource( 2 )
+
+[node name="GUI" type="CanvasLayer"]
+script = ExtResource( 5 )
+
+[node name="HealthBar" type="TextureProgress" parent="."]
+margin_left = 782.0
+margin_top = 23.0
+margin_right = 1004.0
+margin_bottom = 79.0
+value = 80.0
+texture_under = ExtResource( 3 )
+texture_progress = ExtResource( 1 )
+nine_patch_stretch = true
+
+[node name="HealthBarLabel" type="Label" parent="HealthBar"]
+modulate = Color( 0.992157, 0.584314, 0.584314, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -47.5
+margin_top = -14.5
+margin_right = 47.5
+margin_bottom = 14.5
+custom_fonts/font = SubResource( 2 )
+text = "100 / 100"
+
+[node name="HPLabel" type="Label" parent="."]
+anchor_bottom = 1.0
+margin_left = 739.0
+margin_top = 39.0
+margin_right = 765.0
+margin_bottom = -532.0
+custom_fonts/font = SubResource( 1 )
+text = "HP"
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="ManaBar" type="TextureProgress" parent="."]
+modulate = Color( 0, 0.580392, 1, 1 )
+margin_left = 780.0
+margin_top = 55.0
+margin_right = 1002.0
+margin_bottom = 111.0
+value = 80.0
+texture_under = ExtResource( 3 )
+texture_progress = ExtResource( 1 )
+nine_patch_stretch = true
+
+[node name="ManaBarLabel" type="Label" parent="ManaBar"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -47.5
+margin_top = -14.5
+margin_right = 47.5
+margin_bottom = 14.5
+custom_fonts/font = SubResource( 2 )
+text = "100 / 100"
+
+[node name="ManaLabel" type="Label" parent="."]
+margin_left = 738.0
+margin_top = 73.0
+margin_right = 793.0
+margin_bottom = 102.0
+custom_fonts/font = SubResource( 1 )
+text = "MP"
+
+[node name="XPBar" type="TextureProgress" parent="."]
+modulate = Color( 0, 1, 0.4, 1 )
+margin_left = 780.0
+margin_top = 86.0
+margin_right = 1002.0
+margin_bottom = 147.0
+texture_under = ExtResource( 3 )
+texture_progress = ExtResource( 1 )
+nine_patch_stretch = true
+
+[node name="XPLabel" type="Label" parent="XPBar"]
+margin_left = 81.0
+margin_top = 17.0
+margin_right = 120.0
+margin_bottom = 46.0
+custom_fonts/font = SubResource( 1 )
+text = "0 / 14"
+align = 1
+valign = 1
+
+[node name="LevelUpLabel" type="Label" parent="XPBar"]
+margin_left = 7.0
+margin_top = 50.0
+margin_right = 219.0
+margin_bottom = 79.0
+custom_fonts/font = SubResource( 1 )
+text = "Level 2 Reached!"
+align = 1
+valign = 1
+
+[node name="LevelUpTimer" type="Timer" parent="XPBar/LevelUpLabel"]
+wait_time = 5.0
+one_shot = true
+
+[node name="LevelLabel" type="Label" parent="."]
+margin_left = 717.0
+margin_top = 103.0
+margin_right = 775.0
+margin_bottom = 132.0
+custom_fonts/font = SubResource( 1 )
+text = "LVL"
+align = 1
+valign = 1
+
+[node name="CoinIcon" type="Sprite" parent="."]
+position = Vector2( 982, 181 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 4 )
+
+[node name="CoinCounter" type="Label" parent="."]
+margin_left = 933.0
+margin_top = 168.0
+margin_right = 973.0
+margin_bottom = 197.0
+custom_fonts/font = SubResource( 1 )
+text = "0"
+align = 1
+valign = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[connection signal="timeout" from="XPBar/LevelUpLabel/LevelUpTimer" to="." method="_on_LevelUpTimer_timeout"]

@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Textures/Enemies/weapon_spear.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Spear.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/Hitbox.tscn" type="PackedScene" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 2, 13.5 )
+
+[node name="Spear" type="Node2D"]
+rotation = 1.5708
+scale = Vector2( 2, 1.5 )
+script = ExtResource( 2 )
+
+[node name="Hitbox" parent="." instance=ExtResource( 3 )]
+collision_layer = 128
+collision_mask = 76
+damage = 10
+knockbackStrength = 100
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+position = Vector2( 0, 0.5 )
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_Hitbox_area_entered"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_Hitbox_body_entered"]
+
+[editable path="Hitbox"]
