@@ -7,28 +7,18 @@ signal coins_changed()
 signal xp_changed()
 signal leveled_up()
 
-export var ACCEL = 650
-export var MAX_SPEED = 100
-export var FRICTION = 650
-export var ROLL_SPEED = 230
-export var ROLL_ACCEL = 480
-var roll_time = 0.8
-var player_knockback_strength = 150
-var playerKnockbackResistance = 3
-var melee_damage = 15
-var bow_damage = 10
-var hitstun = 0
+export (Resource) var playerstats
+
+export var hitstun = 0
 var canInput = true
 
-var level = 1
-var experience = 0
-var experience_required = get_required_xp_to_level_up(level + 1)
+var experience_required 
 
 
 var velocity = Vector2()
 var knockbackImpulse = Vector2()
 
-var max_hp = 100
+
 var current_hp
 
 onready var animationPlayer = $AnimationPlayer2
@@ -45,6 +35,7 @@ onready var sprite = $Sprite2
 
 
 
+
 var can_roll = true
 
 func _ready():
@@ -52,8 +43,9 @@ func _ready():
 	animationTree.active = true
 	swordHitbox.set_deferred("disabled", true)
 	swordHitbox2.set_deferred("disabled", true)
-	current_hp = max_hp
-
+	current_hp = playerstats.max_hp
+	experience_required = get_required_xp_to_level_up(2)
+	
 func _on_RollTimer_timeout():
 	can_roll = true
 
@@ -93,18 +85,21 @@ func collect_coin():
 	emit_signal("coins_changed")
 	
 func get_required_xp_to_level_up(level_to):
-	return round(pow(level, 1.4) * 10)
+	return round(pow(playerstats.level, 1.4) * 10)
 	
 func gain_experience(experience_gained):
-	experience += experience_gained
-	while experience >= experience_required:
-		experience -= experience_required
+	playerstats.experience += experience_gained
+	while playerstats.experience >= experience_required:
+		playerstats.experience -= experience_required
 		level_up()
 	emit_signal("xp_changed")
 	
 
 		
 func level_up():
-	level += 1
-	experience_required = get_required_xp_to_level_up(level + 1)
+	playerstats.level += 1
+	experience_required = get_required_xp_to_level_up(playerstats.level + 1)
 	emit_signal("leveled_up")
+	playerstats.max_hp += 5
+	current_hp = playerstats.max_hp
+	emit_signal("health_changed", playerstats.max_hp)

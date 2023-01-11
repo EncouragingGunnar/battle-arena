@@ -19,6 +19,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scenes/PlayerState.gd"
 }, {
+"base": "Resource",
+"class": "PlayerStats",
+"language": "GDScript",
+"path": "res://Scripts/PlayerStats.gd"
+}, {
 "base": "Node",
 "class": "State",
 "language": "GDScript",
@@ -32,6 +37,7 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "Player": "",
 "PlayerState": "",
+"PlayerStats": "",
 "State": "",
 "StateMachine": ""
 }
@@ -46,6 +52,14 @@ config/icon="res://Side Portrait Small.png"
 
 Transition="*res://Scenes/Transition.tscn"
 Globals="*res://Scenes/Globals.tscn"
+
+[debug]
+
+gdscript/completion/autocomplete_setters_and_getters=true
+gdscript/warnings/unsafe_property_access=true
+gdscript/warnings/unsafe_method_access=true
+gdscript/warnings/unsafe_cast=true
+gdscript/warnings/unsafe_call_argument=true
 
 [gui]
 

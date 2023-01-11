@@ -1,4 +1,4 @@
-[gd_scene load_steps=154 format=2]
+[gd_scene load_steps=155 format=2]
 
 [ext_resource path="res://Scenes/HitEffect.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://Textures/Enemies/Hitflash.gdshader" type="Shader" id=10]
 [ext_resource path="res://Scenes/Hurtbox.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Textures/Player/Player Spritesheet.png" type="Texture" id=12]
+[ext_resource path="res://Resources/PlayerStats.tres" type="Resource" id=13]
 
 [sub_resource type="CapsuleShape2D" id=104]
 radius = 12.0
@@ -2836,6 +2837,7 @@ graph_offset = Vector2( -1781.3, 12.3675 )
 [node name="Player" type="KinematicBody2D" groups=["Player"]]
 collision_mask = 8
 script = ExtResource( 2 )
+playerstats = ExtResource( 13 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 104 )

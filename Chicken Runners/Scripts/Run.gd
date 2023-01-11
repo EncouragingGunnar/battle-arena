@@ -22,9 +22,9 @@ func physics_update(delta: float):
 		player.animationTree.set("parameters/Roll/blend_position", input_vector)
 		player.animationTree.set("parameters/RangedAttack/blend_position", input_vector)
 		player.animationState.travel("Move")
-		player.velocity = player.velocity.move_toward(input_vector * player.MAX_SPEED, player.ACCEL *  delta)
+		player.velocity = player.velocity.move_toward(input_vector * player.playerstats.MAX_SPEED, player.playerstats.ACCEL *  delta)
 	else:
-		player.velocity = player.velocity.move_toward(Vector2.ZERO, player.FRICTION * delta)
+		player.velocity = player.velocity.move_toward(Vector2.ZERO, player.playerstats.FRICTION * delta)
 
 		
 	player.velocity = player.move_and_slide(player.velocity)

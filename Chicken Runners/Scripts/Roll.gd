@@ -32,7 +32,7 @@ func update(delta: float) -> void:
 	
 
 func physics_update(delta: float):
-	player.velocity = player.velocity.move_toward(player.ROLL_SPEED * roll_direction, player.ROLL_ACCEL *  delta)
+	player.velocity = player.velocity.move_toward(player.playerstats.ROLL_SPEED * roll_direction, player.playerstats.ROLL_ACCEL *  delta)
 	player.velocity = player.move_and_slide(player.velocity)
 	
 func handle_input(_event: InputEvent):

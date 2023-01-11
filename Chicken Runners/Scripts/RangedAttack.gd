@@ -14,8 +14,8 @@ func attack_animation_finished():
 	
 func shoot_arrow():
 	var arrow = player.Arrow.instance()
-	arrow.knockback_strength = player.player_knockback_strength
-	arrow.bow_damage = player.bow_damage
+	arrow.knockback_strength = player.playerstats.player_knockback_strength
+	arrow.bow_damage = player.playerstats.bow_damage
 	arrow.position = player.arrowPosition.global_position
 	arrow.arrow_direction = player.animationTree.get("parameters/RangedAttack/blend_position")
 	player.add_child(arrow)
