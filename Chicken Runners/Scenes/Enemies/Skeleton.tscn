@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Textures/Enemies/Skeleton.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Hurtbox.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Scripts/Skeleton.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/Enemies/Skeleton.gd" type="Script" id=3]
 [ext_resource path="res://Textures/Enemies/Hitflash.gdshader" type="Shader" id=4]
 [ext_resource path="res://Textures/Enemies/ProgressBarTheme.tres" type="Theme" id=5]
 [ext_resource path="res://Scenes/Hitbox.tscn" type="PackedScene" id=6]
@@ -77,7 +77,6 @@ wanderRange = 40
 material = SubResource( 19 )
 frames = SubResource( 9 )
 animation = "Run"
-frame = 3
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -88,7 +87,7 @@ shape = SubResource( 22 )
 collision_layer = 2
 collision_mask = 64
 knockbackResistance = 2
-invincibilityTime = 0.3
+invincibilityTime = 0.4
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
 position = Vector2( 0, 0.5 )

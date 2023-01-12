@@ -8,7 +8,7 @@ var arrow_direction := Vector2.ZERO
 var knockback_strength 
 var bow_damage 
 
-func _ready():
+func _ready():	
 	set_as_toplevel(true)
 	look_at(position + arrow_direction)
 	hitbox.damage = bow_damage

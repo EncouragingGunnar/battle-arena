@@ -23,12 +23,12 @@ onready var healthBarTween = $ProgressBar/Tween
 onready var sight = $LineOfSight
 onready var attackTimer = $AttackTimer
 onready var chargeTween = $ChargeTween
-onready var spear = preload("res://Scenes/Spear.tscn")
+onready var spear = preload("res://Scenes/Enemies/Spear.tscn")
 onready var startPosition = global_position
 onready var monsterPosition = $MonsterPosition
 onready var monsterPosition2 = $MonsterPosition2
 onready var hitbox = $Hitbox/CollisionShape2D
-onready var zombie = preload("res://Scenes/Zombie.tscn")
+onready var zombie = preload("res://Scenes/Enemies/Zombie.tscn")
 
 enum {
 	IDLE,

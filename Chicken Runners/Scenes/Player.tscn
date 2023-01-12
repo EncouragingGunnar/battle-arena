@@ -2830,7 +2830,7 @@ states/Roll/node = SubResource( 169 )
 states/Roll/position = Vector2( -1580.4, 133.773 )
 transitions = [ "Idle", "Move", SubResource( 170 ), "Move", "Idle", SubResource( 171 ), "Idle", "RangedAttack", SubResource( 172 ), "RangedAttack", "Idle", SubResource( 173 ), "Idle", "Roll", SubResource( 174 ), "Roll", "Idle", SubResource( 175 ), "Move", "Roll", SubResource( 176 ), "Roll", "Move", SubResource( 177 ), "Idle", "Attack1", SubResource( 178 ), "Attack1", "Idle", SubResource( 179 ), "Attack1", "Attack2", SubResource( 180 ), "Attack2", "Idle", SubResource( 181 ), "Attack2", "Attack3", SubResource( 182 ), "Attack3", "Idle", SubResource( 183 ) ]
 start_node = "Idle"
-graph_offset = Vector2( -1781.3, 12.3675 )
+graph_offset = Vector2( -1897.67, -30.2625 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=185]
 

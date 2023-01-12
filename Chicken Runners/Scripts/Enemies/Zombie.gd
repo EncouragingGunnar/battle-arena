@@ -30,7 +30,7 @@ onready var pathTimer: Timer = $PathTimer
 onready var sight = $LineOfSight
 onready var wanderTimer = $WanderTimer
 onready var attackTimer = $AttackTimer
-onready var spear = preload("res://Scenes/Spear.tscn")
+onready var spear = preload("res://Scenes/Enemies/Spear.tscn")
 onready var startPosition = global_position
 onready var targetPosition = global_position
 

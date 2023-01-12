@@ -57,7 +57,7 @@ func take_damage(damage):
 		
 func die():
 	queue_free()
-	Transition.load_scene("res://Scenes/GameOverMenu.tscn")
+	Transition.load_scene("res://Scenes/Menus/GameOverMenu.tscn")
 	
 func set_knockback_stats(impulse):
 	knockbackImpulse = impulse
@@ -93,9 +93,8 @@ func gain_experience(experience_gained):
 		playerstats.experience -= experience_required
 		level_up()
 	emit_signal("xp_changed")
-	
 
-		
+
 func level_up():
 	playerstats.level += 1
 	experience_required = get_required_xp_to_level_up(playerstats.level + 1)
