@@ -1,7 +1,6 @@
 extends PlayerState
 
 func enter(_msg := {}):
-	player.velocity = Vector2.ZERO
 	player.animationState.travel("Idle")
 
 	
@@ -15,8 +14,8 @@ func update(_delta: float):
 	if Input.is_action_just_pressed("Roll") and player.can_roll:
 		state_machine.transition_to("Roll")
 	
-func physics_update(_delta: float):
-	pass
+func physics_update(delta: float):
+	player.velocity = player.velocity.move_toward(Vector2.ZERO, player.playerstats.FRICTION * delta)
 
 func handle_input(_event: InputEvent):
 	pass
