@@ -33,9 +33,6 @@ onready var collisionShape = $CollisionShape2D
 onready var hurtbox = $Hurtbox
 onready var sprite = $Sprite2
 
-
-
-
 var can_roll = true
 
 func _ready():
@@ -45,6 +42,8 @@ func _ready():
 	swordHitbox2.set_deferred("disabled", true)
 	current_hp = playerstats.max_hp
 	experience_required = get_required_xp_to_level_up(2)
+
+	
 	
 func _on_RollTimer_timeout():
 	can_roll = true
@@ -93,7 +92,6 @@ func gain_experience(experience_gained):
 		playerstats.experience -= experience_required
 		level_up()
 	emit_signal("xp_changed")
-
 
 func level_up():
 	playerstats.level += 1

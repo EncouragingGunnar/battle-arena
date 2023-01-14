@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=2]
+[gd_scene load_steps=65 format=2]
 
 [ext_resource path="res://Textures/WYdv41.png" type="Texture" id=1]
 [ext_resource path="res://Textures/0f6a29db-2521-4e60-899f-1795dfa4906e.png" type="Texture" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Scenes/Enemies/Big Zombie.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Scenes/HUD.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Scenes/Menus/PauseMenu.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Scenes/Inventory/InventoryContainer.tscn" type="PackedScene" id=11]
 
 [sub_resource type="ConvexPolygonShape2D" id=22]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
@@ -648,6 +649,9 @@ position = Vector2( 1083, 660 )
 path_to_player = NodePath("..")
 
 [node name="PauseMenu2" parent="Player/GUI" instance=ExtResource( 10 )]
+visible = false
+
+[node name="InventoryContainer" parent="Player/GUI" instance=ExtResource( 11 )]
 visible = false
 
 [connection signal="coins_changed" from="Player" to="Player/GUI" method="_on_Player_coins_changed"]

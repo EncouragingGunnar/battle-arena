@@ -1,0 +1,12 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/Items/Item.gd" type="Script" id=1]
+[ext_resource path="res://Textures/Items/gem_01a.png" type="Texture" id=2]
+
+[resource]
+script = ExtResource( 1 )
+name = "Gem"
+item_description = ""
+texture = ExtResource( 2 )
+amount = 0
+stack_size = 0

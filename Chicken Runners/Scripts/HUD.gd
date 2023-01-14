@@ -3,6 +3,7 @@ extends CanvasLayer
 export (NodePath) var path_to_player
 
 onready var player = get_node(path_to_player)
+
 onready var healthbar = $HealthBar
 onready var healthlabel = $HealthBar/HealthBarLabel
 onready var manabar = $ManaBar
