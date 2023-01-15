@@ -1,11 +1,15 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Textures/GUI/dark ui blank.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Items/ItemSlot.gd" type="Script" id=2]
+[ext_resource path="res://fonts and themes/font.ttf" type="DynamicFontData" id=3]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 1 )
 region_rect = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 3 )
 
 [node name="ItemSlot" type="PanelContainer" groups=["ItemSlot"]]
 margin_right = 14.0
@@ -32,3 +36,13 @@ margin_right = 60.0
 margin_bottom = 56.0
 mouse_filter = 2
 expand = true
+
+[node name="AmountLabel" type="Label" parent="MarginContainer/ItemTexture"]
+margin_left = 21.0
+margin_top = 37.0
+margin_right = 61.0
+margin_bottom = 53.0
+custom_fonts/font = SubResource( 2 )
+align = 1
+
+[connection signal="gui_input" from="." to="." method="_on_ItemSlot_gui_input"]

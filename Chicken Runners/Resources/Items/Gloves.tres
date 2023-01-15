@@ -8,5 +8,5 @@ script = ExtResource( 1 )
 name = "Gloves"
 item_description = ""
 texture = ExtResource( 2 )
-amount = 0
-stack_size = 0
+amount = 5
+stack_size = 9

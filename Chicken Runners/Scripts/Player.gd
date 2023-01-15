@@ -21,6 +21,7 @@ var knockbackImpulse = Vector2()
 
 var current_hp
 
+onready var droppedItem = preload("res://Scenes/Inventory/DroppedItem.tscn")
 onready var animationPlayer = $AnimationPlayer2
 onready var animationTree = $AnimationTree2
 onready var animationState = animationTree.get("parameters/playback")
@@ -42,6 +43,7 @@ func _ready():
 	swordHitbox2.set_deferred("disabled", true)
 	current_hp = playerstats.max_hp
 	experience_required = get_required_xp_to_level_up(2)
+	Inventory.connect("item_dropped", self, "_on_items_dropped")
 
 	
 	
@@ -85,7 +87,6 @@ func collect_coin():
 	
 func get_required_xp_to_level_up(level_to):
 	return round(pow(playerstats.level, 1.4) * 10)
-	
 func gain_experience(experience_gained):
 	playerstats.experience += experience_gained
 	while playerstats.experience >= experience_required:
@@ -100,3 +101,13 @@ func level_up():
 	playerstats.max_hp += 5
 	current_hp = playerstats.max_hp
 	emit_signal("health_changed", playerstats.max_hp)
+	
+func _on_items_dropped(index, amount):
+	var item = Inventory.items[index]
+	var quantity = Inventory.items[index].amount
+	Inventory.change_item_quantity(index, -1 * quantity)
+	var droppeditem = droppedItem.instance()
+	droppeditem.position = global_position + (animationTree.get("parameters/Idle/blend_position") * 50)
+	droppeditem.itemresource = item
+	droppeditem.itemresource.amount = quantity
+	get_parent().add_child(droppeditem)
