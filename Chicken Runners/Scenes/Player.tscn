@@ -2994,6 +2994,8 @@ parameters/Move/blend_position = Vector2( 0, 1 )
 parameters/RangedAttack/blend_position = Vector2( 0, 1 )
 parameters/Roll/blend_position = Vector2( 0, 1 )
 
+[node name="RollTween" type="Tween" parent="."]
+
 [connection signal="timeout" from="StateMachine/Roll/RollTimer" to="." method="_on_RollTimer_timeout"]
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
 

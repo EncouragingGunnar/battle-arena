@@ -3,13 +3,16 @@ extends PlayerState
 export (float) var roll_time = 0.8
 var current_roll_time: float =  0
 onready var rollTimer = $RollTimer
+onready var rollTween = $"../../RollTween"
 var roll_direction = Vector2()
+
 
 func enter(_msg := {}):
 	player.animationState.travel("Roll")
 	current_roll_time = roll_time
 	roll_direction = player.animationTree.get("parameters/Roll/blend_position")
-	player.velocity = Vector2.ZERO
+	rollTween.interpolate_property(player, "velocity", Vector2.ZERO, roll_direction * player.playerstats.ROLL_SPEED, roll_time, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)
+	rollTween.start()
 	player.can_roll = false
 	
 func update(delta: float) -> void:
@@ -32,7 +35,6 @@ func update(delta: float) -> void:
 	
 
 func physics_update(delta: float):
-	player.velocity = player.velocity.move_toward(player.playerstats.ROLL_SPEED * roll_direction, player.playerstats.ROLL_ACCEL *  delta)
 	player.velocity = player.move_and_slide(player.velocity)
 	
 func handle_input(_event: InputEvent):
