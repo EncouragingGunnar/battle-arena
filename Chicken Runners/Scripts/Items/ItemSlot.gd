@@ -9,7 +9,8 @@ var can_split = true
 func display_item(item):
 	if item:
 		itemtexture.texture = item.texture
-		amountlabel.text = str(item.amount)
+		if item.stack_size > 1:
+			amountlabel.text = str(item.amount)
 	else:
 		itemtexture.texture = null
 		amountlabel.text = ""

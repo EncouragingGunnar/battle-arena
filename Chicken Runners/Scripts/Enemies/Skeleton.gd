@@ -9,8 +9,8 @@ var can_update_pathfinding = true
 var idle_states = [IDLE, WANDER]
 var experience_dropped = 40
 
-const MAX_SPEED = 60
-const ACCEL = 200
+const MAX_SPEED = 40
+const ACCEL = 150
 
 export (int) var wanderRange = 10
 export var path_to_player = NodePath()

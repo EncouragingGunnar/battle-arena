@@ -634,18 +634,6 @@ path_to_player = NodePath("../../Player")
 navpoly = SubResource( 72 )
 
 [node name="Player" parent="." instance=ExtResource( 5 )]
-position = Vector2( 91, 88 )
-
-[node name="Camera2D" parent="Player" instance=ExtResource( 6 )]
-position = Vector2( -91, -88 )
-current = true
-smoothing_enabled = true
-
-[node name="TopLeft" parent="Player/Camera2D/Node" index="0"]
-position = Vector2( -409, -408 )
-
-[node name="BottomRight" parent="Player/Camera2D/Node" index="1"]
-position = Vector2( 1083, 660 )
 
 [node name="GUI" parent="Player" instance=ExtResource( 9 )]
 path_to_player = NodePath("..")
@@ -655,6 +643,18 @@ visible = false
 
 [node name="InventoryContainer" parent="Player/GUI" instance=ExtResource( 11 )]
 visible = false
+
+[node name="Camera2D" parent="Player" instance=ExtResource( 6 )]
+position = Vector2( 1, 1 )
+current = true
+zoom = Vector2( 0.2, 0.2 )
+smoothing_enabled = true
+
+[node name="TopLeft" parent="Player/Camera2D/Node" index="0"]
+position = Vector2( -409, -408 )
+
+[node name="BottomRight" parent="Player/Camera2D/Node" index="1"]
+position = Vector2( 1083, 660 )
 
 [connection signal="coins_changed" from="Player" to="Player/GUI" method="_on_Player_coins_changed"]
 [connection signal="health_changed" from="Player" to="Player/GUI" method="_on_Player_health_changed"]

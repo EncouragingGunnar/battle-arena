@@ -87,6 +87,7 @@ func collect_coin():
 	
 func get_required_xp_to_level_up(level_to):
 	return round(pow(playerstats.level, 1.4) * 10)
+
 func gain_experience(experience_gained):
 	playerstats.experience += experience_gained
 	while playerstats.experience >= experience_required:

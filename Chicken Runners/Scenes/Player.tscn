@@ -15,20 +15,20 @@
 [ext_resource path="res://Resources/PlayerStats.tres" type="Resource" id=13]
 
 [sub_resource type="CapsuleShape2D" id=104]
-radius = 12.0
-height = 34.0
+radius = 6.0
+height = 10.0
 
 [sub_resource type="CapsuleShape2D" id=100]
-radius = 16.0
-height = 44.0
+radius = 5.65685
+height = 9.89952
 
 [sub_resource type="CapsuleShape2D" id=243]
-radius = 15.0
-height = 44.0
+radius = 5.1127
+height = 12.402
 
 [sub_resource type="CapsuleShape2D" id=105]
-radius = 8.0
-height = 14.0
+radius = 3.0
+height = 10.0
 
 [sub_resource type="ShaderMaterial" id=242]
 resource_local_to_scene = true
@@ -280,7 +280,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 1, -55 ) ]
+"values": [ Vector2( 1, -17 ) ]
 }
 
 [sub_resource type="Animation" id=115]
@@ -546,7 +546,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( -30, -34 ) ]
+"values": [ Vector2( -11, -12 ) ]
 }
 
 [sub_resource type="Animation" id=126]
@@ -845,7 +845,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 31, -34 ) ]
+"values": [ Vector2( 10, -11 ) ]
 }
 
 [sub_resource type="Animation" id=116]
@@ -1177,7 +1177,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( -1, 49 ) ]
+"values": [ Vector2( -1, 18 ) ]
 }
 
 [sub_resource type="Animation" id=119]
@@ -1443,7 +1443,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( -20, 29 ) ]
+"values": [ Vector2( -8, 11 ) ]
 }
 
 [sub_resource type="Animation" id=128]
@@ -1740,7 +1740,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 14, 24 ) ]
+"values": [ Vector2( 5, 8 ) ]
 }
 
 [sub_resource type="Animation" id=120]
@@ -2071,7 +2071,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( -41, 4 ) ]
+"values": [ Vector2( -14, 2 ) ]
 }
 
 [sub_resource type="Animation" id=130]
@@ -2428,10 +2428,10 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0 ),
+"times": PoolRealArray( 0.3 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 35, 4 ) ]
+"values": [ Vector2( 13, 2 ) ]
 }
 
 [sub_resource type="Animation" id=123]
@@ -2882,12 +2882,12 @@ rotation = 0.785398
 collision_layer = 64
 collision_mask = 18
 damage = 15
-knockbackStrength = 150
+knockbackStrength = 100
 hiteffect = ExtResource( 1 )
 
 [node name="CollisionShape2D" parent="SlashHitboxPosition/Hitbox1" index="0"]
 visible = false
-position = Vector2( 46, 1 )
+position = Vector2( 15.5563, 1.41421 )
 rotation = 1.5708
 shape = SubResource( 100 )
 
@@ -2895,30 +2895,30 @@ shape = SubResource( 100 )
 collision_layer = 64
 collision_mask = 18
 damage = 20
-knockbackStrength = 150
+knockbackStrength = 100
 hiteffect = ExtResource( 1 )
 
 [node name="CollisionShape2D" parent="SlashHitboxPosition/Hitbox2" index="0"]
 visible = false
-position = Vector2( 26, 0 )
+position = Vector2( 12.0208, 0.707108 )
 shape = SubResource( 243 )
 
 [node name="ArrowStartPosition" type="Position2D" parent="."]
 position = Vector2( 31, -34 )
 
 [node name="Hurtbox" parent="." instance=ExtResource( 11 )]
+position = Vector2( 18, -7 )
 collision_layer = 4
 collision_mask = 0
 knockbackResistance = 2
 invincibilityTime = 1.0
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
-position = Vector2( 0, 8 )
+position = Vector2( -19, 7 )
 shape = SubResource( 105 )
 
 [node name="Sprite2" type="Sprite" parent="."]
 material = SubResource( 242 )
-scale = Vector2( 3, 3 )
 texture = ExtResource( 12 )
 hframes = 49
 vframes = 16

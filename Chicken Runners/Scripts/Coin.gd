@@ -1,7 +1,7 @@
 extends Area2D
 
 onready var tween = $Tween
-var drop_range = 25
+var drop_range = 10
 
 func _ready():
 	randomize()

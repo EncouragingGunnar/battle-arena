@@ -25,13 +25,13 @@ func _ready():
 
 
 func _on_Player_health_changed(health):
-	if (healthbar.value * player.playerstats.max_hp) / 100 > health:
+	if healthbar.value > (health / player.playerstats.max_hp) *  100:
 		#minskning
-		tween.interpolate_property(healthbar, "value", healthbar.value, health, 0.4, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)
+		tween.interpolate_property(healthbar, "value", healthbar.value, health / (player.playerstats.max_hp) *  100, 0.4, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)
 		tween.start()
 	else:
 		#ökning
-		tween.interpolate_property(healthbar, "value", healthbar.value, health, 0.4, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)
+		tween.interpolate_property(healthbar, "value", healthbar.value, health / (player.playerstats.max_hp) *  100, 0.4, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)
 		tween.start()
 	healthlabel.text = (str(player.current_hp) + " / " + str(player.playerstats.max_hp))
 		

@@ -6,7 +6,7 @@ onready var sprite = $Sprite
 func _ready():
 	sprite.texture = itemresource.texture
 	var shape = RectangleShape2D.new()
-	shape.set_extents(Vector2(14, 14))
+	shape.set_extents(Vector2(10, 10))
 	var collision = CollisionShape2D.new()
 	collision.set_shape(shape)
 	add_child(collision)

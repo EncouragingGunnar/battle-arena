@@ -9,8 +9,8 @@ var attackStates = [IDLE, CHARGE, SPAWN]
 var chargedIntoWall = false
 var experience_dropped = 400
 
-const CHARGE_MAX_SPEED = 400
-const CHARGE_ACCEL = 800
+const CHARGE_MAX_SPEED = 200
+const CHARGE_ACCEL = 400
 
 
 export var path_to_player = NodePath()

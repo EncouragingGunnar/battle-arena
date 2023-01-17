@@ -67,7 +67,6 @@ extents = Vector2( 9, 13.5 )
 extents = Vector2( 9, 13.5 )
 
 [node name="Big Zombie" type="KinematicBody2D"]
-scale = Vector2( 4, 4 )
 collision_layer = 16
 collision_mask = 8
 script = ExtResource( 1 )

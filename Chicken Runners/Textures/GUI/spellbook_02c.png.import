@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/WYdv41.png-cc8d80862f16de78c1510fadf4d7ea15.stex"
+path="res://.import/spellbook_02c.png-0c3f810d5ff7a383687dd4a4f843d1b9.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/WYdv41.png"
-dest_files=[ "res://.import/WYdv41.png-cc8d80862f16de78c1510fadf4d7ea15.stex" ]
+source_file="res://Textures/GUI/spellbook_02c.png"
+dest_files=[ "res://.import/spellbook_02c.png-0c3f810d5ff7a383687dd4a4f843d1b9.stex" ]
 
 [params]
 

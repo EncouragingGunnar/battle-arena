@@ -11,8 +11,8 @@ var distancetoPlayer: int
 var can_attack = true
 var experience_dropped = 80
 
-const MAX_SPEED = 60
-const ACCEL = 200
+const MAX_SPEED = 45
+const ACCEL = 150
 const MAX_DISTANCE_TO_PLAYER = 150
 const MIN_DISTANCE_TO_PLAYER = 75
 

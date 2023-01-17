@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/WYdv41.png-cc8d80862f16de78c1510fadf4d7ea15.stex"
+path="res://.import/scroll_01e.png-45e4a9e4e3a46086ad95aed82d5d9ae3.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/WYdv41.png"
-dest_files=[ "res://.import/WYdv41.png-cc8d80862f16de78c1510fadf4d7ea15.stex" ]
+source_file="res://Textures/GUI/scroll_01e.png"
+dest_files=[ "res://.import/scroll_01e.png-45e4a9e4e3a46086ad95aed82d5d9ae3.stex" ]
 
 [params]
 
