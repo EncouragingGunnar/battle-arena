@@ -4,7 +4,7 @@ signal items_changed(indexes)
 signal item_dropped(index)
 
 var items = [
-	null, preload("res://Resources/Items/Gloves.tres").duplicate(), null, preload("res://Resources/Items/Gloves.tres").duplicate(), preload("res://Resources/Items/Gloves.tres").duplicate(), null, null, preload("res://Resources/Items/Gem.tres").duplicate(), null, null, null, null
+	null, preload("res://Resources/Items/Health Potion.tres").duplicate(), null, preload("res://Resources/Items/Gloves.tres").duplicate(), null, null, null, preload("res://Resources/Items/Gem.tres").duplicate(), null, null, null, null
 	]
 
 func set_item(item_index, item):

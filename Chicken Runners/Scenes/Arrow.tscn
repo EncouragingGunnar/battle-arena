@@ -23,9 +23,7 @@ rotation = 1.5708
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( -13, -1 )
 rotation = -1.5708
-scale = Vector2( 1.8, 2.5 )
 texture = ExtResource( 1 )
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_Hitbox_area_entered"]

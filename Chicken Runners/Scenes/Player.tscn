@@ -584,7 +584,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=127]
 resource_name = "BackLeftWalk"
-length = 0.6
+length = 0.5
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite2:frame")
@@ -593,10 +593,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 334, 335, 336, 339, 338, 337 ]
+"values": [ 334, 335, 336, 337, 338 ]
 }
 
 [sub_resource type="Animation" id=148]
@@ -883,7 +883,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=117]
 resource_name = "BackRightWalk"
-length = 0.8
+length = 0.5
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite2:frame")
@@ -892,10 +892,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 195, 200, 201, 198, 199, 203, 204, 205, 208 ]
+"values": [ 199, 211, 203, 204, 205 ]
 }
 
 [sub_resource type="Animation" id=150]
@@ -916,7 +916,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=118]
 resource_name = "BackWalk"
-length = 0.9
+length = 0.5
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite2:frame")
@@ -925,10 +925,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 174, 179, 186, 181, 182, 183, 184, 180, 188 ]
+"values": [ 180, 181, 183, 184, 182 ]
 }
 
 [sub_resource type="Animation" id=154]
@@ -1480,7 +1480,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=129]
 resource_name = "FrontLeftWalk"
-length = 0.6
+length = 0.5
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite2:frame")
@@ -1489,10 +1489,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 290, 293, 291, 292, 295, 299 ]
+"values": [ 290, 291, 292, 293, 299 ]
 }
 
 [sub_resource type="Animation" id=157]
@@ -1778,7 +1778,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=121]
 resource_name = "FrontRightWalk"
-length = 0.4
+length = 0.5
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite2:frame")
@@ -1787,10 +1787,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 247, 248, 249, 246 ]
+"values": [ 246, 248, 247, 249, 251 ]
 }
 
 [sub_resource type="Animation" id=159]
@@ -1811,7 +1811,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=122]
 resource_name = "FrontWalk"
-length = 0.7
+length = 0.5
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite2:frame")
@@ -1820,10 +1820,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 259, 260, 261, 272, 276, 275, 277 ]
+"values": [ 266, 275, 276, 268, 277 ]
 }
 
 [sub_resource type="Animation" id=160]
@@ -2108,7 +2108,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=131]
 resource_name = "LeftWalk"
-length = 0.6
+length = 0.5
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite2:frame")
@@ -2117,10 +2117,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 312, 313, 314, 315, 316, 317 ]
+"values": [ 313, 314, 315, 316, 317 ]
 }
 
 [sub_resource type="Animation" id=113]
@@ -2481,7 +2481,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 225, 226, 232, 227, 231 ]
+"values": [ 225, 226, 232, 231, 227 ]
 }
 
 [sub_resource type="AnimationNodeAnimation" id=210]
