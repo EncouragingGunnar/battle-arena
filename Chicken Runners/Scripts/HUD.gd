@@ -27,11 +27,11 @@ func _ready():
 func _on_Player_health_changed(health):
 	if healthbar.value > (health / player.playerstats.max_hp) *  100:
 		#minskning
-		tween.interpolate_property(healthbar, "value", healthbar.value, health / (player.playerstats.max_hp) *  100, 0.4, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)
+		tween.interpolate_property(healthbar, "value", healthbar.value, float(health) / player.playerstats.max_hp *  100, 0.4, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)
 		tween.start()
 	else:
 		#ökning
-		tween.interpolate_property(healthbar, "value", healthbar.value, health / (player.playerstats.max_hp) *  100, 0.4, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)
+		tween.interpolate_property(healthbar, "value", healthbar.value, float(health) / (player.playerstats.max_hp) *  100, 0.4, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)
 		tween.start()
 	healthlabel.text = (str(player.current_hp) + " / " + str(player.playerstats.max_hp))
 		
@@ -49,8 +49,6 @@ func _on_Player_xp_changed():
 	xplabel.text = (str(player.playerstats.experience) + " / " + str(player.experience_required))
 	
 	
-
-
 func _on_Player_leveled_up() -> void:
 	leveluplabel.text = ("Level " + str(player.playerstats.level) + " Reached!")
 	tween.interpolate_property(leveluplabel, "percent_visible", 0, 1, 0.4, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
