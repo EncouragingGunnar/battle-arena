@@ -15,11 +15,7 @@ func physics_update(delta: float):
 	if input_vector != Vector2.ZERO:
 		player.animationTree.set("parameters/Idle/blend_position", input_vector)
 		player.animationTree.set("parameters/Run/blend_position", input_vector)
-		player.animationTree.set("parameters/Attack1/blend_position", input_vector)
-		player.animationTree.set("parameters/Attack2/blend_position", input_vector)
-		player.animationTree.set("parameters/Attack3/blend_position", input_vector)
 		player.animationTree.set("parameters/Roll/blend_position", input_vector)
-		player.animationTree.set("parameters/RangedAttack/blend_position", input_vector)
 		player.velocity = player.velocity.move_toward(input_vector * player.playerstats.MAX_SPEED, player.playerstats.ACCEL *  delta)
 	else:
 		player.velocity = player.velocity.move_toward(Vector2.ZERO, player.playerstats.FRICTION * delta)
