@@ -16,7 +16,7 @@ func display_item(item):
 		amountlabel.text = ""
 
 func get_drag_data(_position):
-	var item_index = get_index()
+	var item_index = slot_number
 	var item = Inventory.items[item_index]
 	if item != null:
 		var data = {}
@@ -37,7 +37,7 @@ func can_drop_data(_position, data):
 
 func drop_data(_position, data):
 	var item_index = data.get("item_index")
-	var new_index = get_index()
+	var new_index = slot_number
 	var item = Inventory.items[item_index]
 	var new_item = Inventory.items[new_index]
 	

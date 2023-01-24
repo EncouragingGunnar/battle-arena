@@ -4,10 +4,10 @@ extends PlayerState
 func enter(_msg := {}):
 	player.velocity = Vector2.ZERO
 	var attack_vector = player.global_position.direction_to(player.get_global_mouse_position())
+	player.animationTree.set("parameters/Idle/blend_position", attack_vector)
 	player.animationTree.set("parameters/RangedAttack/blend_position", attack_vector)
 	player.animationState.travel("RangedAttack")
 	
-
 
 func update(_delta: float):
 	pass

@@ -1,4 +1,4 @@
-[gd_scene load_steps=155 format=2]
+[gd_scene load_steps=171 format=2]
 
 [ext_resource path="res://Scenes/HitEffect.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=2]
@@ -599,6 +599,38 @@ tracks/0/keys = {
 "values": [ 334, 335, 336, 337, 338 ]
 }
 
+[sub_resource type="Animation" id=272]
+resource_name = "BackLeftRunStop"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 340, 341, 342, 343 ]
+}
+
+[sub_resource type="Animation" id=263]
+resource_name = "BackLeftWalk"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 328, 329, 330, 331, 332, 333 ]
+}
+
 [sub_resource type="Animation" id=148]
 resource_name = "BackRightAttack1"
 length = 0.8
@@ -883,7 +915,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=117]
 resource_name = "BackRightRun"
-length = 0.5
+length = 0.6
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite2:frame")
@@ -892,10 +924,43 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 199, 211, 203, 204, 205 ]
+"values": [ 199, 211, 203, 204, 205, 208 ]
+}
+
+[sub_resource type="Animation" id=265]
+resource_name = "BackRightRunStop"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 207, 206, 209, 210 ]
+}
+
+[sub_resource type="Animation" id=257]
+resource_name = "BackRightWalk"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 195, 197, 200, 198, 201, 202 ]
 }
 
 [sub_resource type="Animation" id=150]
@@ -916,6 +981,39 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=118]
 resource_name = "BackRun"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 180, 181, 182, 183, 184, 185 ]
+}
+
+[sub_resource type="Animation" id=266]
+resource_name = "BackRunStop"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 186, 187, 188, 189 ]
+}
+
+[sub_resource type="Animation" id=258]
+resource_name = "BackWalk"
 length = 0.5
 loop = true
 tracks/0/type = "value"
@@ -928,7 +1026,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 180, 181, 183, 184, 182 ]
+"values": [ 174, 175, 176, 177, 178 ]
 }
 
 [sub_resource type="Animation" id=154]
@@ -1495,6 +1593,39 @@ tracks/0/keys = {
 "values": [ 290, 291, 292, 293, 299 ]
 }
 
+[sub_resource type="Animation" id=270]
+resource_name = "FrontLeftRunStop"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 294, 295, 296, 298 ]
+}
+
+[sub_resource type="Animation" id=261]
+resource_name = "FrontLeftWalk"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 284, 285, 286, 287, 288, 289 ]
+}
+
 [sub_resource type="Animation" id=157]
 resource_name = "FrontRightAttack1"
 length = 0.8
@@ -1778,7 +1909,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=121]
 resource_name = "FrontRightRun"
-length = 0.5
+length = 0.6
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite2:frame")
@@ -1787,10 +1918,43 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 246, 248, 247, 249, 251 ]
+"values": [ 246, 251, 247, 248, 249, 250 ]
+}
+
+[sub_resource type="Animation" id=268]
+resource_name = "FrontRightRunStop"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 252, 253, 254, 255 ]
+}
+
+[sub_resource type="Animation" id=260]
+resource_name = "FrontRightWalk"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 240, 241, 242, 243, 244, 245 ]
 }
 
 [sub_resource type="Animation" id=159]
@@ -1811,7 +1975,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=122]
 resource_name = "FrontRun"
-length = 0.5
+length = 0.6
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite2:frame")
@@ -1820,10 +1984,43 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 266, 275, 276, 277, 268, 274 ]
+}
+
+[sub_resource type="Animation" id=269]
+resource_name = "FrontRunStop"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 271, 267, 269, 270 ]
+}
+
+[sub_resource type="Animation" id=262]
+resource_name = "FrontWalk"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 266, 275, 276, 268, 277 ]
+"values": [ 259, 260, 261, 272, 265 ]
 }
 
 [sub_resource type="Animation" id=160]
@@ -2121,6 +2318,39 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 313, 314, 315, 316, 317 ]
+}
+
+[sub_resource type="Animation" id=271]
+resource_name = "LeftRunStop"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 318, 320, 319, 321 ]
+}
+
+[sub_resource type="Animation" id=264]
+resource_name = "LeftWalk"
+length = 0.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 306, 308, 309, 310, 311 ]
 }
 
 [sub_resource type="Animation" id=113]
@@ -2469,7 +2699,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=124]
 resource_name = "RightRun"
-length = 0.5
+length = 0.6
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite2:frame")
@@ -2478,10 +2708,43 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 225, 226, 232, 231, 227 ]
+"values": [ 224, 225, 226, 232, 231, 227 ]
+}
+
+[sub_resource type="Animation" id=267]
+resource_name = "RightRunStop"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 233, 228, 229, 230 ]
+}
+
+[sub_resource type="Animation" id=259]
+resource_name = "RightWalk"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 218, 219, 221, 220, 222, 223 ]
 }
 
 [sub_resource type="AnimationNodeAnimation" id=210]
@@ -2936,6 +3199,8 @@ anims/BackLeftBow = SubResource( 107 )
 anims/BackLeftIdle = SubResource( 126 )
 anims/BackLeftRoll = SubResource( 153 )
 anims/BackLeftRun = SubResource( 127 )
+anims/BackLeftRunStop = SubResource( 272 )
+anims/BackLeftWalk = SubResource( 263 )
 anims/BackRightAttack1 = SubResource( 148 )
 anims/BackRightAttack2 = SubResource( 133 )
 anims/BackRightAttack3 = SubResource( 134 )
@@ -2943,8 +3208,12 @@ anims/BackRightBow = SubResource( 108 )
 anims/BackRightIdle = SubResource( 116 )
 anims/BackRightRoll = SubResource( 149 )
 anims/BackRightRun = SubResource( 117 )
+anims/BackRightRunStop = SubResource( 265 )
+anims/BackRightWalk = SubResource( 257 )
 anims/BackRoll = SubResource( 150 )
 anims/BackRun = SubResource( 118 )
+anims/BackRunStop = SubResource( 266 )
+anims/BackWalk = SubResource( 258 )
 anims/FrontAttack1 = SubResource( 154 )
 anims/FrontAttack2 = SubResource( 139 )
 anims/FrontAttack3 = SubResource( 140 )
@@ -2957,6 +3226,8 @@ anims/FrontLeftBow = SubResource( 110 )
 anims/FrontLeftIdle = SubResource( 128 )
 anims/FrontLeftRoll = SubResource( 156 )
 anims/FrontLeftRun = SubResource( 129 )
+anims/FrontLeftRunStop = SubResource( 270 )
+anims/FrontLeftWalk = SubResource( 261 )
 anims/FrontRightAttack1 = SubResource( 157 )
 anims/FrontRightAttack2 = SubResource( 135 )
 anims/FrontRightAttack3 = SubResource( 136 )
@@ -2964,8 +3235,12 @@ anims/FrontRightBow = SubResource( 111 )
 anims/FrontRightIdle = SubResource( 120 )
 anims/FrontRightRoll = SubResource( 158 )
 anims/FrontRightRun = SubResource( 121 )
+anims/FrontRightRunStop = SubResource( 268 )
+anims/FrontRightWalk = SubResource( 260 )
 anims/FrontRoll = SubResource( 159 )
 anims/FrontRun = SubResource( 122 )
+anims/FrontRunStop = SubResource( 269 )
+anims/FrontWalk = SubResource( 262 )
 anims/LeftAttack1 = SubResource( 160 )
 anims/LeftAttack2 = SubResource( 145 )
 anims/LeftAttack3 = SubResource( 146 )
@@ -2973,6 +3248,8 @@ anims/LeftBow = SubResource( 112 )
 anims/LeftIdle = SubResource( 130 )
 anims/LeftRoll = SubResource( 161 )
 anims/LeftRun = SubResource( 131 )
+anims/LeftRunStop = SubResource( 271 )
+anims/LeftWalk = SubResource( 264 )
 anims/RESET = SubResource( 113 )
 anims/RightAttack1 = SubResource( 151 )
 anims/RightAttack2 = SubResource( 137 )
@@ -2981,6 +3258,8 @@ anims/RightBow = SubResource( 114 )
 anims/RightIdle = SubResource( 123 )
 anims/RightRoll = SubResource( 162 )
 anims/RightRun = SubResource( 124 )
+anims/RightRunStop = SubResource( 267 )
+anims/RightWalk = SubResource( 259 )
 
 [node name="AnimationTree2" type="AnimationTree" parent="."]
 tree_root = SubResource( 184 )

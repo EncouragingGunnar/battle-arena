@@ -603,7 +603,7 @@ tile_data = PoolIntArray( -786445, 1, 262146, -786444, 1, 327682, -786443, 1, 32
 navpoly = SubResource( 69 )
 
 [node name="Skeleton" parent="MapNavigation" instance=ExtResource( 4 )]
-position = Vector2( 956, 508 )
+position = Vector2( 878, 508 )
 path_to_player = NodePath("../../Player")
 
 [node name="NavigationPolygonInstance2" type="NavigationPolygonInstance" parent="MapNavigation"]
@@ -627,11 +627,20 @@ wanderRange = 40
 path_to_player = NodePath("../../Player")
 
 [node name="Skeleton2" parent="MapNavigation" instance=ExtResource( 4 )]
-position = Vector2( 224, 284 )
+position = Vector2( 90, 27 )
 path_to_player = NodePath("../../Player")
 
 [node name="NavigationPolygonInstance4" type="NavigationPolygonInstance" parent="MapNavigation"]
+position = Vector2( 5, -1 )
 navpoly = SubResource( 72 )
+
+[node name="Skeleton3" parent="MapNavigation" instance=ExtResource( 4 )]
+position = Vector2( 210, 300 )
+path_to_player = NodePath("../../Player")
+
+[node name="Skeleton4" parent="MapNavigation" instance=ExtResource( 4 )]
+position = Vector2( 920, 294 )
+path_to_player = NodePath("../../Player")
 
 [node name="Player" parent="." instance=ExtResource( 5 )]
 

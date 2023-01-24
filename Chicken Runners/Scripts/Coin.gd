@@ -1,7 +1,7 @@
 extends Area2D
 
 onready var tween = $Tween
-var drop_range = 10
+var drop_range = 20
 
 func _ready():
 	randomize()
@@ -11,6 +11,8 @@ func _ready():
 	
 
 func _on_Coin_body_entered(body):
+	if body.is_in_group("WorldObject"):
+		tween.stop_all()
 	if body.has_method("collect_coin"):
 		body.collect_coin()
 		queue_free()

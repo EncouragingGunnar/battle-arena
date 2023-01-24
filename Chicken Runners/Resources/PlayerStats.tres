@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource( 1 )
-ACCEL = 400
+ACCEL = 500
 MAX_SPEED = 60
 FRICTION = 400
 ROLL_SPEED = 110

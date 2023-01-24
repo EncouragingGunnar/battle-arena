@@ -6,6 +6,7 @@ export var animation_state_name: String
 
 func enter(_msg := {}):
 	var attack_vector = player.global_position.direction_to(player.get_global_mouse_position())
+	player.animationTree.set("parameters/Idle/blend_position", attack_vector)
 	player.animationTree.set("parameters/Attack1/blend_position", attack_vector)
 	player.animationTree.set("parameters/Attack2/blend_position", attack_vector)
 	player.animationTree.set("parameters/Attack3/blend_position", attack_vector)

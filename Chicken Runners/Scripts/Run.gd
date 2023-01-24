@@ -22,7 +22,6 @@ func physics_update(delta: float):
 
 		
 	player.velocity = player.move_and_slide(player.velocity)
-
 	if is_equal_approx(player.velocity.x, 0.0) and is_equal_approx(player.velocity.y, 0.0):
 		state_machine.transition_to("Idle")
 	

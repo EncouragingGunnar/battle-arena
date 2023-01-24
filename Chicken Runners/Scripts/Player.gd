@@ -14,7 +14,6 @@ var canInput = true
 
 var experience_required 
 
-
 var velocity = Vector2()
 var knockbackImpulse = Vector2()
 
