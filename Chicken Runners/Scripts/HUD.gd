@@ -22,6 +22,7 @@ func _ready():
 	manabar.value = 100
 	xpbar.value = 0
 	leveluplabel.percent_visible = 0
+	
 
 
 func _on_Player_health_changed(health):

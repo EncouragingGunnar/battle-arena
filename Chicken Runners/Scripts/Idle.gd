@@ -3,7 +3,7 @@ extends PlayerState
 func enter(_msg := {}):
 	player.animationState.travel("Idle")
 
-	
+
 func update(_delta: float):
 	if Input.is_action_just_pressed("ui_down") or Input.is_action_just_pressed("ui_up") or Input.is_action_just_pressed("ui_left") or Input.is_action_just_pressed("ui_right"):
 		state_machine.transition_to("Run")

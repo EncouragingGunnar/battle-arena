@@ -9,7 +9,6 @@ func _ready():
 	var target_location = Vector2(position.x + rand_range(-drop_range, drop_range), position.y + rand_range(-drop_range, drop_range))
 	tween.interpolate_property(self, "position", global_position, target_location, 0.4, Tween.TRANS_QUAD, Tween.EASE_OUT)
 	tween.start()
-	
 
 func _on_Coin_body_entered(body):
 	if body.is_in_group("WorldObject"):
@@ -22,5 +21,4 @@ func _on_Coin_body_entered(body):
 		yield(tween, "tween_completed")
 		body.collect_coin()
 		queue_free()
-		
-		
+

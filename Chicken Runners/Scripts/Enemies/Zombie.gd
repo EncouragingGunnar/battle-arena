@@ -183,7 +183,7 @@ func _on_UpdateDistanceTimer_timeout():
 
 func _on_AttackTimer_timeout():
 	can_attack = true
-	
+
 func throw_spear() -> void:
 	var projectile = spear.instance()
 	projectile.position = global_position

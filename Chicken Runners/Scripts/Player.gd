@@ -45,6 +45,7 @@ func _ready():
 	current_hp = playerstats.max_hp
 	experience_required = get_required_xp_to_level_up(2)
 	Inventory.connect("item_dropped", self, "_on_items_dropped")
+	
 
 	
 	
