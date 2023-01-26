@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Reference",
+"class": "Inventory",
+"language": "GDScript",
+"path": "res://Scripts/Items/Inventory.gd"
+}, {
 "base": "Resource",
 "class": "Item",
 "language": "GDScript",
@@ -40,6 +45,7 @@ _global_script_classes=[ {
 "path": "res://Scripts/StateMachine.gd"
 } ]
 _global_script_class_icons={
+"Inventory": "",
 "Item": "",
 "Player": "",
 "PlayerState": "",
@@ -58,7 +64,6 @@ config/icon="res://Side Portrait Small.png"
 
 Transition="*res://Scenes/Menus/Transition.tscn"
 Globals="*res://Scenes/Globals.tscn"
-Inventory="*res://Scripts/Items/Inventory.gd"
 
 [debug]
 

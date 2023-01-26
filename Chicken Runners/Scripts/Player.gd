@@ -20,6 +20,8 @@ var knockbackImpulse = Vector2()
 
 var current_hp
 
+var Inventory = preload("res://Resources/Items/Inventory.tres")
+
 onready var droppedItem = preload("res://Scenes/Inventory/DroppedItem.tscn")
 onready var animationPlayer = $AnimationPlayer2
 onready var animationTree = $AnimationTree2

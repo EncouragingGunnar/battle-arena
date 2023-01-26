@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource( 1 )
 name = "Gem"
-item_description = ""
+item_description = "A fine gem"
 texture = ExtResource( 2 )
 amount = 1
 stack_size = 1

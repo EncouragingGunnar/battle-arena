@@ -1,6 +1,6 @@
 extends TextureRect
 
-func _input(event):
+func _unhandled_input(event):
 	if event.is_action_pressed("Inventory"):
 		visible = !visible
 

@@ -2,6 +2,7 @@ extends Area2D
 
 export (Resource) var itemresource
 onready var sprite = $Sprite
+onready var tween = $Tween
 
 func _ready():
 	sprite.texture = itemresource.texture
@@ -14,6 +15,10 @@ func _ready():
 
 func _on_Area2D_body_entered(body):
 	if body.is_in_group("Player"):
-		Inventory.pick_up_item(itemresource)
+		tween.stop_all()
+		tween.interpolate_property(sprite, "scale", Vector2(1, 1), Vector2.ZERO, 0.1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+		tween.start()
+		yield(tween, "tween_completed")
+		body.Inventory.pick_up_item(itemresource)
 		queue_free()
 

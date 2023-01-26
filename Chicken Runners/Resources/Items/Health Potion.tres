@@ -5,8 +5,8 @@
 
 [resource]
 script = ExtResource( 1 )
-name = ""
-item_description = ""
+name = "Health Potion"
+item_description = "A juicy health potion"
 texture = ExtResource( 2 )
 amount = 8
 stack_size = 16

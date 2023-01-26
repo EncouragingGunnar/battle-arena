@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://fonts and themes/font.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Textures/GUI/dark ui large-long plate.png" type="Texture" id=2]
 [ext_resource path="res://Scenes/Inventory/InventorySlotsContainer.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scripts/Items/InventoryContainer.gd" type="Script" id=4]
+[ext_resource path="res://Scenes/Inventory/Tooltip.tscn" type="PackedScene" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 48
@@ -25,10 +26,10 @@ stretch_mode = 1
 script = ExtResource( 4 )
 
 [node name="InventorySlotsContainer" parent="." instance=ExtResource( 3 )]
-margin_left = 507.0
-margin_top = 64.0
-margin_right = 719.0
-margin_bottom = 350.0
+margin_left = 439.0
+margin_top = 62.0
+margin_right = 725.0
+margin_bottom = 274.0
 
 [node name="Label" type="Label" parent="."]
 anchor_left = 0.5
@@ -43,3 +44,10 @@ custom_fonts/font = SubResource( 1 )
 text = "Inventory"
 align = 1
 valign = 1
+
+[node name="ItemInfo" parent="." instance=ExtResource( 5 )]
+margin_left = 441.0
+margin_top = 288.0
+margin_right = 740.0
+margin_bottom = 352.0
+rect_min_size = Vector2( 256, 64 )

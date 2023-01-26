@@ -2,15 +2,20 @@ extends PanelContainer
 
 onready var itemtexture = $MarginContainer/ItemTexture
 onready var amountlabel = $MarginContainer/ItemTexture/AmountLabel
+onready var iteminfo = get_parent().get_parent().get_node("ItemInfo")
+
+onready var Inventory = preload("res://Resources/Items/Inventory.tres")
 
 export (int) var slot_number
 var can_split = true
 
 func display_item(item):
-	if item:
+	if item and item.stack_size > 1:
 		itemtexture.texture = item.texture
-		if item.stack_size > 1:
-			amountlabel.text = str(item.amount)
+		amountlabel.text = str(item.amount)
+	elif item:
+		itemtexture.texture = item.texture
+		amountlabel.text = ""
 	else:
 		itemtexture.texture = null
 		amountlabel.text = ""
@@ -60,7 +65,7 @@ func drop_data(_position, data):
 		Inventory.swap_items(new_index, item_index)
 	
 
-func _on_ItemSlot_gui_input(_event):
+func _on_ItemSlot_gui_input(event):
 	if Inventory.items[slot_number] != null:
 		if Input.is_action_pressed("Drop"):
 			Inventory.drop_item(slot_number, Inventory.items[slot_number].amount)
@@ -77,3 +82,15 @@ func _on_ItemSlot_gui_input(_event):
 				Inventory.change_item_quantity(slot_number, -1 * other_split_amount)
 				yield(get_tree().create_timer(2.0), "timeout")
 				can_split = true
+
+
+func _on_ItemSlot_mouse_entered():
+	if Inventory.items[slot_number] != null:
+		iteminfo.find_node("ItemNameLabel").text = Inventory.items[slot_number].name
+		iteminfo.find_node("ItemDescriptionLabel").text = Inventory.items[slot_number].item_description
+
+
+func _on_ItemSlot_mouse_exited():
+	if Inventory.items[slot_number] != null:
+		iteminfo.find_node("ItemNameLabel").text = ""
+		iteminfo.find_node("ItemDescriptionLabel").text = ""

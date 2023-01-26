@@ -1,4 +1,5 @@
-extends Node
+class_name Inventory
+extends Resource
 
 signal items_changed(indexes)
 signal item_dropped(index)
@@ -17,7 +18,7 @@ func swap_items(item_index, other_item_index):
 	var target_item = items[other_item_index]
 	items[other_item_index] = items[item_index]
 	items[item_index] = target_item
-	emit_signal("items_changed", [item_index, other_item_index])
+	emit_signal("items_changed", [other_item_index, item_index])
 	
 func remove_item(item_index):
 	var previous_item = items[item_index]
