@@ -5,9 +5,10 @@
 [resource]
 script = ExtResource( 1 )
 ACCEL = 500
-MAX_SPEED = 60
+WALK_MAX_SPEED = 50
+RUN_MAX_SPEED = 75
 FRICTION = 400
-ROLL_SPEED = 110
+ROLL_SPEED = 130
 ROLL_ACCEL = 350
 roll_time = 0.8
 player_knockback_strength = 100

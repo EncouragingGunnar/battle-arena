@@ -23,8 +23,12 @@ func update(delta: float) -> void:
 		return
 	
 	if Input.is_action_pressed("ui_down") or Input.is_action_pressed("ui_up") or Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right"):
-		state_machine.transition_to("Run")
+		if Input.is_action_pressed("Sprint"):
+			state_machine.transition_to("Run")
+			return
+		state_machine.transition_to("Walk")
 		return
+		
 	if Input.is_action_pressed("MeleeAttack"):
 		state_machine.transition_to("Attack1")
 		return

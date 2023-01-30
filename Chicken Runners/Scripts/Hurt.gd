@@ -11,7 +11,7 @@ func enter(_msg := {}):
 	knockbackTween.interpolate_property(player, "velocity", player.velocity, player.knockbackImpulse, knockback_time, Tween.TRANS_BACK, Tween.EASE_IN_OUT)
 	knockbackTween.start()
 	hurtAnimationPlayer.play("Hurt")
-	
+	#troligen kan inte ha hurtanimationplayer, för den spelar över den andra, hitboxes avaktiveras inte, kill aura
 	
 	
 func update(delta: float) -> void:

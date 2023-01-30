@@ -2,7 +2,8 @@ extends Resource
 class_name PlayerStats
 
 export (int) var ACCEL = 650
-export (int) var MAX_SPEED = 100
+export (int) var WALK_MAX_SPEED = 60
+export (int) var RUN_MAX_SPEED = 100
 export (int) var FRICTION = 650
 export (int) var ROLL_SPEED = 230
 export (int) var ROLL_ACCEL = 480

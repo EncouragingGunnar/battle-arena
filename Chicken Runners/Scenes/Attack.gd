@@ -24,7 +24,9 @@ func physics_update(delta: float):
 		
 	if player.canInput:
 		if Input.is_action_just_pressed("ui_down") or Input.is_action_just_pressed("ui_up") or Input.is_action_just_pressed("ui_left") or Input.is_action_just_pressed("ui_right"):
-			state_machine.transition_to("Run")
+			if Input.is_action_pressed("Sprint"):
+				state_machine.transition_to("Run")
+			state_machine.transition_to("Walk")
 		
 func attack_animation_finished():
 	state_machine.transition_to("Idle")

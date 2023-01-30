@@ -2,7 +2,7 @@ extends PlayerState
 
 
 func enter(_msg := {}):
-	player.animationState.travel("Run")
+	player.animationState.travel("Walk")
 
 
 func physics_update(delta: float):
@@ -14,24 +14,22 @@ func physics_update(delta: float):
 	
 	if input_vector != Vector2.ZERO:
 		player.animationTree.set("parameters/Idle/blend_position", input_vector)
-		player.animationTree.set("parameters/Run/blend_position", input_vector)
+		player.animationTree.set("parameters/Walk/blend_position", input_vector)
 		player.animationTree.set("parameters/Roll/blend_position", input_vector)
-		player.animationTree.set("parameters/RunStop/blend_position", input_vector)
-		player.velocity = player.velocity.move_toward(input_vector * player.playerstats.RUN_MAX_SPEED, player.playerstats.ACCEL *  delta)
+		player.velocity = player.velocity.move_toward(input_vector * player.playerstats.WALK_MAX_SPEED, player.playerstats.ACCEL *  delta)
 	else:
 		player.velocity = player.velocity.move_toward(Vector2.ZERO, player.playerstats.FRICTION * delta)
 
 		
 	player.velocity = player.move_and_slide(player.velocity)
 	if is_equal_approx(player.velocity.x, 0.0) and is_equal_approx(player.velocity.y, 0.0):
-		state_machine.transition_to("Idle", {do_run_stop = true})
-		
+		state_machine.transition_to("Idle")
 	
 		
 
 func handle_input(_event: InputEvent):
-	if Input.is_action_just_released("Sprint"):
-		state_machine.transition_to("Walk")
+	if Input.is_action_just_pressed("Sprint"):
+		state_machine.transition_to("Run")
 	if Input.is_action_just_pressed("MeleeAttack"):
 		state_machine.transition_to("Attack1")
 	if Input.is_action_just_pressed("RangedAttack"):
@@ -42,3 +40,4 @@ func handle_input(_event: InputEvent):
 	
 func exit():
 	pass
+

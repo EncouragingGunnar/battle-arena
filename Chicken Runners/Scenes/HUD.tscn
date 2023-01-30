@@ -17,7 +17,6 @@ size = 28
 font_data = ExtResource( 2 )
 
 [node name="GUI" type="CanvasLayer"]
-visible = false
 script = ExtResource( 5 )
 
 [node name="GUIBackground2" type="Sprite" parent="."]
@@ -51,10 +50,11 @@ text = "100 / 100"
 
 [node name="HPLabel" type="Label" parent="."]
 anchor_bottom = 1.0
-margin_left = 739.0
+margin_left = 734.0
 margin_top = 39.0
-margin_right = 765.0
+margin_right = 760.0
 margin_bottom = -532.0
+custom_colors/font_color = Color( 0.964706, 0.87451, 0.87451, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "HP"
 
@@ -62,9 +62,9 @@ text = "HP"
 
 [node name="ManaBar" type="TextureProgress" parent="."]
 modulate = Color( 0, 0.580392, 1, 1 )
-margin_left = 780.0
+margin_left = 782.0
 margin_top = 55.0
-margin_right = 1002.0
+margin_right = 1004.0
 margin_bottom = 111.0
 value = 80.0
 texture_under = ExtResource( 3 )
@@ -80,22 +80,24 @@ margin_left = -47.5
 margin_top = -14.5
 margin_right = 47.5
 margin_bottom = 14.5
+custom_colors/font_color = Color( 0.964706, 0.87451, 0.87451, 1 )
 custom_fonts/font = SubResource( 2 )
 text = "100 / 100"
 
 [node name="ManaLabel" type="Label" parent="."]
-margin_left = 738.0
-margin_top = 73.0
-margin_right = 793.0
-margin_bottom = 102.0
+margin_left = 733.0
+margin_top = 70.0
+margin_right = 788.0
+margin_bottom = 99.0
+custom_colors/font_color = Color( 0.964706, 0.87451, 0.87451, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "MP"
 
 [node name="XPBar" type="TextureProgress" parent="."]
 modulate = Color( 0, 1, 0.4, 1 )
-margin_left = 780.0
+margin_left = 782.0
 margin_top = 86.0
-margin_right = 1002.0
+margin_right = 1004.0
 margin_bottom = 147.0
 texture_under = ExtResource( 3 )
 texture_progress = ExtResource( 1 )
@@ -106,6 +108,7 @@ margin_left = 81.0
 margin_top = 17.0
 margin_right = 120.0
 margin_bottom = 46.0
+custom_colors/font_color = Color( 0.964706, 0.87451, 0.87451, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "0 / 14"
 align = 1
@@ -126,10 +129,11 @@ wait_time = 5.0
 one_shot = true
 
 [node name="LevelLabel" type="Label" parent="."]
-margin_left = 721.0
-margin_top = 104.0
-margin_right = 779.0
-margin_bottom = 133.0
+margin_left = 724.0
+margin_top = 102.0
+margin_right = 782.0
+margin_bottom = 131.0
+custom_colors/font_color = Color( 0.964706, 0.87451, 0.87451, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "LVL"
 align = 1
@@ -152,6 +156,7 @@ margin_left = 933.0
 margin_top = 240.0
 margin_right = 973.0
 margin_bottom = 269.0
+custom_colors/font_color = Color( 0.964706, 0.87451, 0.87451, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "0"
 align = 1

@@ -1,12 +1,26 @@
 extends PlayerState
 
-func enter(_msg := {}):
-	player.animationState.travel("Idle")
+var run_stop_time: float
+
+func enter(msg := {}):
+	if msg.has("do_run_stop"):
+		player.animationState.travel("RunStop")
+		run_stop_time = 0.4
+	else:
+		player.animationState.travel("Idle")
 
 
-func update(_delta: float):
+func update(delta: float):
+	if run_stop_time > 0:
+		run_stop_time -= delta
+		
+	if is_equal_approx(run_stop_time, 0):
+		player.animationState.travel("Idle")
+		
 	if Input.is_action_just_pressed("ui_down") or Input.is_action_just_pressed("ui_up") or Input.is_action_just_pressed("ui_left") or Input.is_action_just_pressed("ui_right"):
-		state_machine.transition_to("Run")
+		if Input.is_action_pressed("Sprint"):
+			state_machine.transition_to("Run")
+		state_machine.transition_to("Walk")
 	if Input.is_action_just_pressed("MeleeAttack"):
 		state_machine.transition_to("Attack1")
 	if Input.is_action_just_pressed("RangedAttack"):
