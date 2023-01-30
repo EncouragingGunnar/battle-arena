@@ -18,7 +18,7 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -384.0
 margin_top = -192.0
-margin_right = 384.0
+margin_right = 325.0
 margin_bottom = 192.0
 texture = ExtResource( 2 )
 expand = true
@@ -26,10 +26,10 @@ stretch_mode = 1
 script = ExtResource( 4 )
 
 [node name="InventorySlotsContainer" parent="." instance=ExtResource( 3 )]
-margin_left = 439.0
-margin_top = 62.0
-margin_right = 725.0
-margin_bottom = 274.0
+margin_left = 128.0
+margin_top = 61.0
+margin_right = 636.0
+margin_bottom = 273.0
 
 [node name="Label" type="Label" parent="."]
 anchor_left = 0.5
@@ -46,8 +46,8 @@ align = 1
 valign = 1
 
 [node name="ItemInfo" parent="." instance=ExtResource( 5 )]
-margin_left = 441.0
-margin_top = 288.0
-margin_right = 740.0
-margin_bottom = 352.0
+margin_left = 201.0
+margin_top = 284.0
+margin_right = 503.0
+margin_bottom = 348.0
 rect_min_size = Vector2( 256, 64 )

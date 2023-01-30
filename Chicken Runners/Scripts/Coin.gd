@@ -7,7 +7,11 @@ var drop_range = 20
 func _ready():
 	randomize()
 	var target_location = Vector2(position.x + rand_range(-drop_range, drop_range), position.y + rand_range(-drop_range, drop_range))
-	tween.interpolate_property(self, "position", global_position, target_location, 0.4, Tween.TRANS_QUAD, Tween.EASE_OUT)
+	tween.interpolate_property(self, "position:x", position.x, target_location.x, 1, Tween.TRANS_LINEAR, Tween.EASE_IN)
+	tween.interpolate_property(self, "position:y", position.y, target_location.y - 20, 0.4, Tween.TRANS_QUAD, Tween.EASE_OUT)
+	tween.interpolate_property(self, "position:y", target_location.y - 20, target_location.y, 0.4, Tween.TRANS_QUAD, Tween.EASE_IN, 0.4)
+	tween.interpolate_property(self, "position:y", target_location.y, target_location.y - 5, 0.1, Tween.TRANS_QUAD, Tween.EASE_IN, 0.8)
+	tween.interpolate_property(self, "position:y", target_location.y - 5, target_location.y, 0.1, Tween.TRANS_QUAD, Tween.EASE_IN, 0.9)
 	tween.start()
 
 func _on_Coin_body_entered(body):
@@ -16,7 +20,8 @@ func _on_Coin_body_entered(body):
 		set_collision_mask_bit(3, false)
 	if body.has_method("collect_coin"):
 		tween.stop_all()
-		tween.interpolate_property(animatedsprite, "scale", Vector2(1, 1), Vector2.ZERO, 0.1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+		tween.interpolate_property(animatedsprite, "scale", Vector2(1, 1), Vector2.ZERO, 0.1, Tween.TRANS_LINEAR)
+		tween.interpolate_property(self, "position", global_position, body.global_position, 0.1, Tween.TRANS_LINEAR)
 		tween.start()
 		yield(tween, "tween_completed")
 		body.collect_coin()

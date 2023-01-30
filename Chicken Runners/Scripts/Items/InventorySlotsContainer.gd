@@ -9,7 +9,7 @@ func _ready():
 		update_item_slot_display(item_index)
 	
 func update_item_slot_display(item_index):
-	var itemslotdisplay = get_child(item_index)
+	var itemslotdisplay = get_node("ItemSlot" + str(item_index))
 	var item = Inventory.items[item_index]
 	itemslotdisplay.display_item(item)
 	

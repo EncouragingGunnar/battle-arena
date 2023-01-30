@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Textures/GUI/health.png" type="Texture" id=1]
 [ext_resource path="res://fonts and themes/font.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Textures/GUI/no health.png" type="Texture" id=3]
 [ext_resource path="res://Textures/GUI/coin_anim_f0.png" type="Texture" id=4]
 [ext_resource path="res://Scripts/HUD.gd" type="Script" id=5]
+[ext_resource path="res://Textures/GUI/dark ui small plate.png" type="Texture" id=6]
+[ext_resource path="res://Textures/GUI/dark ui large plate.png" type="Texture" id=8]
 
 [sub_resource type="DynamicFont" id=2]
 size = 28
@@ -15,7 +17,14 @@ size = 28
 font_data = ExtResource( 2 )
 
 [node name="GUI" type="CanvasLayer"]
+visible = false
 script = ExtResource( 5 )
+
+[node name="GUIBackground2" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.784314 )
+position = Vector2( 864, 105 )
+scale = Vector2( 5, 5 )
+texture = ExtResource( 8 )
 
 [node name="HealthBar" type="TextureProgress" parent="."]
 margin_left = 782.0
@@ -117,32 +126,40 @@ wait_time = 5.0
 one_shot = true
 
 [node name="LevelLabel" type="Label" parent="."]
-margin_left = 717.0
-margin_top = 103.0
-margin_right = 775.0
-margin_bottom = 132.0
+margin_left = 721.0
+margin_top = 104.0
+margin_right = 779.0
+margin_bottom = 133.0
 custom_fonts/font = SubResource( 1 )
 text = "LVL"
 align = 1
 valign = 1
 
-[node name="CoinIcon" type="Sprite" parent="."]
-position = Vector2( 982, 181 )
-scale = Vector2( 3, 3 )
-texture = ExtResource( 4 )
+[node name="CoinBackground" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.784314 )
+position = Vector2( 966, 255 )
+scale = Vector2( 1, 2 )
+texture = ExtResource( 6 )
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+margin_left = -156.0
+margin_top = 114.0
+margin_right = -116.0
+margin_bottom = 154.0
 
 [node name="CoinCounter" type="Label" parent="."]
 margin_left = 933.0
-margin_top = 168.0
+margin_top = 240.0
 margin_right = 973.0
-margin_bottom = 197.0
+margin_bottom = 269.0
 custom_fonts/font = SubResource( 1 )
 text = "0"
 align = 1
 valign = 1
 
-[node name="NinePatchRect" type="NinePatchRect" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+[node name="CoinIcon" type="Sprite" parent="."]
+position = Vector2( 984, 254 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 4 )
 
 [connection signal="timeout" from="XPBar/LevelUpLabel/LevelUpTimer" to="." method="_on_LevelUpTimer_timeout"]

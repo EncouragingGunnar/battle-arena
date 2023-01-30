@@ -35,10 +35,12 @@ onready var collisionShape = $CollisionShape2D
 onready var hurtbox = $Hurtbox
 onready var sprite = $Sprite2
 
+
 var can_roll = true
 
 func _ready():
 	randomize()
+	sprite.material.set_shader_param("hit_opacity", 0)
 	animationTree.active = true
 	swordHitbox.set_deferred("disabled", true)
 	swordHitbox2.set_deferred("disabled", true)
@@ -46,7 +48,7 @@ func _ready():
 	experience_required = get_required_xp_to_level_up(2)
 	Inventory.connect("item_dropped", self, "_on_items_dropped")
 	
-
+	
 	
 	
 func _on_RollTimer_timeout():
@@ -55,6 +57,7 @@ func _on_RollTimer_timeout():
 func take_damage(damage):
 	current_hp -= damage
 	emit_signal("health_changed", current_hp)
+	stateMachine.transition_to("Hurt")
 	if current_hp <= 0:
 		die()
 		
@@ -65,20 +68,6 @@ func die():
 func set_knockback_stats(impulse):
 	knockbackImpulse = impulse
 	
-	
-func _physics_process(delta):
-	if hitstun > 0:
-		hitstun -= 1
-		knockbackImpulse = lerp(knockbackImpulse, Vector2.ZERO, 0.1)
-		velocity = move_and_slide(knockbackImpulse)
-	
-	if hitstun == 0:
-		sprite.material.set_shader_param("hit_opacity", 0)
-		
-
-func _on_Hurtbox_area_entered(area):
-	sprite.material.set_shader_param("hit_opacity", 1)
-	hitstun = 10
 
 func input_ready():
 	canInput = true

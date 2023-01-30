@@ -14,6 +14,8 @@ func enter(_msg := {}):
 	rollTween.interpolate_property(player, "velocity", Vector2.ZERO, roll_direction * player.playerstats.ROLL_SPEED, roll_time, Tween.TRANS_EXPO, Tween.EASE_IN_OUT)
 	rollTween.start()
 	player.can_roll = false
+	player.hurtbox.monitorable = false
+	player.hurtbox.monitoring = false
 	
 func update(delta: float) -> void:
 	current_roll_time -= delta
@@ -43,3 +45,5 @@ func handle_input(_event: InputEvent):
 func exit():
 	rollTimer.start()
 	player.can_roll = false
+	player.hurtbox.monitorable = true
+	player.hurtbox.monitoring = true

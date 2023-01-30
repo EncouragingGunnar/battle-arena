@@ -1,4 +1,4 @@
-[gd_scene load_steps=182 format=2]
+[gd_scene load_steps=185 format=2]
 
 [ext_resource path="res://Scenes/HitEffect.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://Scenes/Hurtbox.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Textures/Player/Player Spritesheet.png" type="Texture" id=12]
 [ext_resource path="res://Resources/PlayerStats.tres" type="Resource" id=13]
+[ext_resource path="res://Scripts/Hurt.gd" type="Script" id=14]
 
 [sub_resource type="CapsuleShape2D" id=104]
 radius = 6.0
@@ -33,7 +34,7 @@ height = 10.0
 [sub_resource type="ShaderMaterial" id=242]
 resource_local_to_scene = true
 shader = ExtResource( 10 )
-shader_param/hit_opacity = 0.0
+shader_param/hit_opacity = 1.0
 
 [sub_resource type="Animation" id=147]
 resource_name = "BackAttack1"
@@ -3147,6 +3148,37 @@ graph_offset = Vector2( -1679.08, -222.787 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=185]
 
+[sub_resource type="Animation" id=285]
+resource_name = "Hurt"
+length = 1.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite2:material:shader_param/hit_opacity")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6 ),
+"transitions": PoolRealArray( 0.933033, 0.933033, 0.933033, 0.933033, 0.933033, 0.933033, 0.933033, 0.933033, 0.933033 ),
+"update": 0,
+"values": [ 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=286]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite2:material:shader_param/hit_opacity")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.0 ]
+}
+
 [node name="Player" type="KinematicBody2D" groups=["Player"]]
 collision_mask = 8
 script = ExtResource( 2 )
@@ -3189,6 +3221,9 @@ wait_time = 0.2
 [node name="RangedAttack" type="Node" parent="StateMachine"]
 script = ExtResource( 8 )
 
+[node name="Hurt" type="Node" parent="StateMachine"]
+script = ExtResource( 14 )
+
 [node name="SlashHitboxPosition" type="Position2D" parent="."]
 rotation = 0.785398
 
@@ -3225,7 +3260,7 @@ position = Vector2( 18, -7 )
 collision_layer = 4
 collision_mask = 0
 knockbackResistance = 2
-invincibilityTime = 1.0
+invincibilityTime = 1.6
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
 position = Vector2( -19, 7 )
@@ -3327,8 +3362,13 @@ parameters/RunStop/blend_position = Vector2( 0, 0 )
 
 [node name="RollTween" type="Tween" parent="."]
 
+[node name="KnockbackTween" type="Tween" parent="."]
+
+[node name="HurtAnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Hurt = SubResource( 285 )
+anims/RESET = SubResource( 286 )
+
 [connection signal="timeout" from="StateMachine/Roll/RollTimer" to="." method="_on_RollTimer_timeout"]
-[connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
 
 [editable path="SlashHitboxPosition/Hitbox1"]
 [editable path="SlashHitboxPosition/Hitbox2"]

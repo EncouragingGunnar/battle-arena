@@ -645,6 +645,7 @@ path_to_player = NodePath("../../Player")
 [node name="Player" parent="." instance=ExtResource( 5 )]
 
 [node name="GUI" parent="Player" instance=ExtResource( 9 )]
+visible = true
 path_to_player = NodePath("..")
 
 [node name="PauseMenu2" parent="Player/GUI" instance=ExtResource( 10 )]

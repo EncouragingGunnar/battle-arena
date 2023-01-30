@@ -3,10 +3,16 @@ extends Resource
 
 signal items_changed(indexes)
 signal item_dropped(index)
+signal item_used(index)
+signal item_equipped(index)
+signal item_unequipped(index)
 
 var items = [
-	null, preload("res://Resources/Items/Health Potion.tres").duplicate(), null, preload("res://Resources/Items/Gloves.tres").duplicate(), null, null, null, preload("res://Resources/Items/Gem.tres").duplicate(), null, null, null, null
+	null, null, null, preload("res://Resources/Items/Health Potion.tres").duplicate(), null, preload("res://Resources/Items/Gloves.tres").duplicate(), null, null, null, preload("res://Resources/Items/Gem.tres").duplicate(), null, null, null, null, null, null, null, null
 	]
+
+var universal_slots = [2, 3, 4, 5, 8, 9, 10, 11, 14, 15, 16, 17]
+var equipment_slots = [0, 1, 6, 7, 12, 13]
 
 func set_item(item_index, item):
 	var previous_item = items[item_index]
@@ -34,10 +40,22 @@ func change_item_quantity(index, amount):
 	else:
 		emit_signal("items_changed", [index])
 
-func pick_up_item(item):
-	var empty_slot = items.find(null, 0)
-	if empty_slot != -1:
-		set_item(empty_slot, item)
+func check_if_can_pick_up_item(item):
+	for index in universal_slots:
+		if items[index] == null:
+			return index
+
+func pick_up_item(empty_slot_index, item):
+	set_item(empty_slot_index, item)
 
 func drop_item(index, amount):
 	emit_signal("item_dropped", index, amount)
+	
+func use_item(index):
+	change_item_quantity(index, -1)
+
+func equip_item(index):
+	pass
+	
+func unequip_item(index):
+	pass

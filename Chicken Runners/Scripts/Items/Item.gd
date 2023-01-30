@@ -2,14 +2,14 @@ extends Resource
 class_name Item
 
 enum item_type {
-	CONSUMABLE
-	MATERIAL
-	RING
-	GLOVE
+	NECKLACE
 	GEM
+	GLOVE
+	RING
 	SCROLL
 	SPELLBOOK
-	NECKLACE
+	CONSUMABLE
+	MATERIAL
 }
 
 export (String) var name = ""

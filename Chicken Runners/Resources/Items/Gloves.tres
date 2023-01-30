@@ -10,4 +10,4 @@ item_description = "A nice old pair of gloves"
 texture = ExtResource( 2 )
 amount = 1
 stack_size = 1
-itemtype = 3
+itemtype = 2
