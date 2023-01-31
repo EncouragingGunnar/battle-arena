@@ -1,4 +1,4 @@
-[gd_scene load_steps=101 format=2]
+[gd_scene load_steps=98 format=2]
 
 [ext_resource path="res://Scenes/HitEffect.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=2]
@@ -36,7 +36,7 @@ height = 10.0
 [sub_resource type="ShaderMaterial" id=242]
 resource_local_to_scene = true
 shader = ExtResource( 10 )
-shader_param/hit_opacity = 1.0
+shader_param/hit_opacity = 0.0
 
 [sub_resource type="Animation" id=147]
 resource_name = "BackAttack1"
@@ -2751,39 +2751,6 @@ tracks/0/keys = {
 "values": [ 218, 219, 221, 220, 222, 223 ]
 }
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=185]
-
-[sub_resource type="Animation" id=285]
-resource_name = "Hurt"
-length = 1.4
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite2:material:shader_param/hit_opacity")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4 ),
-"transitions": PoolRealArray( 0.933033, 0.933033, 0.933033, 0.933033, 0.933033, 0.933033, 0.933033, 0.933033 ),
-"update": 0,
-"values": [ 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0 ]
-}
-
-[sub_resource type="Animation" id=286]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite2:material:shader_param/hit_opacity")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 1.0 ]
-}
-
 [sub_resource type="AnimationNodeTimeScale" id=287]
 
 [sub_resource type="AnimationNodeBlendTree" id=288]
@@ -2967,27 +2934,9 @@ anims/RightRun = SubResource( 124 )
 anims/RightRunStop = SubResource( 267 )
 anims/RightWalk = SubResource( 259 )
 
-[node name="AnimationTree2" type="AnimationTree" parent="."]
-tree_root = ExtResource( 15 )
-anim_player = NodePath("../AnimationPlayer2")
-parameters/playback = SubResource( 185 )
-parameters/Attack1/blend_position = Vector2( 0, 1 )
-parameters/Attack2/blend_position = Vector2( 0, 1 )
-parameters/Attack3/blend_position = Vector2( 0, 1 )
-parameters/Idle/blend_position = Vector2( 0, 1 )
-parameters/RangedAttack/blend_position = Vector2( 0, 1 )
-parameters/Roll/blend_position = Vector2( 0, 1 )
-parameters/Run/blend_position = Vector2( 0, 1 )
-parameters/RunStop/blend_position = Vector2( 0, 1 )
-parameters/Walk/blend_position = Vector2( 0, 1 )
-
 [node name="RollTween" type="Tween" parent="."]
 
 [node name="KnockbackTween" type="Tween" parent="."]
-
-[node name="HurtAnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Hurt = SubResource( 285 )
-anims/RESET = SubResource( 286 )
 
 [node name="AnimationTree3" type="AnimationTree" parent="."]
 tree_root = SubResource( 288 )
@@ -2996,13 +2945,13 @@ parameters/AnimationNodeStateMachine/playback = SubResource( 289 )
 parameters/AnimationNodeStateMachine/Attack1/blend_position = Vector2( 0, 0 )
 parameters/AnimationNodeStateMachine/Attack2/blend_position = Vector2( 0, 0 )
 parameters/AnimationNodeStateMachine/Attack3/blend_position = Vector2( 0, 0 )
-parameters/AnimationNodeStateMachine/Idle/blend_position = Vector2( 0, 0 )
+parameters/AnimationNodeStateMachine/Idle/blend_position = Vector2( 0, 1 )
 parameters/AnimationNodeStateMachine/RangedAttack/blend_position = Vector2( 0, 0 )
-parameters/AnimationNodeStateMachine/Roll/blend_position = Vector2( 0, 0 )
-parameters/AnimationNodeStateMachine/Run/blend_position = Vector2( 0, 0 )
+parameters/AnimationNodeStateMachine/Roll/blend_position = Vector2( 0, 1 )
+parameters/AnimationNodeStateMachine/Run/blend_position = Vector2( 0, 1 )
 parameters/AnimationNodeStateMachine/RunStop/blend_position = Vector2( 0, 0 )
-parameters/AnimationNodeStateMachine/Walk/blend_position = Vector2( 0, 0 )
-parameters/TimeScale/scale = 1.0
+parameters/AnimationNodeStateMachine/Walk/blend_position = Vector2( 0, 1 )
+parameters/TimeScale/scale = 1.2
 
 [connection signal="timeout" from="StateMachine/Roll/RollTimer" to="." method="_on_RollTimer_timeout"]
 

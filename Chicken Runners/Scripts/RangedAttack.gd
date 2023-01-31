@@ -4,8 +4,8 @@ extends PlayerState
 func enter(_msg := {}):
 	player.velocity = Vector2.ZERO
 	var attack_vector = player.global_position.direction_to(player.get_global_mouse_position())
-	player.animationTree.set("parameters/Idle/blend_position", attack_vector)
-	player.animationTree.set("parameters/RangedAttack/blend_position", attack_vector)
+	player.animationTree.set("parameters/AnimationNodeStateMachine/Idle/blend_position", attack_vector)
+	player.animationTree.set("parameters/AnimationNodeStateMachine/RangedAttack/blend_position", attack_vector)
 	player.animationState.travel("RangedAttack")
 	
 
@@ -20,7 +20,7 @@ func shoot_arrow():
 	arrow.knockback_strength = player.playerstats.player_knockback_strength
 	arrow.bow_damage = player.playerstats.bow_damage
 	arrow.position = player.arrowPosition.global_position
-	arrow.arrow_direction = player.animationTree.get("parameters/RangedAttack/blend_position")
+	arrow.arrow_direction = player.animationTree.get("parameters/AnimationNodeStateMachine/RangedAttack/blend_position")
 	player.add_child(arrow)
 
 

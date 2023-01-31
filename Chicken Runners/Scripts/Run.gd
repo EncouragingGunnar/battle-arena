@@ -1,6 +1,5 @@
 extends PlayerState
 
-
 func enter(_msg := {}):
 	player.animationState.travel("Run")
 
@@ -13,10 +12,10 @@ func physics_update(delta: float):
 	input_vector = input_vector.normalized()
 	
 	if input_vector != Vector2.ZERO:
-		player.animationTree.set("parameters/Idle/blend_position", input_vector)
-		player.animationTree.set("parameters/Run/blend_position", input_vector)
-		player.animationTree.set("parameters/Roll/blend_position", input_vector)
-		player.animationTree.set("parameters/RunStop/blend_position", input_vector)
+		player.animationTree.set("parameters/AnimationNodeStateMachine/Idle/blend_position", input_vector)
+		player.animationTree.set("parameters/AnimationNodeStateMachine/Run/blend_position", input_vector)
+		player.animationTree.set("parameters/AnimationNodeStateMachine/Roll/blend_position", input_vector)
+		player.animationTree.set("parameters/AnimationNodeStateMachine/RunStop/blend_position", input_vector)
 		player.velocity = player.velocity.move_toward(input_vector * player.playerstats.RUN_MAX_SPEED, player.playerstats.ACCEL *  delta)
 	else:
 		player.velocity = player.velocity.move_toward(Vector2.ZERO, player.playerstats.FRICTION * delta)
@@ -26,7 +25,7 @@ func physics_update(delta: float):
 	if is_equal_approx(player.velocity.x, 0.0) and is_equal_approx(player.velocity.y, 0.0):
 		state_machine.transition_to("Idle", {do_run_stop = true})
 		
-	
+
 		
 
 func handle_input(_event: InputEvent):
@@ -39,6 +38,7 @@ func handle_input(_event: InputEvent):
 	if Input.is_action_just_pressed("Roll") and player.can_roll:
 		state_machine.transition_to("Roll")
 	
-	
+
 func exit():
 	pass
+	

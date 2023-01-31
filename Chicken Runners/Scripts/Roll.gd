@@ -10,7 +10,7 @@ var roll_direction = Vector2()
 func enter(_msg := {}):
 	player.animationState.travel("Roll")
 	current_roll_time = roll_time
-	roll_direction = player.animationTree.get("parameters/Roll/blend_position")
+	roll_direction = player.animationTree.get("parameters/AnimationNodeStateMachine/Roll/blend_position")
 	rollTween.interpolate_property(player, "velocity", Vector2.ZERO, roll_direction * player.playerstats.ROLL_SPEED, roll_time, Tween.TRANS_EXPO, Tween.EASE_IN_OUT)
 	rollTween.start()
 	player.can_roll = false

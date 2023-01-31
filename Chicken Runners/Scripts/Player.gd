@@ -9,13 +9,11 @@ signal leveled_up()
 
 export (Resource) var playerstats
 
-export var hitstun = 0
 var canInput = true
 
 var experience_required 
 
 var velocity = Vector2()
-var knockbackImpulse = Vector2()
 
 
 var current_hp
@@ -24,8 +22,8 @@ var Inventory = preload("res://Resources/Items/Inventory.tres")
 
 onready var droppedItem = preload("res://Scenes/Inventory/DroppedItem.tscn")
 onready var animationPlayer = $AnimationPlayer2
-onready var animationTree = $AnimationTree2
-onready var animationState = animationTree.get("parameters/playback")
+onready var animationTree = $AnimationTree3
+onready var animationState = animationTree.get("parameters/AnimationNodeStateMachine/playback")
 onready var stateMachine = $StateMachine
 onready var Arrow = preload("res://Scenes/Arrow.tscn")
 onready var arrowPosition = $ArrowStartPosition
@@ -35,12 +33,10 @@ onready var collisionShape = $CollisionShape2D
 onready var hurtbox = $Hurtbox
 onready var sprite = $Sprite2
 
-
 var can_roll = true
 
 func _ready():
 	randomize()
-	sprite.material.set_shader_param("hit_opacity", 0)
 	animationTree.active = true
 	swordHitbox.set_deferred("disabled", true)
 	swordHitbox2.set_deferred("disabled", true)
@@ -49,15 +45,12 @@ func _ready():
 	Inventory.connect("item_dropped", self, "_on_items_dropped")
 	
 	
-	
-	
 func _on_RollTimer_timeout():
 	can_roll = true
 
 func take_damage(damage):
 	current_hp -= damage
 	emit_signal("health_changed", current_hp)
-	stateMachine.transition_to("Hurt")
 	if current_hp <= 0:
 		die()
 		
@@ -66,7 +59,7 @@ func die():
 	Transition.load_scene("res://Scenes/Menus/GameOverMenu.tscn")
 	
 func set_knockback_stats(impulse):
-	knockbackImpulse = impulse
+	stateMachine.transition_to("Hurt", {knockback_stats = impulse})
 	
 
 func input_ready():
@@ -99,7 +92,13 @@ func _on_items_dropped(index, amount):
 	var quantity = Inventory.items[index].amount
 	Inventory.change_item_quantity(index, -1 * quantity)
 	var droppeditem = droppedItem.instance()
-	droppeditem.position = global_position + (animationTree.get("parameters/Idle/blend_position") * 50)
+	droppeditem.position = global_position + (animationTree.get("parameters/AnimationNodeStateMachine/Idle/blend_position") * 50)
 	droppeditem.itemresource = item
 	droppeditem.itemresource.amount = quantity
 	get_parent().add_child(droppeditem)
+	
+func change_hit_opacity(value):
+	sprite.material.set_shader_param("hit_opacity", value)
+
+
+

@@ -3,15 +3,16 @@ extends PlayerState
 export (float) var knockback_time = 0.3
 var current_knockback_time: float =  0
 onready var knockbackTween = $"../../KnockbackTween"
-onready var hurtAnimationPlayer = $"../../HurtAnimationPlayer"
 
 
-func enter(_msg := {}):
+func enter(msg := {}):
+	assert(msg.has("knockback_stats"))
 	current_knockback_time = knockback_time
-	knockbackTween.interpolate_property(player, "velocity", player.velocity, player.knockbackImpulse, knockback_time, Tween.TRANS_BACK, Tween.EASE_IN_OUT)
+	knockbackTween.interpolate_property(player, "velocity", player.velocity, msg["knockback_stats"], knockback_time, Tween.TRANS_BACK, Tween.EASE_IN_OUT)
 	knockbackTween.start()
-	hurtAnimationPlayer.play("Hurt")
-	#troligen kan inte ha hurtanimationplayer, för den spelar över den andra, hitboxes avaktiveras inte, kill aura
+	knockbackTween.interpolate_method(player, "change_hit_opacity", 0, 1, 0.2, Tween.TRANS_LINEAR)
+	knockbackTween.interpolate_method(player, "change_hit_opacity", 1, 0, 0.2, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, 0.2)
+	
 	
 	
 func update(delta: float) -> void:
@@ -21,8 +22,12 @@ func update(delta: float) -> void:
 
 	
 	if Input.is_action_pressed("ui_down") or Input.is_action_pressed("ui_up") or Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right"):
-		state_machine.transition_to("Run")
+		if Input.is_action_pressed("Sprint"):
+			state_machine.transition_to("Run")
+			return
+		state_machine.transition_to("Walk")
 		return
+		
 	if Input.is_action_pressed("MeleeAttack"):
 		state_machine.transition_to("Attack1")
 		return
