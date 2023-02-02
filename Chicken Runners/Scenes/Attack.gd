@@ -9,7 +9,6 @@ func enter(_msg := {}):
 	player.animationTree.set("parameters/AnimationNodeStateMachine/Idle/blend_position", attack_vector)
 	player.animationTree.set("parameters/AnimationNodeStateMachine/Attack1/blend_position", attack_vector)
 	player.animationTree.set("parameters/AnimationNodeStateMachine/Attack2/blend_position", attack_vector)
-	player.animationTree.set("parameters/AnimationNodeStateMachine/Attack3/blend_position", attack_vector)
 	player.velocity = Vector2.ZERO
 	player.animationState.travel(animation_state_name)
 	player.canInput = false

@@ -8,7 +8,7 @@ signal item_equipped(index)
 signal item_unequipped(index)
 
 var items = [
-	null, null, null, preload("res://Resources/Items/Health Potion.tres").duplicate(), null, preload("res://Resources/Items/Gloves.tres").duplicate(), null, null, null, preload("res://Resources/Items/Gem.tres").duplicate(), null, null, null, null, null, null, null, null
+	null, null, preload("res://Resources/Items/HealthPotion.tres").duplicate(), preload("res://Resources/Items/RareGlove.tres").duplicate(), null, null, null, null, null, null, null, null, null, null, null, null, null, null
 	]
 
 var universal_slots = [2, 3, 4, 5, 8, 9, 10, 11, 14, 15, 16, 17]
@@ -48,8 +48,8 @@ func check_if_can_pick_up_item(item):
 func pick_up_item(empty_slot_index, item):
 	set_item(empty_slot_index, item)
 
-func drop_item(index, amount):
-	emit_signal("item_dropped", index, amount)
+func drop_item(index):
+	emit_signal("item_dropped", index)
 	
 func use_item(index):
 	change_item_quantity(index, -1)

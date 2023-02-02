@@ -1,0 +1,17 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://Textures/Items/potion_02a.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Items/ConsumableItem.gd" type="Script" id=2]
+
+[resource]
+script = ExtResource( 2 )
+name = "Health Potion"
+item_description = "+ 20 Health
+Restores your health after a tough battle"
+texture = ExtResource( 1 )
+itemtype = 1
+amount = 8
+stack_size = 16
+health_restore = 20
+experience_receive = 0
+mana_restore = 0

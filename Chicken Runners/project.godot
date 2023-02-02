@@ -9,6 +9,16 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Item",
+"class": "ConsumableItem",
+"language": "GDScript",
+"path": "res://Scripts/Items/ConsumableItem.gd"
+}, {
+"base": "Item",
+"class": "EquipmentItem",
+"language": "GDScript",
+"path": "res://Scripts/Items/EquipmentItem.gd"
+}, {
 "base": "Resource",
 "class": "Inventory",
 "language": "GDScript",
@@ -45,6 +55,8 @@ _global_script_classes=[ {
 "path": "res://Scripts/StateMachine.gd"
 } ]
 _global_script_class_icons={
+"ConsumableItem": "",
+"EquipmentItem": "",
 "Inventory": "",
 "Item": "",
 "Player": "",

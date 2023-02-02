@@ -11,9 +11,8 @@ func enter(msg := {}):
 	knockbackTween.interpolate_property(player, "velocity", player.velocity, msg["knockback_stats"], knockback_time, Tween.TRANS_BACK, Tween.EASE_IN_OUT)
 	knockbackTween.start()
 	knockbackTween.interpolate_method(player, "change_hit_opacity", 0, 1, 0.2, Tween.TRANS_LINEAR)
-	knockbackTween.interpolate_method(player, "change_hit_opacity", 1, 0, 0.2, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, 0.2)
-	
-	
+	knockbackTween.interpolate_method(player, "change_hit_opacity", 1, 0, 0.2, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, 0.3)
+
 	
 func update(delta: float) -> void:
 	current_knockback_time -= delta

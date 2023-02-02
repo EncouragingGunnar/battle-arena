@@ -16,5 +16,3 @@ playerKnockbackResistance = 3.0
 melee_damage = 15
 bow_damage = 10
 max_hp = 100
-level = 1
-experience = 0

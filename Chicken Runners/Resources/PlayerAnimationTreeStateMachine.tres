@@ -1,47 +1,4 @@
-[gd_resource type="AnimationNodeStateMachine" load_steps=106 format=2]
-
-[sub_resource type="AnimationNodeAnimation" id=210]
-animation = "FrontAttack1"
-
-[sub_resource type="AnimationNodeAnimation" id=211]
-animation = "BackAttack1"
-
-[sub_resource type="AnimationNodeAnimation" id=212]
-animation = "RightAttack1"
-
-[sub_resource type="AnimationNodeAnimation" id=213]
-animation = "LeftAttack1"
-
-[sub_resource type="AnimationNodeAnimation" id=214]
-animation = "BackLeftAttack1"
-
-[sub_resource type="AnimationNodeAnimation" id=215]
-animation = "BackRightAttack1"
-
-[sub_resource type="AnimationNodeAnimation" id=216]
-animation = "FrontRightAttack1"
-
-[sub_resource type="AnimationNodeAnimation" id=217]
-animation = "FrontLeftAttack1"
-
-[sub_resource type="AnimationNodeBlendSpace2D" id=163]
-blend_point_0/node = SubResource( 210 )
-blend_point_0/pos = Vector2( 0, 1 )
-blend_point_1/node = SubResource( 211 )
-blend_point_1/pos = Vector2( 0, -1 )
-blend_point_2/node = SubResource( 212 )
-blend_point_2/pos = Vector2( 1, 0 )
-blend_point_3/node = SubResource( 213 )
-blend_point_3/pos = Vector2( -1, 0 )
-blend_point_4/node = SubResource( 214 )
-blend_point_4/pos = Vector2( -0.7, -0.6 )
-blend_point_5/node = SubResource( 215 )
-blend_point_5/pos = Vector2( 0.7, -0.6 )
-blend_point_6/node = SubResource( 216 )
-blend_point_6/pos = Vector2( 0.7, 0.6 )
-blend_point_7/node = SubResource( 217 )
-blend_point_7/pos = Vector2( -0.7, 0.6 )
-blend_mode = 1
+[gd_resource type="AnimationNodeStateMachine" load_steps=104 format=2]
 
 [sub_resource type="AnimationNodeAnimation" id=218]
 animation = "FrontAttack2"
@@ -126,6 +83,49 @@ blend_point_5/pos = Vector2( 0.7, -0.6 )
 blend_point_6/node = SubResource( 232 )
 blend_point_6/pos = Vector2( 0.7, 0.6 )
 blend_point_7/node = SubResource( 233 )
+blend_point_7/pos = Vector2( -0.7, 0.6 )
+blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id=210]
+animation = "FrontAttack1"
+
+[sub_resource type="AnimationNodeAnimation" id=211]
+animation = "BackAttack1"
+
+[sub_resource type="AnimationNodeAnimation" id=212]
+animation = "RightAttack1"
+
+[sub_resource type="AnimationNodeAnimation" id=213]
+animation = "LeftAttack1"
+
+[sub_resource type="AnimationNodeAnimation" id=214]
+animation = "BackLeftAttack1"
+
+[sub_resource type="AnimationNodeAnimation" id=215]
+animation = "BackRightAttack1"
+
+[sub_resource type="AnimationNodeAnimation" id=216]
+animation = "FrontRightAttack1"
+
+[sub_resource type="AnimationNodeAnimation" id=217]
+animation = "FrontLeftAttack1"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=163]
+blend_point_0/node = SubResource( 210 )
+blend_point_0/pos = Vector2( 0, 1 )
+blend_point_1/node = SubResource( 211 )
+blend_point_1/pos = Vector2( 0, -1 )
+blend_point_2/node = SubResource( 212 )
+blend_point_2/pos = Vector2( 1, 0 )
+blend_point_3/node = SubResource( 213 )
+blend_point_3/pos = Vector2( -1, 0 )
+blend_point_4/node = SubResource( 214 )
+blend_point_4/pos = Vector2( -0.7, -0.6 )
+blend_point_5/node = SubResource( 215 )
+blend_point_5/pos = Vector2( 0.7, -0.6 )
+blend_point_6/node = SubResource( 216 )
+blend_point_6/pos = Vector2( 0.7, 0.6 )
+blend_point_7/node = SubResource( 217 )
 blend_point_7/pos = Vector2( -0.7, 0.6 )
 blend_mode = 1
 
@@ -395,12 +395,6 @@ blend_mode = 1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=175]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=178]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=179]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=180]
-
 [sub_resource type="AnimationNodeStateMachineTransition" id=181]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=182]
@@ -435,13 +429,15 @@ blend_mode = 1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=301]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id=302]
+
 [resource]
-states/Attack1/node = SubResource( 163 )
-states/Attack1/position = Vector2( -1430.4, 222.185 )
-states/Attack2/node = SubResource( 164 )
-states/Attack2/position = Vector2( -1259.4, 222.185 )
-states/Attack3/node = SubResource( 165 )
-states/Attack3/position = Vector2( -1108.4, 222.185 )
+states/Attack1/node = SubResource( 164 )
+states/Attack1/position = Vector2( -1259.4, 222.185 )
+states/Attack2/node = SubResource( 165 )
+states/Attack2/position = Vector2( -1108.4, 222.185 )
+states/Dash/node = SubResource( 163 )
+states/Dash/position = Vector2( -1416.4, 271.185 )
 states/Idle/node = SubResource( 166 )
 states/Idle/position = Vector2( -1632.5, 37.6025 )
 states/RangedAttack/node = SubResource( 168 )
@@ -454,6 +450,6 @@ states/RunStop/node = SubResource( 282 )
 states/RunStop/position = Vector2( -1632.5, -53.2399 )
 states/Walk/node = SubResource( 285 )
 states/Walk/position = Vector2( -1383.4, 47.6025 )
-transitions = [ "Idle", "RangedAttack", SubResource( 172 ), "RangedAttack", "Idle", SubResource( 173 ), "Idle", "Roll", SubResource( 174 ), "Roll", "Idle", SubResource( 175 ), "Idle", "Attack1", SubResource( 178 ), "Attack1", "Idle", SubResource( 179 ), "Attack1", "Attack2", SubResource( 180 ), "Attack2", "Idle", SubResource( 181 ), "Attack2", "Attack3", SubResource( 182 ), "Attack3", "Idle", SubResource( 183 ), "Idle", "Run", SubResource( 249 ), "Run", "Roll", SubResource( 251 ), "Roll", "Run", SubResource( 252 ), "Attack3", "Attack2", SubResource( 273 ), "Run", "RunStop", SubResource( 283 ), "RunStop", "Idle", SubResource( 284 ), "Idle", "Walk", SubResource( 286 ), "Walk", "Idle", SubResource( 287 ), "Walk", "Run", SubResource( 288 ), "Run", "Walk", SubResource( 289 ), "Walk", "Roll", SubResource( 290 ), "Roll", "Walk", SubResource( 291 ), "Walk", "Attack1", SubResource( 300 ), "Run", "Attack1", SubResource( 301 ) ]
+transitions = [ "Idle", "RangedAttack", SubResource( 172 ), "RangedAttack", "Idle", SubResource( 173 ), "Idle", "Roll", SubResource( 174 ), "Roll", "Idle", SubResource( 175 ), "Attack1", "Idle", SubResource( 181 ), "Attack1", "Attack2", SubResource( 182 ), "Attack2", "Idle", SubResource( 183 ), "Idle", "Run", SubResource( 249 ), "Run", "Roll", SubResource( 251 ), "Roll", "Run", SubResource( 252 ), "Attack2", "Attack1", SubResource( 273 ), "Run", "RunStop", SubResource( 283 ), "RunStop", "Idle", SubResource( 284 ), "Idle", "Walk", SubResource( 286 ), "Walk", "Idle", SubResource( 287 ), "Walk", "Run", SubResource( 288 ), "Run", "Walk", SubResource( 289 ), "Walk", "Roll", SubResource( 290 ), "Roll", "Walk", SubResource( 291 ), "Idle", "Attack1", SubResource( 300 ), "Run", "Attack1", SubResource( 301 ), "Walk", "Attack1", SubResource( 302 ) ]
 start_node = "Idle"
-graph_offset = Vector2( -1498.06, 11.1306 )
+graph_offset = Vector2( -1918.29, 167.948 )

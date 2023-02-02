@@ -10,11 +10,12 @@ signal leveled_up()
 export (Resource) var playerstats
 
 var canInput = true
+var can_roll = true
 
+var experience := 0
 var experience_required 
 
 var velocity = Vector2()
-
 
 var current_hp
 
@@ -33,8 +34,6 @@ onready var collisionShape = $CollisionShape2D
 onready var hurtbox = $Hurtbox
 onready var sprite = $Sprite2
 
-var can_roll = true
-
 func _ready():
 	randomize()
 	animationTree.active = true
@@ -50,7 +49,7 @@ func _on_RollTimer_timeout():
 
 func take_damage(damage):
 	current_hp -= damage
-	emit_signal("health_changed", current_hp)
+	emit_signal("health_changed", current_hp, playerstats.max_hp)
 	if current_hp <= 0:
 		die()
 		
@@ -70,31 +69,29 @@ func collect_coin():
 	emit_signal("coins_changed")
 	
 func get_required_xp_to_level_up(level_to):
-	return round(pow(playerstats.level, 1.4) * 10)
+	return round(pow(Globals.level, 1.4) * 10)
 
 func gain_experience(experience_gained):
-	playerstats.experience += experience_gained
-	while playerstats.experience >= experience_required:
-		playerstats.experience -= experience_required
+	experience += experience_gained
+	while experience >= experience_required:
+		experience -= experience_required
 		level_up()
-	emit_signal("xp_changed")
+	emit_signal("xp_changed", experience, experience_required)
 
 func level_up():
-	playerstats.level += 1
-	experience_required = get_required_xp_to_level_up(playerstats.level + 1)
+	Globals.level += 1
+	experience_required = get_required_xp_to_level_up(Globals.level + 1)
 	emit_signal("leveled_up")
 	playerstats.max_hp += 5
 	current_hp = playerstats.max_hp
-	emit_signal("health_changed", playerstats.max_hp)
+	emit_signal("health_changed", playerstats.max_hp, playerstats.max_hp)
 	
-func _on_items_dropped(index, amount):
+func _on_items_dropped(index):
 	var item = Inventory.items[index]
-	var quantity = Inventory.items[index].amount
-	Inventory.change_item_quantity(index, -1 * quantity)
+	Inventory.remove_item(index)
 	var droppeditem = droppedItem.instance()
 	droppeditem.position = global_position + (animationTree.get("parameters/AnimationNodeStateMachine/Idle/blend_position") * 50)
 	droppeditem.itemresource = item
-	droppeditem.itemresource.amount = quantity
 	get_parent().add_child(droppeditem)
 	
 func change_hit_opacity(value):

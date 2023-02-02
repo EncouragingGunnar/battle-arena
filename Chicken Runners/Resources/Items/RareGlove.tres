@@ -1,0 +1,25 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://Textures/Items/gloves_01a.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Items/EquipmentItem.gd" type="Script" id=2]
+
+[resource]
+script = ExtResource( 2 )
+name = "Rare Glove"
+item_description = "+ 20 Damage
+Requires level 3"
+texture = ExtResource( 1 )
+itemtype = 0
+rarity = 1
+equipment_type = 2
+level_requirement = 3
+melee_damage = 20
+bow_damage = 0
+melee_attack_speed = 0
+defense = 0
+max_health_increase = 0
+bow_attack_speed = 0
+run_max_speed_increase = 0
+knockback_resistance_increase = 0.0
+knockback_strength_increase = 0
+max_mana_increase = 0

@@ -38,74 +38,6 @@ resource_local_to_scene = true
 shader = ExtResource( 10 )
 shader_param/hit_opacity = 0.0
 
-[sub_resource type="Animation" id=147]
-resource_name = "BackAttack1"
-length = 0.8
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite2:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 524, 525, 526, 527, 528, 529, 530, 531 ]
-}
-tracks/1/type = "method"
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0.6 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "input_ready"
-} ]
-}
-tracks/2/type = "method"
-tracks/2/path = NodePath("StateMachine/Attack1")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0.8 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "attack_animation_finished"
-} ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("SlashHitboxPosition:rotation_degrees")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 270.0 ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("SlashHitboxPosition/Hitbox1/CollisionShape2D:disabled")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0.4, 0.6 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ false, true ]
-}
-
 [sub_resource type="Animation" id=125]
 resource_name = "BackAttack2"
 length = 0.8
@@ -136,7 +68,7 @@ tracks/1/keys = {
 } ]
 }
 tracks/2/type = "method"
-tracks/2/path = NodePath("StateMachine/Attack2")
+tracks/2/path = NodePath("StateMachine/Attack1")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -204,7 +136,7 @@ tracks/1/keys = {
 } ]
 }
 tracks/2/type = "method"
-tracks/2/path = NodePath("StateMachine/Attack3")
+tracks/2/path = NodePath("StateMachine/Attack2")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -286,6 +218,60 @@ tracks/2/keys = {
 "values": [ Vector2( 1, -17 ) ]
 }
 
+[sub_resource type="Animation" id=147]
+resource_name = "BackDash"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 520, 521, 522, 523, 524, 525, 526, 527, 528, 529, 530, 531 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "input_ready"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("SlashHitboxPosition:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 270.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("SlashHitboxPosition/Hitbox1/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
 [sub_resource type="Animation" id=115]
 resource_name = "BackIdle"
 length = 0.6
@@ -301,74 +287,6 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 168, 169, 170, 171, 172, 173 ]
-}
-
-[sub_resource type="Animation" id=152]
-resource_name = "BackLeftAttack1"
-length = 0.8
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite2:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 757, 753, 754, 755, 756, 759, 758, 760 ]
-}
-tracks/1/type = "method"
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0.6 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "input_ready"
-} ]
-}
-tracks/2/type = "method"
-tracks/2/path = NodePath("StateMachine/Attack1")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0.8 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "attack_animation_finished"
-} ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("SlashHitboxPosition:rotation_degrees")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 225.0 ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("SlashHitboxPosition/Hitbox1/CollisionShape2D:disabled")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0.5, 0.7 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ false, true ]
 }
 
 [sub_resource type="Animation" id=141]
@@ -401,7 +319,7 @@ tracks/1/keys = {
 } ]
 }
 tracks/2/type = "method"
-tracks/2/path = NodePath("StateMachine/Attack2")
+tracks/2/path = NodePath("StateMachine/Attack1")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -469,7 +387,7 @@ tracks/1/keys = {
 } ]
 }
 tracks/2/type = "method"
-tracks/2/path = NodePath("StateMachine/Attack3")
+tracks/2/path = NodePath("StateMachine/Attack2")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -550,6 +468,60 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( -11, -12 ) ]
+}
+
+[sub_resource type="Animation" id=152]
+resource_name = "BackLeftDash"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 750, 751, 752, 757, 753, 754, 755, 756, 759, 758, 760, 767 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "input_ready"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("SlashHitboxPosition:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 225.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("SlashHitboxPosition/Hitbox1/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.5, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
 }
 
 [sub_resource type="Animation" id=126]
@@ -635,74 +607,6 @@ tracks/0/keys = {
 "values": [ 330, 328, 329, 331, 332, 333 ]
 }
 
-[sub_resource type="Animation" id=148]
-resource_name = "BackRightAttack1"
-length = 0.8
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite2:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 558, 559, 560, 561, 562, 563, 564, 565 ]
-}
-tracks/1/type = "method"
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0.6 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "input_ready"
-} ]
-}
-tracks/2/type = "method"
-tracks/2/path = NodePath("StateMachine/Attack1")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0.8 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "attack_animation_finished"
-} ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("SlashHitboxPosition:rotation_degrees")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 315.0 ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("SlashHitboxPosition/Hitbox1/CollisionShape2D:disabled")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0.4, 0.6 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ false, true ]
-}
-
 [sub_resource type="Animation" id=133]
 resource_name = "BackRightAttack2"
 length = 0.9
@@ -733,7 +637,7 @@ tracks/1/keys = {
 } ]
 }
 tracks/2/type = "method"
-tracks/2/path = NodePath("StateMachine/Attack2")
+tracks/2/path = NodePath("StateMachine/Attack1")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -801,7 +705,7 @@ tracks/1/keys = {
 } ]
 }
 tracks/2/type = "method"
-tracks/2/path = NodePath("StateMachine/Attack3")
+tracks/2/path = NodePath("StateMachine/Attack2")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -882,6 +786,60 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( 10, -11 ) ]
+}
+
+[sub_resource type="Animation" id=148]
+resource_name = "BackRightDash"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 554, 555, 556, 557, 558, 559, 560, 561, 562, 563, 564, 565 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "input_ready"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("SlashHitboxPosition:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 315.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("SlashHitboxPosition/Hitbox1/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
 }
 
 [sub_resource type="Animation" id=116]
@@ -1033,74 +991,6 @@ tracks/0/keys = {
 "values": [ 174, 175, 176, 177, 178 ]
 }
 
-[sub_resource type="Animation" id=154]
-resource_name = "FrontAttack1"
-length = 0.8
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite2:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 656, 657, 658, 659, 660, 661, 666, 662 ]
-}
-tracks/1/type = "method"
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0.6 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "input_ready"
-} ]
-}
-tracks/2/type = "method"
-tracks/2/path = NodePath("StateMachine/Attack1")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0.8 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "attack_animation_finished"
-} ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("SlashHitboxPosition:rotation_degrees")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 90.0 ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("SlashHitboxPosition/Hitbox1/CollisionShape2D:disabled")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0.4, 0.6 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ false, true ]
-}
-
 [sub_resource type="Animation" id=139]
 resource_name = "FrontAttack2"
 length = 0.8
@@ -1131,7 +1021,7 @@ tracks/1/keys = {
 } ]
 }
 tracks/2/type = "method"
-tracks/2/path = NodePath("StateMachine/Attack2")
+tracks/2/path = NodePath("StateMachine/Attack1")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -1199,7 +1089,7 @@ tracks/1/keys = {
 } ]
 }
 tracks/2/type = "method"
-tracks/2/path = NodePath("StateMachine/Attack3")
+tracks/2/path = NodePath("StateMachine/Attack2")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -1282,6 +1172,60 @@ tracks/2/keys = {
 "values": [ Vector2( -1, 18 ) ]
 }
 
+[sub_resource type="Animation" id=154]
+resource_name = "FrontDash"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 652, 653, 654, 655, 656, 657, 658, 659, 660, 661, 666, 662 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "input_ready"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("SlashHitboxPosition:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 90.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("SlashHitboxPosition/Hitbox1/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
 [sub_resource type="Animation" id=119]
 resource_name = "FrontIdle"
 length = 0.6
@@ -1297,74 +1241,6 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 257, 256, 258, 264, 262, 263 ]
-}
-
-[sub_resource type="Animation" id=155]
-resource_name = "FrontLeftAttack1"
-length = 0.8
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite2:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 690, 691, 692, 693, 694, 695, 696, 697 ]
-}
-tracks/1/type = "method"
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0.6 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "input_ready"
-} ]
-}
-tracks/2/type = "method"
-tracks/2/path = NodePath("StateMachine/Attack1")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0.8 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "attack_animation_finished"
-} ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("SlashHitboxPosition:rotation_degrees")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 135.0 ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("SlashHitboxPosition/Hitbox1/CollisionShape2D:disabled")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0.4, 0.6 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ false, true ]
 }
 
 [sub_resource type="Animation" id=143]
@@ -1397,7 +1273,7 @@ tracks/1/keys = {
 } ]
 }
 tracks/2/type = "method"
-tracks/2/path = NodePath("StateMachine/Attack2")
+tracks/2/path = NodePath("StateMachine/Attack1")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -1465,7 +1341,7 @@ tracks/1/keys = {
 } ]
 }
 tracks/2/type = "method"
-tracks/2/path = NodePath("StateMachine/Attack3")
+tracks/2/path = NodePath("StateMachine/Attack2")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -1546,6 +1422,60 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( -8, 11 ) ]
+}
+
+[sub_resource type="Animation" id=155]
+resource_name = "FrontLeftDash"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 686, 687, 688, 689, 690, 691, 692, 693, 694, 695, 696, 697 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "input_ready"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("SlashHitboxPosition:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 135.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("SlashHitboxPosition/Hitbox1/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
 }
 
 [sub_resource type="Animation" id=128]
@@ -1630,74 +1560,6 @@ tracks/0/keys = {
 "values": [ 284, 285, 288, 286, 287, 289 ]
 }
 
-[sub_resource type="Animation" id=157]
-resource_name = "FrontRightAttack1"
-length = 0.8
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite2:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 622, 623, 624, 625, 626, 627, 628, 629 ]
-}
-tracks/1/type = "method"
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0.6 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "input_ready"
-} ]
-}
-tracks/2/type = "method"
-tracks/2/path = NodePath("StateMachine/Attack1")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0.8 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "attack_animation_finished"
-} ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("SlashHitboxPosition:rotation_degrees")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 45.0 ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("SlashHitboxPosition/Hitbox1/CollisionShape2D:disabled")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0.4, 0.6 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ false, true ]
-}
-
 [sub_resource type="Animation" id=135]
 resource_name = "FrontRightAttack2"
 tracks/0/type = "value"
@@ -1727,7 +1589,7 @@ tracks/1/keys = {
 } ]
 }
 tracks/2/type = "method"
-tracks/2/path = NodePath("StateMachine/Attack2")
+tracks/2/path = NodePath("StateMachine/Attack1")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -1795,7 +1657,7 @@ tracks/1/keys = {
 } ]
 }
 tracks/2/type = "method"
-tracks/2/path = NodePath("StateMachine/Attack3")
+tracks/2/path = NodePath("StateMachine/Attack2")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -1876,6 +1738,60 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( 5, 8 ) ]
+}
+
+[sub_resource type="Animation" id=157]
+resource_name = "FrontRightDash"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 618, 619, 620, 621, 622, 623, 624, 625, 626, 627, 628, 629 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "input_ready"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("SlashHitboxPosition:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 45.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("SlashHitboxPosition/Hitbox1/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
 }
 
 [sub_resource type="Animation" id=120]
@@ -2027,74 +1943,6 @@ tracks/0/keys = {
 "values": [ 259, 260, 261, 272, 273, 265 ]
 }
 
-[sub_resource type="Animation" id=160]
-resource_name = "LeftAttack1"
-length = 0.8
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite2:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 720, 721, 722, 723, 724, 725, 726, 727 ]
-}
-tracks/1/type = "method"
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0.6 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "input_ready"
-} ]
-}
-tracks/2/type = "method"
-tracks/2/path = NodePath("StateMachine/Attack1")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0.8 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "attack_animation_finished"
-} ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("SlashHitboxPosition:rotation_degrees")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 180.0 ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("SlashHitboxPosition/Hitbox1/CollisionShape2D:disabled")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0.4, 0.6 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ false, true ]
-}
-
 [sub_resource type="Animation" id=145]
 resource_name = "LeftAttack2"
 length = 0.8
@@ -2125,7 +1973,7 @@ tracks/1/keys = {
 } ]
 }
 tracks/2/type = "method"
-tracks/2/path = NodePath("StateMachine/Attack2")
+tracks/2/path = NodePath("StateMachine/Attack1")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -2193,7 +2041,7 @@ tracks/1/keys = {
 } ]
 }
 tracks/2/type = "method"
-tracks/2/path = NodePath("StateMachine/Attack3")
+tracks/2/path = NodePath("StateMachine/Attack2")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -2273,6 +2121,60 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( -14, 2 ) ]
+}
+
+[sub_resource type="Animation" id=160]
+resource_name = "LeftDash"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 720, 721, 722, 723, 720, 721, 722, 723, 724, 725, 726, 727 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "input_ready"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("SlashHitboxPosition:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 180.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("SlashHitboxPosition/Hitbox1/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
 }
 
 [sub_resource type="Animation" id=130]
@@ -2420,74 +2322,6 @@ tracks/4/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=151]
-resource_name = "RightAttack1"
-length = 0.8
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite2:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 588, 589, 590, 591, 592, 593, 594, 595 ]
-}
-tracks/1/type = "method"
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0.6 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "input_ready"
-} ]
-}
-tracks/2/type = "method"
-tracks/2/path = NodePath("StateMachine/Attack1")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0.8 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "attack_animation_finished"
-} ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("SlashHitboxPosition:rotation_degrees")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0.0 ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("SlashHitboxPosition/Hitbox1/CollisionShape2D:disabled")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0.4, 0.6 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ false, true ]
-}
-
 [sub_resource type="Animation" id=137]
 resource_name = "RightAttack2"
 length = 0.8
@@ -2518,7 +2352,7 @@ tracks/1/keys = {
 } ]
 }
 tracks/2/type = "method"
-tracks/2/path = NodePath("StateMachine/Attack2")
+tracks/2/path = NodePath("StateMachine/Attack1")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -2586,7 +2420,7 @@ tracks/1/keys = {
 } ]
 }
 tracks/2/type = "method"
-tracks/2/path = NodePath("StateMachine/Attack3")
+tracks/2/path = NodePath("StateMachine/Attack2")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -2666,6 +2500,60 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( 13, 2 ) ]
+}
+
+[sub_resource type="Animation" id=151]
+resource_name = "RightDash"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 588, 589, 590, 591, 588, 589, 590, 591, 592, 593, 594, 595 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "input_ready"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("SlashHitboxPosition:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("SlashHitboxPosition/Hitbox1/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
 }
 
 [sub_resource type="Animation" id=123]
@@ -2754,7 +2642,7 @@ tracks/0/keys = {
 [sub_resource type="AnimationNodeTimeScale" id=287]
 
 [sub_resource type="AnimationNodeBlendTree" id=288]
-graph_offset = Vector2( -345.825, 97.44 )
+graph_offset = Vector2( -554.625, 66.3 )
 nodes/AnimationNodeStateMachine/node = ExtResource( 15 )
 nodes/AnimationNodeStateMachine/position = Vector2( -260, 120 )
 nodes/TimeScale/node = SubResource( 287 )
@@ -2791,13 +2679,8 @@ animation_state_name = "Attack1"
 
 [node name="Attack2" type="Node" parent="StateMachine"]
 script = ExtResource( 6 )
-next_state = "Attack3"
+next_state = "Attack1"
 animation_state_name = "Attack2"
-
-[node name="Attack3" type="Node" parent="StateMachine"]
-script = ExtResource( 6 )
-next_state = "Attack2"
-animation_state_name = "Attack3"
 
 [node name="Roll" type="Node" parent="StateMachine"]
 script = ExtResource( 7 )
@@ -2860,24 +2743,24 @@ hframes = 49
 vframes = 16
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
-anims/BackAttack1 = SubResource( 147 )
 anims/BackAttack2 = SubResource( 125 )
 anims/BackAttack3 = SubResource( 132 )
 anims/BackBow = SubResource( 106 )
+anims/BackDash = SubResource( 147 )
 anims/BackIdle = SubResource( 115 )
-anims/BackLeftAttack1 = SubResource( 152 )
 anims/BackLeftAttack2 = SubResource( 141 )
 anims/BackLeftAttack3 = SubResource( 142 )
 anims/BackLeftBow = SubResource( 107 )
+anims/BackLeftDash = SubResource( 152 )
 anims/BackLeftIdle = SubResource( 126 )
 anims/BackLeftRoll = SubResource( 153 )
 anims/BackLeftRun = SubResource( 127 )
 anims/BackLeftRunStop = SubResource( 272 )
 anims/BackLeftWalk = SubResource( 263 )
-anims/BackRightAttack1 = SubResource( 148 )
 anims/BackRightAttack2 = SubResource( 133 )
 anims/BackRightAttack3 = SubResource( 134 )
 anims/BackRightBow = SubResource( 108 )
+anims/BackRightDash = SubResource( 148 )
 anims/BackRightIdle = SubResource( 116 )
 anims/BackRightRoll = SubResource( 149 )
 anims/BackRightRun = SubResource( 117 )
@@ -2887,24 +2770,24 @@ anims/BackRoll = SubResource( 150 )
 anims/BackRun = SubResource( 118 )
 anims/BackRunStop = SubResource( 266 )
 anims/BackWalk = SubResource( 258 )
-anims/FrontAttack1 = SubResource( 154 )
 anims/FrontAttack2 = SubResource( 139 )
 anims/FrontAttack3 = SubResource( 140 )
 anims/FrontBow = SubResource( 109 )
+anims/FrontDash = SubResource( 154 )
 anims/FrontIdle = SubResource( 119 )
-anims/FrontLeftAttack1 = SubResource( 155 )
 anims/FrontLeftAttack2 = SubResource( 143 )
 anims/FrontLeftAttack3 = SubResource( 144 )
 anims/FrontLeftBow = SubResource( 110 )
+anims/FrontLeftDash = SubResource( 155 )
 anims/FrontLeftIdle = SubResource( 128 )
 anims/FrontLeftRoll = SubResource( 156 )
 anims/FrontLeftRun = SubResource( 129 )
 anims/FrontLeftRunStop = SubResource( 270 )
 anims/FrontLeftWalk = SubResource( 261 )
-anims/FrontRightAttack1 = SubResource( 157 )
 anims/FrontRightAttack2 = SubResource( 135 )
 anims/FrontRightAttack3 = SubResource( 136 )
 anims/FrontRightBow = SubResource( 111 )
+anims/FrontRightDash = SubResource( 157 )
 anims/FrontRightIdle = SubResource( 120 )
 anims/FrontRightRoll = SubResource( 158 )
 anims/FrontRightRun = SubResource( 121 )
@@ -2914,20 +2797,20 @@ anims/FrontRoll = SubResource( 159 )
 anims/FrontRun = SubResource( 122 )
 anims/FrontRunStop = SubResource( 269 )
 anims/FrontWalk = SubResource( 262 )
-anims/LeftAttack1 = SubResource( 160 )
 anims/LeftAttack2 = SubResource( 145 )
 anims/LeftAttack3 = SubResource( 146 )
 anims/LeftBow = SubResource( 112 )
+anims/LeftDash = SubResource( 160 )
 anims/LeftIdle = SubResource( 130 )
 anims/LeftRoll = SubResource( 161 )
 anims/LeftRun = SubResource( 131 )
 anims/LeftRunStop = SubResource( 271 )
 anims/LeftWalk = SubResource( 264 )
 anims/RESET = SubResource( 113 )
-anims/RightAttack1 = SubResource( 151 )
 anims/RightAttack2 = SubResource( 137 )
 anims/RightAttack3 = SubResource( 138 )
 anims/RightBow = SubResource( 114 )
+anims/RightDash = SubResource( 151 )
 anims/RightIdle = SubResource( 123 )
 anims/RightRoll = SubResource( 162 )
 anims/RightRun = SubResource( 124 )
@@ -2944,7 +2827,7 @@ anim_player = NodePath("../AnimationPlayer2")
 parameters/AnimationNodeStateMachine/playback = SubResource( 289 )
 parameters/AnimationNodeStateMachine/Attack1/blend_position = Vector2( 0, 0 )
 parameters/AnimationNodeStateMachine/Attack2/blend_position = Vector2( 0, 0 )
-parameters/AnimationNodeStateMachine/Attack3/blend_position = Vector2( 0, 0 )
+parameters/AnimationNodeStateMachine/Dash/blend_position = Vector2( -0.00251889, -0.017341 )
 parameters/AnimationNodeStateMachine/Idle/blend_position = Vector2( 0, 1 )
 parameters/AnimationNodeStateMachine/RangedAttack/blend_position = Vector2( 0, 0 )
 parameters/AnimationNodeStateMachine/Roll/blend_position = Vector2( 0, 1 )

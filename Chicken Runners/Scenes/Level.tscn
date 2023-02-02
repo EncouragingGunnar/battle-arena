@@ -689,7 +689,6 @@ path_to_player = NodePath("../../Player")
 [node name="Player" parent="." instance=ExtResource( 5 )]
 
 [node name="GUI" parent="Player" instance=ExtResource( 9 )]
-path_to_player = NodePath("..")
 
 [node name="PauseMenu2" parent="Player/GUI" instance=ExtResource( 10 )]
 visible = false
@@ -712,7 +711,8 @@ position = Vector2( 1083, 660 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 57, -32 )
 frames = SubResource( 81 )
-frame = 7
+frame = 4
+playing = true
 
 [connection signal="coins_changed" from="Player" to="Player/GUI" method="_on_Player_coins_changed"]
 [connection signal="health_changed" from="Player" to="Player/GUI" method="_on_Player_health_changed"]

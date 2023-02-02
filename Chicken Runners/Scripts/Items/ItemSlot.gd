@@ -23,7 +23,7 @@ export (Texture) var slot_texture
 var can_split = true
 
 func display_item(item):
-	if item and item.stack_size > 1:
+	if item and item.get("stack_size"):
 		itemtexture.texture = item.texture
 		amountlabel.text = str(item.amount)
 	elif item:
@@ -65,14 +65,12 @@ func drop_data(_position, data):
 	if item_index == new_index:
 		pass	
 	
-	elif slot_type != 6:
-		if item.itemtype == slot_type:
+	elif slot_type != 6: 
+		if item is EquipmentItem and item.equipment_type == slot_type and item.level_requirement <= Globals.level:
 			Inventory.swap_items(item_index, new_index)
 			#add equipment slots
-		
-
 	else:
-		if new_item != null and item.name == new_item.name and item.stack_size > 1:
+		if new_item != null and item.name == new_item.name and item.get("stack_size"):
 			if item.amount + new_item.amount <= item.stack_size:
 				Inventory.change_item_quantity(new_index, item.amount)
 				Inventory.remove_item(item_index)
@@ -89,23 +87,26 @@ func drop_data(_position, data):
 	
 
 func _on_ItemSlot_gui_input(event):
-	if Inventory.items[slot_number] != null:
-		if Input.is_action_pressed("Drop"):
-			Inventory.drop_item(slot_number, Inventory.items[slot_number].amount)
+	if Inventory.items[slot_number] == null:
+		return
+	if Input.is_action_pressed("Drop"):
+		Inventory.drop_item(slot_number)
 
-		if Input.is_action_pressed("Split") and Inventory.items.find(null, 0) != -1 and can_split:
-			can_split = false
-			var item = Inventory.items[slot_number]
-			if item.amount > 1:
-				var split_amount = int(item.amount / 2)
-				var other_split_amount = item.amount - split_amount
-				var empty_slot_index = Inventory.check_if_can_pick_up_item(item)
-				if empty_slot_index != null:
-					Inventory.pick_up_item(empty_slot_index, item)
-				Inventory.change_item_quantity(empty_slot_index, -1 *  split_amount)
-				Inventory.change_item_quantity(slot_number, -1 * other_split_amount)
-				yield(get_tree().create_timer(2.0), "timeout")
-				can_split = true
+	if Input.is_action_pressed("Split") and Inventory.items.find(null, 0) != -1 and can_split:
+		can_split = false
+		var item = Inventory.items[slot_number]
+		if !item.get("amount"):
+			return
+		if item.amount > 1:
+			var split_amount = int(item.amount / 2)
+			var other_split_amount = item.amount - split_amount
+			var empty_slot_index = Inventory.check_if_can_pick_up_item(item)
+			if empty_slot_index != null:
+				Inventory.pick_up_item(empty_slot_index, item)
+			Inventory.change_item_quantity(empty_slot_index, -1 *  split_amount)
+			Inventory.change_item_quantity(slot_number, -1 * other_split_amount)
+			yield(get_tree().create_timer(2.0), "timeout")
+			can_split = true
 
 
 func _on_ItemSlot_mouse_entered():
