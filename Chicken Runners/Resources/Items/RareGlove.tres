@@ -9,7 +9,6 @@ name = "Rare Glove"
 item_description = "+ 20 Damage
 Requires level 3"
 texture = ExtResource( 1 )
-itemtype = 0
 rarity = 1
 equipment_type = 2
 level_requirement = 3

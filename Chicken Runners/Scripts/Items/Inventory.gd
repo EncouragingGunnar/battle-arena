@@ -55,7 +55,7 @@ func use_item(index):
 	change_item_quantity(index, -1)
 
 func equip_item(index):
-	pass
+	emit_signal("item_equipped", index)
 	
 func unequip_item(index):
-	pass
+	emit_signal("item_unequipped", index)

@@ -35,7 +35,13 @@ func display_item(item):
 	else:
 		itemtexture.texture = null
 		amountlabel.text = ""
-
+		
+func can_equip_item(item) -> bool:
+	if item is EquipmentItem and item.equipment_type == slot_type and item.level_requirement <= Globals.level:
+		return true
+	else:
+		return false
+		
 func get_drag_data(_position):
 	var item_index = slot_number
 	var item = Inventory.items[item_index]
@@ -64,34 +70,37 @@ func drop_data(_position, data):
 	
 	if item_index == new_index:
 		pass	
-	
-	elif slot_type != 6: 
-		if item is EquipmentItem and item.equipment_type == slot_type and item.level_requirement <= Globals.level:
+		
+	elif slot_type != 6 and can_equip_item(item):
+		if new_item is EquipmentItem:
+			Inventory.unequip_item(new_index)
+			Inventory.equip_item(new_index)
 			Inventory.swap_items(item_index, new_index)
-			#add equipment slots
+
+			
+	elif new_item != null and item.name == new_item.name and item.get("stack_size") and slot_type != 6:
+		if item.amount + new_item.amount <= item.stack_size:
+			Inventory.change_item_quantity(new_index, item.amount)
+			Inventory.remove_item(item_index)
+
+		elif item.amount == item.stack_size or new_item.amount == new_item.stack_size:
+			Inventory.swap_items(item_index, new_index)
+
+		elif item.amount + new_item.amount >= item.stack_size:
+			var value_to_add = new_item.stack_size - new_item.amount
+			Inventory.change_item_quantity(new_index,  value_to_add)
+			Inventory.change_item_quantity(item_index, -1 * (value_to_add))
+	elif new_item != null and slot_type != 6:
+		Inventory.swap_items(new_index, item_index)
 	else:
-		if new_item != null and item.name == new_item.name and item.get("stack_size"):
-			if item.amount + new_item.amount <= item.stack_size:
-				Inventory.change_item_quantity(new_index, item.amount)
-				Inventory.remove_item(item_index)
-
-			elif item.amount == item.stack_size or new_item.amount == new_item.stack_size:
-				Inventory.swap_items(item_index, new_index)
-
-			elif item.amount + new_item.amount >= item.stack_size:
-				var value_to_add = new_item.stack_size - new_item.amount
-				Inventory.change_item_quantity(new_index,  value_to_add)
-				Inventory.change_item_quantity(item_index, -1 * (value_to_add))
-		else:
-			Inventory.swap_items(new_index, item_index)
-	
+		pass
 
 func _on_ItemSlot_gui_input(event):
 	if Inventory.items[slot_number] == null:
 		return
 	if Input.is_action_pressed("Drop"):
 		Inventory.drop_item(slot_number)
-
+"""
 	if Input.is_action_pressed("Split") and Inventory.items.find(null, 0) != -1 and can_split:
 		can_split = false
 		var item = Inventory.items[slot_number]
@@ -107,7 +116,7 @@ func _on_ItemSlot_gui_input(event):
 			Inventory.change_item_quantity(slot_number, -1 * other_split_amount)
 			yield(get_tree().create_timer(2.0), "timeout")
 			can_split = true
-
+"""
 
 func _on_ItemSlot_mouse_entered():
 	if Inventory.items[slot_number] != null:

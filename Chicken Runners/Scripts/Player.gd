@@ -42,7 +42,8 @@ func _ready():
 	current_hp = playerstats.max_hp
 	experience_required = get_required_xp_to_level_up(2)
 	Inventory.connect("item_dropped", self, "_on_items_dropped")
-	
+	Inventory.connect("item_equipped", self, "_on_items_equipped")
+	Inventory.connect("item_unequipped", self, "_on_items_unequipped")
 	
 func _on_RollTimer_timeout():
 	can_roll = true
@@ -97,5 +98,9 @@ func _on_items_dropped(index):
 func change_hit_opacity(value):
 	sprite.material.set_shader_param("hit_opacity", value)
 
+func _on_items_equipped(index):
+	print("equi")
 
+func _on_items_unequipped(index):
+	print("unew")
 
