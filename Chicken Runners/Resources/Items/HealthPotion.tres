@@ -11,6 +11,6 @@ Restores your health after a tough battle"
 texture = ExtResource( 1 )
 amount = 8
 stack_size = 16
-health_restore = 20
+hp_restore = 20
 experience_receive = 0
-mana_restore = 0
+mp_restore = 0

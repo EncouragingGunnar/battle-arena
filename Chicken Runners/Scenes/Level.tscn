@@ -711,7 +711,7 @@ position = Vector2( 1083, 660 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 57, -32 )
 frames = SubResource( 81 )
-frame = 4
+frame = 5
 playing = true
 
 [connection signal="coins_changed" from="Player" to="Player/GUI" method="_on_Player_coins_changed"]

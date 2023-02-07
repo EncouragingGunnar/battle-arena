@@ -14,25 +14,25 @@ var items = [
 var universal_slots = [2, 3, 4, 5, 8, 9, 10, 11, 14, 15, 16, 17]
 var equipment_slots = [0, 1, 6, 7, 12, 13]
 
-func set_item(item_index, item):
+func set_item(item_index: int, item: Item) -> Item:
 	var previous_item = items[item_index]
 	items[item_index] = item.duplicate()
 	emit_signal("items_changed", [item_index])
 	return previous_item
 	
-func swap_items(item_index, other_item_index):
+func swap_items(item_index: int, other_item_index: int) -> void:
 	var target_item = items[other_item_index]
 	items[other_item_index] = items[item_index]
 	items[item_index] = target_item
 	emit_signal("items_changed", [other_item_index, item_index])
 	
-func remove_item(item_index):
+func remove_item(item_index: int) -> Item:
 	var previous_item = items[item_index]
 	items[item_index] = null
 	emit_signal("items_changed", [item_index])
 	return previous_item
 	
-func change_item_quantity(index, amount):
+func change_item_quantity(index: int, amount: int):
 	items[index].amount += amount
 	if items[index].amount <= 0:
 		remove_item(index)
@@ -40,7 +40,7 @@ func change_item_quantity(index, amount):
 	else:
 		emit_signal("items_changed", [index])
 
-func check_if_can_pick_up_item(item):
+func check_if_can_pick_up_item(item: Item):
 	for index in universal_slots:
 		if items[index] == null:
 			return index
@@ -52,10 +52,11 @@ func drop_item(index):
 	emit_signal("item_dropped", index)
 	
 func use_item(index):
-	change_item_quantity(index, -1)
-
-func equip_item(index):
-	emit_signal("item_equipped", index)
+	emit_signal("item_used", index)
 	
-func unequip_item(index):
-	emit_signal("item_unequipped", index)
+
+func equip_item(item):
+	emit_signal("item_equipped", item)
+	
+func unequip_item(item):
+	emit_signal("item_unequipped", item)

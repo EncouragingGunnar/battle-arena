@@ -12,7 +12,7 @@ func _ready():
 	set_as_toplevel(true)
 	look_at(position + arrow_direction)
 	hitbox.damage = bow_damage
-	hitbox.knockbackStrength = knockback_strength
+	hitbox.knockback_strength = knockback_strength
 	
 func _physics_process(delta):
 	position += arrow_direction * MOVE_SPEED * delta

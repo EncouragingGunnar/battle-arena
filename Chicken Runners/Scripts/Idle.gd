@@ -21,9 +21,9 @@ func update(delta: float):
 		if Input.is_action_pressed("Sprint"):
 			state_machine.transition_to("Run")
 		state_machine.transition_to("Walk")
-	if Input.is_action_just_pressed("MeleeAttack"):
+	if Input.is_action_just_pressed("ui_left_click"):
 		state_machine.transition_to("Attack1")
-	if Input.is_action_just_pressed("RangedAttack"):
+	if Input.is_action_just_pressed("ui_right_click"):
 		state_machine.transition_to("RangedAttack")
 	if Input.is_action_just_pressed("Roll") and player.can_roll:
 		state_machine.transition_to("Roll")

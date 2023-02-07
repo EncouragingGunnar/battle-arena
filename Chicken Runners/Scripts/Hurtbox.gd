@@ -1,8 +1,8 @@
 extends Area2D
 
 
-export (int) var knockbackResistance 
-export (float) var invincibilityTime
+export (int) var knockback_resistance 
+export (float) var invincibility_time
 var hitEffect: PackedScene = null
 
 onready var invincibilityTimer = $InvincibilityTimer
@@ -20,10 +20,10 @@ func _on_Hurtbox_area_entered(area) -> void:
 	if owner.has_method("take_damage"):
 		owner.take_damage(area.damage)
 	if owner.has_method("set_knockback_stats"):
-		var knockbackDirection = (global_position - area.global_position).normalized()
-		owner.set_knockback_stats((knockbackDirection * area.knockbackStrength) / knockbackResistance)
+		var knockback_direction = (global_position - area.global_position).normalized()
+		owner.set_knockback_stats((knockback_direction * area.knockback_strength) / knockback_resistance)
 		hitEffect = area.hiteffect
-	invincibilityTimer.start(invincibilityTime)
+	invincibilityTimer.start(invincibility_time)
 	collisionShape.set_deferred("disabled", true)
 	create_hit_effect(area.global_position)
 	

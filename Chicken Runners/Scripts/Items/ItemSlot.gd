@@ -20,7 +20,7 @@ enum slottype {
 export (slottype) var slot_type
 export (Texture) var slot_texture
 
-var can_split = true
+var can_use_item = true
 
 func display_item(item):
 	if item and item.get("stack_size"):
@@ -37,10 +37,15 @@ func display_item(item):
 		amountlabel.text = ""
 		
 func can_equip_item(item) -> bool:
-	if item is EquipmentItem and item.equipment_type == slot_type and item.level_requirement <= Globals.level:
+	if item is EquipmentItem and item.level_requirement <= Globals.level:
 		return true
-	else:
-		return false
+	return false
+		
+func item_matches_slot_type(item) -> bool:
+	if item.equipment_type == slot_type:
+		return true
+	return false
+	
 		
 func get_drag_data(_position):
 	var item_index = slot_number
@@ -67,16 +72,30 @@ func drop_data(_position, data):
 	var new_index = slot_number
 	var item = Inventory.items[item_index]
 	var new_item = Inventory.items[new_index]
+	var item_slot_type = get_parent().get_node("ItemSlot" + str(item_index)).get("slot_type")
 	
 	if item_index == new_index:
 		pass	
-		
-	elif slot_type != 6 and can_equip_item(item):
-		if new_item is EquipmentItem:
-			Inventory.unequip_item(new_index)
-			Inventory.equip_item(new_index)
+	
+	elif slot_type != 6 and can_equip_item(item) and item_matches_slot_type(item):
+		if can_equip_item(new_item) and item_matches_slot_type(new_item):
+			Inventory.unequip_item(new_item)
+			Inventory.equip_item(item)
 			Inventory.swap_items(item_index, new_index)
-
+		if new_item == null:
+			Inventory.equip_item(item)
+			Inventory.swap_items(item_index, new_index)
+	
+	elif slot_type == 6 and can_equip_item(item):
+		if can_equip_item(new_item) and item_slot_type == new_item.equipment_type:
+			Inventory.unequip_item(item)
+			Inventory.equip_item(new_item)
+			Inventory.swap_items(new_index, item_index)
+		elif new_item == null and item_slot_type == item.equipment_type:
+			Inventory.unequip_item(item)
+			Inventory.swap_items(new_index, item_index)
+		else:
+			Inventory.swap_items(new_index, item_index)
 			
 	elif new_item != null and item.name == new_item.name and item.get("stack_size") and slot_type != 6:
 		if item.amount + new_item.amount <= item.stack_size:
@@ -90,16 +109,20 @@ func drop_data(_position, data):
 			var value_to_add = new_item.stack_size - new_item.amount
 			Inventory.change_item_quantity(new_index,  value_to_add)
 			Inventory.change_item_quantity(item_index, -1 * (value_to_add))
-	elif new_item != null and slot_type != 6:
-		Inventory.swap_items(new_index, item_index)
 	else:
-		pass
+		Inventory.swap_items(new_index, item_index)
 
 func _on_ItemSlot_gui_input(event):
 	if Inventory.items[slot_number] == null:
 		return
 	if Input.is_action_pressed("Drop"):
 		Inventory.drop_item(slot_number)
+	if Input.is_action_pressed("ui_right_click") and Inventory.items[slot_number] is ConsumableItem and can_use_item:
+		can_use_item = false
+		Inventory.use_item(slot_number)
+		yield(get_tree().create_timer(0.5), "timeout")
+		can_use_item = true
+		
 """
 	if Input.is_action_pressed("Split") and Inventory.items.find(null, 0) != -1 and can_split:
 		can_split = false

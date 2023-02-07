@@ -29,10 +29,10 @@ func update(delta: float) -> void:
 		state_machine.transition_to("Walk")
 		return
 		
-	if Input.is_action_pressed("MeleeAttack"):
+	if Input.is_action_pressed("ui_left_click"):
 		state_machine.transition_to("Attack1")
 		return
-	if Input.is_action_pressed("RangedAttack"):
+	if Input.is_action_pressed("ui_right_click"):
 		state_machine.transition_to("RangedAttack")
 		return
 	else:

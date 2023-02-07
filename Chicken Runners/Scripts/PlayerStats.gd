@@ -13,3 +13,4 @@ export (float) var playerKnockbackResistance = 3
 export (int) var melee_damage = 15
 export (int) var bow_damage = 10
 export (int) var max_hp = 100
+export (int) var max_mp = 100
