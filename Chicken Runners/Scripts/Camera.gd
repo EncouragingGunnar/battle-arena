@@ -5,7 +5,7 @@ onready var bottomRight = $Node/BottomRight
 
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
+func _ready() -> void:
 	limit_top = topLeft.position.y
 	limit_bottom = bottomRight.position.y
 	limit_right = bottomRight.position.x

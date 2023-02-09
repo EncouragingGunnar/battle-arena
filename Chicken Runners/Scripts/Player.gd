@@ -9,16 +9,16 @@ signal leveled_up()
 
 export (Resource) var playerstats
 
-var can_input = true
-var can_roll = true
+var can_input: bool = true
+var can_roll: bool = true
 
 var experience := 0
-var experience_required 
+var experience_required: int 
 
-var velocity = Vector2()
+var velocity: Vector2 = Vector2()
 
-var current_hp
-var current_mp
+var current_hp: int
+var current_mp: int
 
 var Inventory = preload("res://Resources/Items/Inventory.tres")
 
@@ -32,17 +32,19 @@ onready var arrowPosition = $ArrowStartPosition
 onready var swordHitbox = $SlashHitboxPosition/Hitbox1/CollisionShape2D
 onready var swordHitbox2 = $SlashHitboxPosition/Hitbox2/CollisionShape2D
 onready var collisionShape = $CollisionShape2D
+onready var Inventorycontainer = $GUI/InventoryContainer
 onready var hurtbox = $Hurtbox
 onready var sprite = $Sprite2
 
-func _ready():
+
+func _ready() -> void:
 	randomize()
 	animationTree.active = true
 	swordHitbox.set_deferred("disabled", true)
 	swordHitbox2.set_deferred("disabled", true)
 	current_hp = playerstats.max_hp
 	current_mp = playerstats.max_mp
-	experience_required = get_required_xp_to_level_up(2)
+	experience_required = get_required_xp_to_level_up()
 	Inventory.connect("item_dropped", self, "_on_items_dropped")
 	Inventory.connect("item_equipped", self, "_on_items_equipped")
 	Inventory.connect("item_unequipped", self, "_on_items_unequipped")
@@ -69,13 +71,13 @@ func gain_health(hp) -> void:
 		current_hp += hp
 	emit_signal("health_changed", current_hp, playerstats.max_hp)
 	
-func set_max_hp(max_hp) -> void:
+func set_max_hp(max_hp: int) -> void:
 	playerstats.max_hp = max_hp
 	if current_hp > max_hp:
 		current_hp = max_hp
 	emit_signal("health_changed", current_hp, max_hp)
 
-func set_knockback_stats(impulse) -> void:
+func set_knockback_stats(impulse: Vector2) -> void:
 	stateMachine.transition_to("Hurt", {knockback_stats = impulse})
 	
 func input_ready() -> void:
@@ -85,10 +87,10 @@ func collect_coin() -> void:
 	Globals.coins += 1
 	emit_signal("coins_changed")
 	
-func get_required_xp_to_level_up(level_to: int) -> int:
+func get_required_xp_to_level_up() -> int:
 	return int(round(pow(Globals.level, 1.4) * 10))
 
-func gain_experience(experience_gained: int):
+func gain_experience(experience_gained: int) -> void:
 	experience += experience_gained
 	while experience >= experience_required:
 		experience -= experience_required
@@ -97,7 +99,7 @@ func gain_experience(experience_gained: int):
 
 func level_up() -> void:
 	Globals.level += 1
-	experience_required = get_required_xp_to_level_up(Globals.level + 1)
+	experience_required = get_required_xp_to_level_up()
 	emit_signal("leveled_up")
 	playerstats.max_hp += 5
 	current_hp = playerstats.max_hp
@@ -150,3 +152,9 @@ func _on_item_used(index: int) -> void:
 		gain_experience(item.experience_receive)
 	#current_mp += item.mana_restore
 	
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("Inventory"):
+		Inventorycontainer.visible = !Inventorycontainer.visible
+		stateMachine.transition_to("Idle")
+		can_input = !can_input

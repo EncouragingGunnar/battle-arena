@@ -38,7 +38,7 @@ func update(delta: float) -> void:
 		return
 	
 
-func physics_update(delta: float):
+func physics_update(_delta):
 	player.velocity = player.move_and_slide(player.velocity)
 	
 func handle_input(_event: InputEvent):

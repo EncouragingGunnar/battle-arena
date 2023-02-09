@@ -15,7 +15,7 @@ script = ExtResource( 1 )
 collision_layer = 128
 collision_mask = 76
 damage = 10
-knockbackStrength = 100
+knockback_strength = 100
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
 position = Vector2( 0, 0.5 )

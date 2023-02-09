@@ -19,6 +19,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/Items/EquipmentItem.gd"
 }, {
+"base": "Area2D",
+"class": "Hitbox",
+"language": "GDScript",
+"path": "res://Scripts/Hitbox.gd"
+}, {
+"base": "Area2D",
+"class": "HurtBox",
+"language": "GDScript",
+"path": "res://Scripts/Hurtbox.gd"
+}, {
 "base": "Resource",
 "class": "Inventory",
 "language": "GDScript",
@@ -57,6 +67,8 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "ConsumableItem": "",
 "EquipmentItem": "",
+"Hitbox": "",
+"HurtBox": "",
 "Inventory": "",
 "Item": "",
 "Player": "",

@@ -13,7 +13,7 @@ onready var leveluplabel = $XPBar/LevelUpLabel
 onready var leveluptimer = $XPBar/LevelUpLabel/LevelUpTimer
 
 
-func _ready():
+func _ready() -> void:
 	healthbar.value = 100
 	manabar.value = 100
 	xpbar.value = 0
@@ -21,7 +21,7 @@ func _ready():
 	
 
 
-func _on_Player_health_changed(health, max_health):
+func _on_Player_health_changed(health: int, max_health: int) -> void:
 	if healthbar.value > (health / max_health) *  100:
 		#minskning
 		tween.interpolate_property(healthbar, "value", healthbar.value, float(health) / max_health *  100, 0.4, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)
@@ -35,13 +35,13 @@ func _on_Player_health_changed(health, max_health):
 	
 	
 
-func _on_Player_coins_changed():
+func _on_Player_coins_changed() -> void:
 	coincounter.text = str(Globals.coins)
 
 
-func _on_Player_xp_changed(experience, experience_required):
+func _on_Player_xp_changed(experience: int, experience_required: int) -> void:
 	levellabel.text = ("LVL ")
-	tween.interpolate_property(xpbar, "value", xpbar.value, round((experience / experience_required) * 100), 0.4, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)
+	tween.interpolate_property(xpbar, "value", xpbar.value, float(experience) / experience_required * 100, 0.4, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)
 	tween.start()
 	xplabel.text = (str(experience) + " / " + str(experience_required))
 	

@@ -20,9 +20,9 @@ enum slottype {
 export (slottype) var slot_type
 export (Texture) var slot_texture
 
-var can_use_item = true
+var can_use_item: bool = true
 
-func display_item(item):
+func display_item(item: Item) -> void:
 	if item and item.get("stack_size"):
 		itemtexture.texture = item.texture
 		amountlabel.text = str(item.amount)
@@ -36,12 +36,12 @@ func display_item(item):
 		itemtexture.texture = null
 		amountlabel.text = ""
 		
-func can_equip_item(item) -> bool:
+func can_equip_item(item: Item) -> bool:
 	if item is EquipmentItem and item.level_requirement <= Globals.level:
 		return true
 	return false
 		
-func item_matches_slot_type(item) -> bool:
+func item_matches_slot_type(item: Item) -> bool:
 	if item.equipment_type == slot_type:
 		return true
 	return false
@@ -63,11 +63,12 @@ func get_drag_data(_position):
 		dragPreview.rect_position -= dragPreview.rect_size * 0.5
 		set_drag_preview(previewControl)
 		return data
+
 		
-func can_drop_data(_position, data):
+func can_drop_data(_position, data: Dictionary):
 	return typeof(data) == TYPE_DICTIONARY and data.has("item")
 
-func drop_data(_position, data):
+func drop_data(_position, data: Dictionary) -> void:
 	var item_index = data.get("item_index")
 	var new_index = slot_number
 	var item = Inventory.items[item_index]
@@ -109,14 +110,21 @@ func drop_data(_position, data):
 			var value_to_add = new_item.stack_size - new_item.amount
 			Inventory.change_item_quantity(new_index,  value_to_add)
 			Inventory.change_item_quantity(item_index, -1 * (value_to_add))
-	else:
+	elif item_slot_type and slot_type == 6:
 		Inventory.swap_items(new_index, item_index)
+	else:
+		pass
 
-func _on_ItemSlot_gui_input(event):
+func _on_ItemSlot_gui_input(_event) -> void:
 	if Inventory.items[slot_number] == null:
 		return
 	if Input.is_action_pressed("Drop"):
-		Inventory.drop_item(slot_number)
+		if slot_type != 6:
+			Inventory.unequip_item(Inventory.items[slot_number])
+			Inventory.drop_item(slot_number)
+		else:
+			Inventory.drop_item(slot_number)
+			
 	if Input.is_action_pressed("ui_right_click") and Inventory.items[slot_number] is ConsumableItem and can_use_item:
 		can_use_item = false
 		Inventory.use_item(slot_number)
@@ -141,13 +149,13 @@ func _on_ItemSlot_gui_input(event):
 			can_split = true
 """
 
-func _on_ItemSlot_mouse_entered():
+func _on_ItemSlot_mouse_entered() -> void:
 	if Inventory.items[slot_number] != null:
 		iteminfo.find_node("ItemNameLabel").text = Inventory.items[slot_number].name
 		iteminfo.find_node("ItemDescriptionLabel").text = Inventory.items[slot_number].item_description
 
 
-func _on_ItemSlot_mouse_exited():
+func _on_ItemSlot_mouse_exited() -> void:
 	if Inventory.items[slot_number] != null:
 		iteminfo.find_node("ItemNameLabel").text = ""
 		iteminfo.find_node("ItemDescriptionLabel").text = ""

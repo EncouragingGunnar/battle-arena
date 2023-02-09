@@ -2,9 +2,9 @@ extends Area2D
 
 onready var tween = $Tween
 onready var animatedsprite = $AnimatedSprite
-var drop_range = 20
+var drop_range: int = 20
 
-func _ready():
+func _ready() -> void:
 	randomize()
 	var target_location = Vector2(position.x + rand_range(-drop_range, drop_range), position.y + rand_range(-drop_range, drop_range))
 	tween.interpolate_property(self, "position:x", position.x, target_location.x, 1, Tween.TRANS_LINEAR, Tween.EASE_IN)

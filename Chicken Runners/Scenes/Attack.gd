@@ -27,7 +27,7 @@ func physics_update(delta: float):
 				state_machine.transition_to("Run")
 			state_machine.transition_to("Walk")
 		
-func attack_animation_finished():
+func attack_animation_finished() -> void:
 	state_machine.transition_to("Idle")
 
 func handle_input(_event: InputEvent):

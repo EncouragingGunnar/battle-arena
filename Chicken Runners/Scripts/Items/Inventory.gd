@@ -32,7 +32,7 @@ func remove_item(item_index: int) -> Item:
 	emit_signal("items_changed", [item_index])
 	return previous_item
 	
-func change_item_quantity(index: int, amount: int):
+func change_item_quantity(index: int, amount: int) -> void:
 	items[index].amount += amount
 	if items[index].amount <= 0:
 		remove_item(index)
@@ -45,18 +45,18 @@ func check_if_can_pick_up_item(item: Item):
 		if items[index] == null:
 			return index
 
-func pick_up_item(empty_slot_index, item):
+func pick_up_item(empty_slot_index: int, item: Item) -> void:
 	set_item(empty_slot_index, item)
 
-func drop_item(index):
+func drop_item(index: int) -> void:
 	emit_signal("item_dropped", index)
 	
-func use_item(index):
+func use_item(index: int) -> void:
 	emit_signal("item_used", index)
 	
 
-func equip_item(item):
+func equip_item(item: Item) -> void:
 	emit_signal("item_equipped", item)
 	
-func unequip_item(item):
+func unequip_item(item: Item) -> void:
 	emit_signal("item_unequipped", item)

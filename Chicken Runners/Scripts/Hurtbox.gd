@@ -1,4 +1,5 @@
 extends Area2D
+class_name HurtBox
 
 
 export (int) var knockback_resistance 
@@ -9,14 +10,14 @@ onready var invincibilityTimer = $InvincibilityTimer
 onready var collisionShape = $CollisionShape2D
 
 
-func create_hit_effect(attacker_position: Vector2):
+func create_hit_effect(attacker_position: Vector2) -> void:
 	if hitEffect != null:
 		var hiteffect = hitEffect.instance()
 		hiteffect.emitting = true
 		hiteffect.rotation = get_angle_to(attacker_position) + PI
 		add_child(hiteffect)
 
-func _on_Hurtbox_area_entered(area) -> void:	
+func _on_Hurtbox_area_entered(area: Hitbox) -> void:	
 	if owner.has_method("take_damage"):
 		owner.take_damage(area.damage)
 	if owner.has_method("set_knockback_stats"):
@@ -27,7 +28,7 @@ func _on_Hurtbox_area_entered(area) -> void:
 	collisionShape.set_deferred("disabled", true)
 	create_hit_effect(area.global_position)
 	
-func _on_InvincibilityTimer_timeout():
+func _on_InvincibilityTimer_timeout() -> void:
 	collisionShape.set_deferred("disabled", false)
 	
 

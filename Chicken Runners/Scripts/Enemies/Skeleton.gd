@@ -1,13 +1,13 @@
 extends KinematicBody2D
 
 var hitstun = 0
-var velocity = Vector2.ZERO
-var max_hp = 45
-var current_hp
-var knockback_impulse
-var can_update_pathfinding = true
-var idle_states = [IDLE, WANDER]
-var experience_dropped = 40
+var velocity: Vector2 = Vector2.ZERO
+var max_hp: int = 45
+var current_hp: int
+var knockback_impulse: Vector2
+var can_update_pathfinding: bool = true
+var idle_states: Array = [IDLE, WANDER]
+var experience_dropped: int = 40
 
 const MAX_SPEED = 40
 const ACCEL = 150
@@ -38,10 +38,10 @@ enum {
 
 var state = IDLE
 
-func _ready():
+func _ready() -> void:
 	current_hp = max_hp
 	
-func take_damage(damage: int):
+func take_damage(damage: int) -> void:
 	current_hp -= damage
 	if current_hp <= 0:
 		state = DEAD
@@ -49,22 +49,22 @@ func take_damage(damage: int):
 		state = HURT
 	if healthBar.visible == false:
 		healthBar.visible = true
-	var hpPercent = int((float(current_hp) / max_hp) * 100)
-	healthBarTween.interpolate_property(healthBar, "value", healthBar.value, hpPercent, 0.1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	var hp_percent = int((float(current_hp) / max_hp) * 100)
+	healthBarTween.interpolate_property(healthBar, "value", healthBar.value, hp_percent, 0.1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	healthBarTween.start()
 	
 	
-func _drop_coin():
+func _drop_coin() -> void:
 	var coin = preload("res://Scenes/Coin.tscn").instance()
 	coin.position = global_position
 	get_parent().add_child(coin)
 	
 
-func set_knockback_stats(impulse: Vector2):
+func set_knockback_stats(impulse: Vector2) -> void:
 	knockback_impulse = impulse
 
 
-func _physics_process(delta: float):
+func _physics_process(delta: float) -> void:
 	match state:
 		IDLE:
 			_idle_state(delta)
@@ -82,11 +82,11 @@ func _physics_process(delta: float):
 		
 
 
-func _on_Hurtbox_area_entered(area: Area2D):
+func _on_Hurtbox_area_entered(area: Area2D) -> void:
 	sprite.material.set_shader_param("hit_opacity", 1)
 	hitstun = 10
 	
-func _idle_state(delta):
+func _idle_state(delta: float) -> void:
 	sprite.play("Idle")
 	velocity = velocity.move_toward(Vector2.ZERO, ACCEL * delta)
 	_look_at_player()
@@ -98,7 +98,7 @@ func _idle_state(delta):
 		wanderTimer.start(rand_range(1, 3))
 	
 	
-func _wander_state(delta):
+func _wander_state(delta: float) -> void:
 	_look_at_player()
 	if _can_see_player():
 		state = CHASE
@@ -113,7 +113,7 @@ func _wander_state(delta):
 		state = idle_states[randi() % idle_states.size()]
 		wanderTimer.start(rand_range(1, 3))
 
-func _chase_state(delta):
+func _chase_state(delta: float) -> void:
 	_look_at_player()
 	if _can_see_player():
 		_update_pathfinding(player.global_position)
@@ -123,7 +123,7 @@ func _chase_state(delta):
 		state = IDLE
 
 
-func _hurt_state():
+func _hurt_state() -> void:
 	if hitstun > 0:
 		hitstun -= 1
 		knockback_impulse = lerp(knockback_impulse, Vector2.ZERO, 0.1)
@@ -131,6 +131,7 @@ func _hurt_state():
 		
 	if hitstun == 0:
 		sprite.material.set_shader_param("hit_opacity", 0)
+		state = IDLE
 
 func _dead_state() -> void:
 	player.gain_experience(experience_dropped)
@@ -143,7 +144,7 @@ func _update_pathfinding(position: Vector2) -> void:
 		can_update_pathfinding = false
 		pathTimer.start()
 		
-func _set_velocity(delta: float):
+func _set_velocity(delta: float) -> void:
 	var direction = global_position.direction_to(agent.get_next_location())
 	velocity = velocity.move_toward(direction * MAX_SPEED, ACCEL *  delta)
 
@@ -153,18 +154,18 @@ func _can_see_player() -> bool:
 		return true
 	return false
 	
-func _look_at_player():
+func _look_at_player() -> void:
 	if is_instance_valid(player):
 		sight.look_at(player.global_position)
 		
 	
-func _on_PathTimer_timeout():
+func _on_PathTimer_timeout() -> void:
 	can_update_pathfinding = true
 	
-func _update_target_position():
+func _update_target_position() -> void:
 	targetPosition = startPosition + Vector2(rand_range(-wanderRange, wanderRange), rand_range(-wanderRange, wanderRange))
 
-func _on_WanderTimer_timeout():
+func _on_WanderTimer_timeout() -> void:
 	if state != CHASE:
 		_update_target_position()
 		_update_pathfinding(targetPosition)

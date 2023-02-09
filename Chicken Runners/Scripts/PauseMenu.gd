@@ -1,7 +1,7 @@
 extends Control
 
 
-func _input(event):
+func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
 		get_tree().paused = !get_tree().paused
 		if get_tree().paused:
@@ -12,7 +12,7 @@ func _input(event):
 			
 			
 
-func _on_Button_pressed():
+func _on_Button_pressed() -> void:
 	get_tree().paused = !get_tree().paused
 	hide()
 

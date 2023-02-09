@@ -653,6 +653,11 @@ navpoly = SubResource( 70 )
 navpoly = SubResource( 71 )
 
 [node name="Zombie" parent="MapNavigation" instance=ExtResource( 7 )]
+position = Vector2( 56, 25 )
+wanderRange = 40
+path_to_player = NodePath("../../Player")
+
+[node name="Zombie3" parent="MapNavigation" instance=ExtResource( 7 )]
 position = Vector2( 398, 199 )
 wanderRange = 40
 path_to_player = NodePath("../../Player")

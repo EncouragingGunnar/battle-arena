@@ -4,7 +4,7 @@ export (Resource) var itemresource
 onready var sprite = $Sprite
 onready var tween = $Tween
 
-func _ready():
+func _ready() -> void:
 	sprite.texture = itemresource.texture
 	var shape = RectangleShape2D.new()
 	shape.set_extents(Vector2(8, 8))
