@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=2]
+[gd_scene load_steps=77 format=2]
 
 [ext_resource path="res://Textures/37033d6e-0c40-44a3-857b-0192add29fc7 (1).png" type="Texture" id=1]
 [ext_resource path="res://Textures/0f6a29db-2521-4e60-899f-1795dfa4906e.png" type="Texture" id=2]
@@ -545,9 +545,9 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 2/z_index = 0
 
 [sub_resource type="NavigationPolygon" id=69]
-vertices = PoolVector2Array( 685, 125, 758, 124, 757, 238, 685, 235, 438, 335, 434, 451, 364, 452, 362, 340, 365, 244, 436, 236, 365, 242, 366, 121, 431, 121, 764, 342, 759, 456, 683, 454, 676, 339, 963, 240, 965, 332 )
-polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 4, 5, 6, 7, 8, 9 ), PoolIntArray( 10, 11, 12, 9, 8 ), PoolIntArray( 2, 13, 14, 15, 16, 3 ), PoolIntArray( 17, 18, 13, 2 ), PoolIntArray( 9, 3, 16, 4 ) ]
-outlines = [ PoolVector2Array( 965, 332, 963, 240, 757, 238, 758, 124, 685, 125, 685, 235, 436, 236, 431, 121, 366, 121, 365, 242, 365, 244, 362, 340, 364, 452, 434, 451, 438, 335, 676, 339, 683, 454, 759, 456, 764, 342 ) ]
+vertices = PoolVector2Array( 764, 342, 759, 456, 683, 454, 692, 329, 757, 238, 685, 235, 685, 125, 758, 124, 438, 335, 434, 451, 364, 452, 364, 337, 365, 244, 436, 236, 365, 242, 367, 125, 434, 125, 963, 240, 965, 332 )
+polygons = [ PoolIntArray( 0, 1, 2, 3, 4 ), PoolIntArray( 5, 6, 7, 4, 3 ), PoolIntArray( 8, 9, 10, 11, 12, 13 ), PoolIntArray( 14, 15, 16, 13, 12 ), PoolIntArray( 17, 18, 0, 4 ), PoolIntArray( 5, 3, 8, 13 ) ]
+outlines = [ PoolVector2Array( 965, 332, 963, 240, 757, 238, 758, 124, 685, 125, 685, 235, 436, 236, 434, 125, 367, 125, 365, 242, 365, 244, 364, 337, 364, 452, 434, 451, 438, 335, 692, 329, 683, 454, 759, 456, 764, 342 ) ]
 
 [sub_resource type="NavigationPolygon" id=70]
 vertices = PoolVector2Array( 971, -305, 977, 120, 358, 119, 362, -308 )
@@ -560,9 +560,14 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 outlines = [ PoolVector2Array( 41, 453, 42, 566, 979, 568, 978, 458 ) ]
 
 [sub_resource type="NavigationPolygon" id=72]
-vertices = PoolVector2Array( 46, 239, 236, 239, 236, 339, 42, 341 )
+vertices = PoolVector2Array( 46, 239, 236, 239, 236, 339, 44, 340 )
 polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
-outlines = [ PoolVector2Array( 46, 239, 236, 239, 236, 339, 42, 341 ) ]
+outlines = [ PoolVector2Array( 46, 239, 236, 239, 236, 339, 44, 340 ) ]
+
+[sub_resource type="NavigationPolygon" id=82]
+vertices = PoolVector2Array( 246, 331, -300, 337, -299, -1, 253, 2 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
+outlines = [ PoolVector2Array( 246, 331, -300, 337, -299, -1, 253, 2 ) ]
 
 [sub_resource type="AtlasTexture" id=73]
 atlas = ExtResource( 13 )
@@ -653,22 +658,12 @@ navpoly = SubResource( 70 )
 navpoly = SubResource( 71 )
 
 [node name="Zombie" parent="MapNavigation" instance=ExtResource( 7 )]
-position = Vector2( 56, 25 )
-wanderRange = 40
-path_to_player = NodePath("../../Player")
-
-[node name="Zombie3" parent="MapNavigation" instance=ExtResource( 7 )]
-position = Vector2( 398, 199 )
+position = Vector2( -280, 104 )
 wanderRange = 40
 path_to_player = NodePath("../../Player")
 
 [node name="Big Zombie" parent="MapNavigation" groups=["Enemy"] instance=ExtResource( 8 )]
 position = Vector2( 897, -189 )
-path_to_player = NodePath("../../Player")
-
-[node name="Zombie2" parent="MapNavigation" instance=ExtResource( 7 )]
-position = Vector2( 710, 293 )
-wanderRange = 40
 path_to_player = NodePath("../../Player")
 
 [node name="Skeleton2" parent="MapNavigation" instance=ExtResource( 4 )]
@@ -680,8 +675,8 @@ position = Vector2( 5, -1 )
 navpoly = SubResource( 72 )
 
 [node name="NavigationPolygonInstance5" type="NavigationPolygonInstance" parent="MapNavigation"]
-position = Vector2( -19, -253 )
-navpoly = SubResource( 72 )
+position = Vector2( -7, -216 )
+navpoly = SubResource( 82 )
 
 [node name="Skeleton3" parent="MapNavigation" instance=ExtResource( 4 )]
 position = Vector2( 210, 300 )
@@ -716,7 +711,6 @@ position = Vector2( 1083, 660 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 57, -32 )
 frames = SubResource( 81 )
-frame = 5
 playing = true
 
 [connection signal="coins_changed" from="Player" to="Player/GUI" method="_on_Player_coins_changed"]

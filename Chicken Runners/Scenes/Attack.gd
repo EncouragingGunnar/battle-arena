@@ -35,4 +35,4 @@ func handle_input(_event: InputEvent):
 
 func exit():
 	player.swordHitbox2.set_deferred("disabled", true)
-
+	player.can_input = true
