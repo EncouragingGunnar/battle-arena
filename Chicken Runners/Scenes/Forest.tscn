@@ -1,0 +1,10 @@
+[gd_scene format=2]
+
+[node name="Forest" type="Node2D"]
+
+[node name="Navigation2D" type="Navigation2D" parent="."]
+edge_connection_margin = 40.0
+
+[node name="TileMap" type="TileMap" parent="Navigation2D"]
+bake_navigation = true
+format = 1

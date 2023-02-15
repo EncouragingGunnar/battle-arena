@@ -3,6 +3,7 @@ extends PlayerState
 
 func enter(_msg := {}):
 	player.velocity = Vector2.ZERO
+	player.animationTree.set("parameters/TimeScale/scale", player.playerstats.bow_attack_speed)
 	var attack_vector = player.global_position.direction_to(player.get_global_mouse_position())
 	player.animationTree.set("parameters/AnimationNodeStateMachine/Idle/blend_position", attack_vector)
 	player.animationTree.set("parameters/AnimationNodeStateMachine/RangedAttack/blend_position", attack_vector)
@@ -31,5 +32,5 @@ func handle_input(_event: InputEvent):
 	pass
 
 func exit():
-	pass
+	player.animationTree.set("parameters/TimeScale/scale", player.playerstats.animation_speed)
 

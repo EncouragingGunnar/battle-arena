@@ -9,6 +9,7 @@ signal leveled_up()
 
 export (Resource) var playerstats
 
+
 var can_input: bool = true
 var can_roll: bool = true
 
@@ -40,10 +41,14 @@ onready var sprite = $Sprite2
 func _ready() -> void:
 	randomize()
 	animationTree.active = true
+	animationTree.set("parameters/TimeScale/scale", playerstats.animation_speed)
 	swordHitbox.set_deferred("disabled", true)
 	swordHitbox2.set_deferred("disabled", true)
 	current_hp = playerstats.max_hp
 	current_mp = playerstats.max_mp
+	$SlashHitboxPosition/Hitbox2.damage = playerstats.melee_damage
+	$SlashHitboxPosition/Hitbox2.knockback_strength = playerstats.player_knockback_strength
+	hurtbox.knockback_resistance = playerstats.player_knockback_resistance
 	experience_required = get_required_xp_to_level_up()
 	Inventory.connect("item_dropped", self, "_on_items_dropped")
 	Inventory.connect("item_equipped", self, "_on_items_equipped")
@@ -55,7 +60,7 @@ func _on_RollTimer_timeout() -> void:
 	can_roll = true
 
 func take_damage(damage: int) -> void:
-	current_hp -= damage
+	current_hp -= int(damage / float(playerstats.defense))
 	emit_signal("health_changed", current_hp, playerstats.max_hp)
 	if current_hp <= 0:
 		die()
@@ -117,12 +122,12 @@ func change_hit_opacity(value: float) -> void:
 	sprite.material.set_shader_param("hit_opacity", value)
 
 func _on_items_equipped(item: EquipmentItem) -> void:
-	playerstats.melee_damage += item.melee_damage
-	playerstats.bow_damage += item.bow_damage
-	#item.melee_attack_speed
-	#item.defense
+	playerstats.melee_damage += item.melee_damage_increase
+	playerstats.bow_damage += item.bow_damage_increase
+	playerstats.melee_attack_speed += item.melee_attack_speed_increase
+	playerstats.defense += item.defense_increase
 	set_max_hp(playerstats.max_hp + item.max_health_increase)
-	#item.bow_attack_speed
+	playerstats.bow_attack_speed += item.bow_attack_speed_increase
 	hurtbox.knockback_resistance += item.knockback_resistance_increase
 	$SlashHitboxPosition/Hitbox2.knockback_strength += item.knockback_strength_increase
 	playerstats.max_mp += item.max_mana_increase
@@ -130,12 +135,12 @@ func _on_items_equipped(item: EquipmentItem) -> void:
 		emit_signal("mana_changed", current_mp, playerstats.max_mp)
 
 func _on_items_unequipped(item: EquipmentItem) -> void:
-	playerstats.melee_damage -= item.melee_damage
-	playerstats.bow_damage -= item.bow_damage
-	#item.melee_attack_speed
-	#item.defense
+	playerstats.melee_damage -= item.melee_damage_increase
+	playerstats.bow_damage -= item.bow_damage_increase
+	playerstats.melee_attack_speed -= item.melee_attack_speed_increase
+	playerstats.defense -= item.defense_increase
 	set_max_hp(playerstats.max_hp - item.max_health_increase)
-	#item.bow_attack_speed
+	playerstats.bow_attack_speed -= item.bow_attack_speed_increase
 	hurtbox.knockback_resistance -= item.knockback_resistance_increase
 	$SlashHitboxPosition/Hitbox2.knockback_strength -= item.knockback_strength_increase
 	playerstats.max_mp -= item.max_mana_increase

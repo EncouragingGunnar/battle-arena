@@ -5,7 +5,7 @@ func _ready() -> void:
 
 
 func _on_StartButton_pressed() -> void:
-	Transition.load_scene("res://Scenes/Level.tscn")
+	Transition.load_scene("res://Scenes/Dungeon.tscn")
 
 
 func _on_QuitButton_pressed() -> void:

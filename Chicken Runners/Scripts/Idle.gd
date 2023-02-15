@@ -18,11 +18,11 @@ func update(delta: float):
 		player.animationState.travel("Idle")
 	
 	if player.can_input:	
-		if Input.is_action_just_pressed("ui_down") or Input.is_action_just_pressed("ui_up") or Input.is_action_just_pressed("ui_left") or Input.is_action_just_pressed("ui_right"):
+		if Input.is_action_pressed("ui_down") or Input.is_action_pressed("ui_up") or Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right"):
 			if Input.is_action_pressed("Sprint"):
 				state_machine.transition_to("Run")
 			state_machine.transition_to("Walk")
-		if Input.is_action_just_pressed("ui_left_click"):
+		if Input.is_action_pressed("ui_left_click"):
 			state_machine.transition_to("Attack1")
 		if Input.is_action_just_pressed("ui_right_click"):
 			state_machine.transition_to("RangedAttack")

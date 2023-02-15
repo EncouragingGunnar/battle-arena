@@ -26,11 +26,11 @@ radius = 5.65685
 height = 9.89952
 
 [sub_resource type="CapsuleShape2D" id=243]
-radius = 5.1127
+radius = 4.0
 height = 12.402
 
 [sub_resource type="CapsuleShape2D" id=105]
-radius = 3.0
+radius = 4.0
 height = 10.0
 
 [sub_resource type="ShaderMaterial" id=242]
@@ -2717,8 +2717,7 @@ knockback_strength = 50
 hiteffect = ExtResource( 1 )
 
 [node name="CollisionShape2D" parent="SlashHitboxPosition/Hitbox2" index="0"]
-visible = false
-position = Vector2( 12.0208, 0.707108 )
+position = Vector2( 10, 0 )
 shape = SubResource( 243 )
 
 [node name="ArrowStartPosition" type="Position2D" parent="."]
@@ -2833,7 +2832,7 @@ parameters/AnimationNodeStateMachine/Roll/blend_position = Vector2( 0, 1 )
 parameters/AnimationNodeStateMachine/Run/blend_position = Vector2( 0, 1 )
 parameters/AnimationNodeStateMachine/RunStop/blend_position = Vector2( 0, 0 )
 parameters/AnimationNodeStateMachine/Walk/blend_position = Vector2( 0, 1 )
-parameters/TimeScale/scale = 1.2
+parameters/TimeScale/scale = 1.0
 
 [connection signal="timeout" from="StateMachine/Roll/RollTimer" to="." method="_on_RollTimer_timeout"]
 

@@ -5,6 +5,8 @@ export var next_state: String
 export var animation_state_name: String
 
 func enter(_msg := {}):
+	$"../../SlashHitboxPosition/Hitbox2".damage = player.playerstats.melee_damage
+	player.animationTree.set("parameters/TimeScale/scale", player.playerstats.melee_attack_speed)
 	var attack_vector = player.global_position.direction_to(player.get_global_mouse_position())
 	player.animationTree.set("parameters/AnimationNodeStateMachine/Idle/blend_position", attack_vector)
 	player.animationTree.set("parameters/AnimationNodeStateMachine/Attack1/blend_position", attack_vector)
@@ -18,7 +20,7 @@ func update(_delta: float):
 	
 	
 func physics_update(delta: float):
-	if next_state and player.can_input and Input.is_action_just_pressed("ui_left_click"):
+	if next_state and player.can_input and Input.is_action_pressed("ui_left_click"):
 		state_machine.transition_to(next_state)
 
 	if player.can_input:
@@ -34,5 +36,6 @@ func handle_input(_event: InputEvent):
 	pass
 
 func exit():
+	player.animationTree.set("parameters/TimeScale/scale", player.playerstats.animation_speed)
 	player.swordHitbox2.set_deferred("disabled", true)
 	player.can_input = true

@@ -5,6 +5,7 @@ var direction: Vector2 = Vector2.ZERO
 
 func _ready() -> void:
 	set_as_toplevel(true)
+	rotation += PI/2
 	rotation += direction.angle()
 	
 func _physics_process(delta: float) -> void:

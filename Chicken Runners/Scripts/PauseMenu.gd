@@ -1,7 +1,7 @@
 extends Control
 
 
-func _input(event: InputEvent) -> void:
+func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
 		get_tree().paused = !get_tree().paused
 		if get_tree().paused:
