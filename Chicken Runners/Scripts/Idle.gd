@@ -11,7 +11,7 @@ func enter(msg := {}):
 
 
 func update(delta: float):
-	if run_stop_time > 0:
+	if run_stop_time >= 0:
 		run_stop_time -= delta
 		
 	if is_equal_approx(run_stop_time, 0):

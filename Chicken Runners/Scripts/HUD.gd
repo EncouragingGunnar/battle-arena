@@ -57,3 +57,5 @@ func _on_LevelUpTimer_timeout() -> void:
 	tween.interpolate_property(leveluplabel, "percent_visible", 1, 0, 0.4, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	tween.start()
 
+
+

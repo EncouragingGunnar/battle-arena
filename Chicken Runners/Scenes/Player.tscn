@@ -1,4 +1,4 @@
-[gd_scene load_steps=98 format=2]
+[gd_scene load_steps=102 format=2]
 
 [ext_resource path="res://Scenes/HitEffect.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=2]
@@ -16,6 +16,10 @@
 [ext_resource path="res://Scripts/Hurt.gd" type="Script" id=14]
 [ext_resource path="res://Resources/PlayerAnimationTreeStateMachine.tres" type="AnimationNodeStateMachine" id=15]
 [ext_resource path="res://Scripts/Walk.gd" type="Script" id=16]
+[ext_resource path="res://Scenes/Camera.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Scenes/HUD.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Scenes/Menus/PauseMenu.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Scenes/Inventory/InventoryContainer.tscn" type="PackedScene" id=20]
 
 [sub_resource type="CapsuleShape2D" id=104]
 radius = 6.0
@@ -2642,7 +2646,7 @@ tracks/0/keys = {
 [sub_resource type="AnimationNodeTimeScale" id=287]
 
 [sub_resource type="AnimationNodeBlendTree" id=288]
-graph_offset = Vector2( -554.625, 66.3 )
+graph_offset = Vector2( -340.475, 4.935 )
 nodes/AnimationNodeStateMachine/node = ExtResource( 15 )
 nodes/AnimationNodeStateMachine/position = Vector2( -260, 120 )
 nodes/TimeScale/node = SubResource( 287 )
@@ -2834,8 +2838,32 @@ parameters/AnimationNodeStateMachine/RunStop/blend_position = Vector2( 0, 0 )
 parameters/AnimationNodeStateMachine/Walk/blend_position = Vector2( 0, 1 )
 parameters/TimeScale/scale = 1.0
 
+[node name="Camera2D" parent="." instance=ExtResource( 17 )]
+current = true
+zoom = Vector2( 0.25, 0.25 )
+smoothing_enabled = true
+
+[node name="TopLeft" parent="Camera2D/Node" index="0"]
+position = Vector2( -409, -408 )
+
+[node name="BottomRight" parent="Camera2D/Node" index="1"]
+position = Vector2( 1083, 660 )
+
+[node name="GUI" parent="." instance=ExtResource( 18 )]
+
+[node name="PauseMenu2" parent="GUI" instance=ExtResource( 19 )]
+visible = false
+
+[node name="InventoryContainer" parent="GUI" instance=ExtResource( 20 )]
+visible = false
+
+[connection signal="coins_changed" from="." to="GUI" method="_on_Player_coins_changed"]
+[connection signal="health_changed" from="." to="GUI" method="_on_Player_health_changed"]
+[connection signal="leveled_up" from="." to="GUI" method="_on_Player_leveled_up"]
+[connection signal="xp_changed" from="." to="GUI" method="_on_Player_xp_changed"]
 [connection signal="timeout" from="StateMachine/Roll/RollTimer" to="." method="_on_RollTimer_timeout"]
 
 [editable path="SlashHitboxPosition/Hitbox1"]
 [editable path="SlashHitboxPosition/Hitbox2"]
 [editable path="Hurtbox"]
+[editable path="Camera2D"]

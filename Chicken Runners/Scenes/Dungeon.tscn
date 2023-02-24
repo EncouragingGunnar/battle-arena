@@ -1,16 +1,12 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://Textures/37033d6e-0c40-44a3-857b-0192add29fc7 (1).png" type="Texture" id=1]
 [ext_resource path="res://Textures/0f6a29db-2521-4e60-899f-1795dfa4906e.png" type="Texture" id=2]
 [ext_resource path="res://Textures/16x16 dungeon ii wall reconfig v04 spritesheet.png" type="Texture" id=3]
 [ext_resource path="res://Scenes/Enemies/Skeleton.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Scenes/Camera.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/Enemies/Zombie.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/Enemies/Big Zombie.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Scenes/HUD.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Scenes/Menus/PauseMenu.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Scenes/Inventory/InventoryContainer.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Scripts/Level.gd" type="Script" id=12]
 [ext_resource path="res://Textures/Enemies/spritesheet (2).png" type="Texture" id=13]
 
@@ -550,35 +546,8 @@ path_to_player = NodePath("../../Player")
 
 [node name="Player" parent="." instance=ExtResource( 5 )]
 
-[node name="GUI" parent="Player" instance=ExtResource( 9 )]
-
-[node name="PauseMenu2" parent="Player/GUI" instance=ExtResource( 10 )]
-visible = false
-
-[node name="InventoryContainer" parent="Player/GUI" instance=ExtResource( 11 )]
-visible = false
-
-[node name="Camera2D" parent="Player" instance=ExtResource( 6 )]
-position = Vector2( 1, 1 )
-current = true
-zoom = Vector2( 0.25, 0.25 )
-smoothing_enabled = true
-
-[node name="TopLeft" parent="Player/Camera2D/Node" index="0"]
-position = Vector2( -409, -408 )
-
-[node name="BottomRight" parent="Player/Camera2D/Node" index="1"]
-position = Vector2( 1083, 660 )
-
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 57, -32 )
 frames = SubResource( 81 )
-frame = 6
+frame = 1
 playing = true
-
-[connection signal="coins_changed" from="Player" to="Player/GUI" method="_on_Player_coins_changed"]
-[connection signal="health_changed" from="Player" to="Player/GUI" method="_on_Player_health_changed"]
-[connection signal="leveled_up" from="Player" to="Player/GUI" method="_on_Player_leveled_up"]
-[connection signal="xp_changed" from="Player" to="Player/GUI" method="_on_Player_xp_changed"]
-
-[editable path="Player/Camera2D"]
