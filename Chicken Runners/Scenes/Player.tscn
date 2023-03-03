@@ -1,4 +1,4 @@
-[gd_scene load_steps=102 format=2]
+[gd_scene load_steps=103 format=2]
 
 [ext_resource path="res://Scenes/HitEffect.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=2]
@@ -20,10 +20,11 @@
 [ext_resource path="res://Scenes/HUD.tscn" type="PackedScene" id=18]
 [ext_resource path="res://Scenes/Menus/PauseMenu.tscn" type="PackedScene" id=19]
 [ext_resource path="res://Scenes/Inventory/InventoryContainer.tscn" type="PackedScene" id=20]
+[ext_resource path="res://Scripts/InventoryState.gd" type="Script" id=21]
 
 [sub_resource type="CapsuleShape2D" id=104]
-radius = 6.0
-height = 10.0
+radius = 4.0
+height = 0.0
 
 [sub_resource type="CapsuleShape2D" id=100]
 radius = 5.65685
@@ -2646,7 +2647,7 @@ tracks/0/keys = {
 [sub_resource type="AnimationNodeTimeScale" id=287]
 
 [sub_resource type="AnimationNodeBlendTree" id=288]
-graph_offset = Vector2( -340.475, 4.935 )
+graph_offset = Vector2( -378.45, 98.9625 )
 nodes/AnimationNodeStateMachine/node = ExtResource( 15 )
 nodes/AnimationNodeStateMachine/position = Vector2( -260, 120 )
 nodes/TimeScale/node = SubResource( 287 )
@@ -2661,6 +2662,7 @@ script = ExtResource( 2 )
 playerstats = ExtResource( 13 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -1, 6 )
 shape = SubResource( 104 )
 
 [node name="StateMachine" type="Node" parent="."]
@@ -2669,6 +2671,9 @@ initial_state = NodePath("Idle")
 
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource( 4 )
+
+[node name="Inventory" type="Node" parent="StateMachine"]
+script = ExtResource( 21 )
 
 [node name="Run" type="Node" parent="StateMachine"]
 script = ExtResource( 5 )
@@ -2856,6 +2861,9 @@ visible = false
 
 [node name="InventoryContainer" parent="GUI" instance=ExtResource( 20 )]
 visible = false
+
+[node name="CombatTimer" type="Timer" parent="."]
+one_shot = true
 
 [connection signal="coins_changed" from="." to="GUI" method="_on_Player_coins_changed"]
 [connection signal="health_changed" from="." to="GUI" method="_on_Player_health_changed"]

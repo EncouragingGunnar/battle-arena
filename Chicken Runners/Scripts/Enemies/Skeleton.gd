@@ -91,7 +91,7 @@ func _idle_state(delta: float) -> void:
 	velocity = velocity.move_toward(Vector2.ZERO, ACCEL * delta)
 	_look_at_player()
 	if _can_see_player():
-		state = CHASE	
+		state = CHASE
 			
 	if wanderTimer.time_left == 0:
 		state = idle_states[randi() % idle_states.size()]
@@ -156,7 +156,7 @@ func _can_see_player() -> bool:
 	
 func _look_at_player() -> void:
 	if is_instance_valid(player):
-		sight.look_at(player.global_position)
+		sight.look_at(player.global_position + Vector2(0, 6))
 		
 	
 func _on_PathTimer_timeout() -> void:

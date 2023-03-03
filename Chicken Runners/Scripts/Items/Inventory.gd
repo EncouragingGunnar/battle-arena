@@ -8,9 +8,10 @@ signal item_equipped(index)
 signal item_unequipped(index)
 
 var items = [
-	null, null, preload("res://Resources/Items/HealthPotion.tres").duplicate(), preload("res://Resources/Items/RareGlove.tres").duplicate(), null, null, null, null, null, null, null, null, null, null, null, null, null, null
+	null, null, preload("res://Resources/Items/HealthPotion.tres").duplicate(), preload("res://Resources/Items/Godlike Gloves.tres").duplicate(), null, null, null, null, null, null, null, null, null, null, null, null, null, null
 	]
 
+var data = {}
 var universal_slots = [2, 3, 4, 5, 8, 9, 10, 11, 14, 15, 16, 17]
 var equipment_slots = [0, 1, 6, 7, 12, 13]
 

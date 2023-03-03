@@ -18,7 +18,7 @@ func _on_Coin_body_entered(body):
 	if body.is_in_group("WorldObject"):
 		tween.stop_all()
 		set_collision_mask_bit(3, false)
-	if body.has_method("collect_coin"):
+	if body is Player:
 		tween.stop_all()
 		tween.interpolate_property(animatedsprite, "scale", Vector2(1, 1), Vector2.ZERO, 0.1, Tween.TRANS_LINEAR)
 		tween.interpolate_property(self, "position", global_position, body.global_position, 0.1, Tween.TRANS_LINEAR)

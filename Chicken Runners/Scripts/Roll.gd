@@ -11,7 +11,7 @@ func enter(_msg := {}):
 	player.animationState.travel("Roll")
 	current_roll_time = roll_time
 	roll_direction = player.animationTree.get("parameters/AnimationNodeStateMachine/Roll/blend_position")
-	rollTween.interpolate_property(player, "velocity", Vector2.ZERO, roll_direction * player.playerstats.ROLL_SPEED, roll_time, Tween.TRANS_EXPO, Tween.EASE_IN_OUT)
+	rollTween.interpolate_property(player, "velocity", Vector2.ZERO, roll_direction * player.playerstats.ROLL_SPEED, roll_time, Tween.TRANS_EXPO, Tween.EASE_OUT)
 	rollTween.start()
 	player.can_roll = false
 	player.hurtbox.monitorable = false
@@ -37,6 +37,9 @@ func update(delta: float) -> void:
 		return
 	else:
 		state_machine.transition_to("Idle")
+		return
+	if Input.is_action_just_pressed("Inventory"):
+		state_machine.transition_to("Inventory")
 		return
 	
 

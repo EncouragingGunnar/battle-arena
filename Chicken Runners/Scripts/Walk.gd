@@ -36,7 +36,8 @@ func handle_input(_event: InputEvent):
 		state_machine.transition_to("RangedAttack")
 	if Input.is_action_just_pressed("Roll") and player.can_roll:
 		state_machine.transition_to("Roll")
-	
+	if Input.is_action_just_pressed("Inventory"):
+		state_machine.transition_to("Inventory")
 	
 func exit():
 	pass

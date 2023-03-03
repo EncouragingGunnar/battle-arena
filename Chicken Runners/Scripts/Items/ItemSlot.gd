@@ -4,7 +4,7 @@ onready var itemtexture = $MarginContainer/ItemTexture
 onready var amountlabel = $MarginContainer/ItemTexture/AmountLabel
 onready var iteminfo = get_parent().get_parent().get_node("ItemInfo")
 
-onready var Inventory = preload("res://Resources/Items/Inventory.tres")
+onready var Inventory: Inventory = preload("res://Resources/Items/Inventory.tres")
 
 export (int) var slot_number
 enum slottype {
@@ -56,6 +56,7 @@ func get_drag_data(_position):
 		data.item_index = item_index
 		var previewControl = Control.new() 
 		var dragPreview = TextureRect.new()
+		previewControl.set_name("DragPreview")
 		dragPreview.expand = true
 		dragPreview.rect_size = Vector2(48, 48)
 		previewControl.add_child(dragPreview)
@@ -130,24 +131,7 @@ func _on_ItemSlot_gui_input(_event) -> void:
 		Inventory.use_item(slot_number)
 		yield(get_tree().create_timer(0.5), "timeout")
 		can_use_item = true
-		
-"""
-	if Input.is_action_pressed("Split") and Inventory.items.find(null, 0) != -1 and can_split:
-		can_split = false
-		var item = Inventory.items[slot_number]
-		if !item.get("amount"):
-			return
-		if item.amount > 1:
-			var split_amount = int(item.amount / 2)
-			var other_split_amount = item.amount - split_amount
-			var empty_slot_index = Inventory.check_if_can_pick_up_item(item)
-			if empty_slot_index != null:
-				Inventory.pick_up_item(empty_slot_index, item)
-			Inventory.change_item_quantity(empty_slot_index, -1 *  split_amount)
-			Inventory.change_item_quantity(slot_number, -1 * other_split_amount)
-			yield(get_tree().create_timer(2.0), "timeout")
-			can_split = true
-"""
+
 
 func _on_ItemSlot_mouse_entered() -> void:
 	if Inventory.items[slot_number] != null:

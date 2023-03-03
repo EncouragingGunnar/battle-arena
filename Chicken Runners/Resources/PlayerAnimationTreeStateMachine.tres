@@ -396,10 +396,13 @@ blend_mode = 1
 [sub_resource type="AnimationNodeStateMachineTransition" id=175]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=181]
+switch_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=182]
+switch_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=183]
+switch_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=249]
 
@@ -408,6 +411,7 @@ blend_mode = 1
 [sub_resource type="AnimationNodeStateMachineTransition" id=252]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=273]
+switch_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=283]
 
@@ -435,7 +439,7 @@ blend_mode = 1
 states/Attack1/node = SubResource( 164 )
 states/Attack1/position = Vector2( -1259.4, 222.185 )
 states/Attack2/node = SubResource( 165 )
-states/Attack2/position = Vector2( -1108.4, 222.185 )
+states/Attack2/position = Vector2( -1004.4, 215.185 )
 states/Dash/node = SubResource( 163 )
 states/Dash/position = Vector2( -1416.4, 271.185 )
 states/Idle/node = SubResource( 166 )
@@ -452,4 +456,4 @@ states/Walk/node = SubResource( 285 )
 states/Walk/position = Vector2( -1383.4, 47.6025 )
 transitions = [ "Idle", "RangedAttack", SubResource( 172 ), "RangedAttack", "Idle", SubResource( 173 ), "Idle", "Roll", SubResource( 174 ), "Roll", "Idle", SubResource( 175 ), "Attack1", "Idle", SubResource( 181 ), "Attack1", "Attack2", SubResource( 182 ), "Attack2", "Idle", SubResource( 183 ), "Idle", "Run", SubResource( 249 ), "Run", "Roll", SubResource( 251 ), "Roll", "Run", SubResource( 252 ), "Attack2", "Attack1", SubResource( 273 ), "Run", "RunStop", SubResource( 283 ), "RunStop", "Idle", SubResource( 284 ), "Idle", "Walk", SubResource( 286 ), "Walk", "Idle", SubResource( 287 ), "Walk", "Run", SubResource( 288 ), "Run", "Walk", SubResource( 289 ), "Walk", "Roll", SubResource( 290 ), "Roll", "Walk", SubResource( 291 ), "Idle", "Attack1", SubResource( 300 ), "Run", "Attack1", SubResource( 301 ), "Walk", "Attack1", SubResource( 302 ) ]
 start_node = "Idle"
-graph_offset = Vector2( -1918.29, 167.948 )
+graph_offset = Vector2( -1562.71, 17.2206 )

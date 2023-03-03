@@ -7,6 +7,9 @@ onready var knockbackTween = $"../../KnockbackTween"
 
 func enter(msg := {}):
 	assert(msg.has("knockback_stats"))
+	if player.in_inventory:
+		player.in_inventory = !player.in_inventory
+		player.Inventorycontainer.visible = false
 	current_knockback_time = knockback_time
 	knockbackTween.interpolate_property(player, "velocity", player.velocity, msg["knockback_stats"], knockback_time, Tween.TRANS_BACK, Tween.EASE_IN_OUT)
 	knockbackTween.start()
@@ -33,9 +36,13 @@ func update(delta: float) -> void:
 	if Input.is_action_pressed("ui_right_click"):
 		state_machine.transition_to("RangedAttack")
 		return
+	if Input.is_action_just_pressed("Inventory"):
+		state_machine.transition_to("Inventory")
+		return
 	else:
 		state_machine.transition_to("Idle")
 		return
+	
 	
 
 func physics_update(_delta):

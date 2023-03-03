@@ -9,7 +9,7 @@ signal leveled_up()
 
 export (Resource) var playerstats
 
-
+var in_inventory: bool = false
 var can_input: bool = true
 var can_roll: bool = true
 
@@ -20,10 +20,11 @@ var velocity: Vector2 = Vector2()
 
 var current_hp: int
 var current_mp: int
+var combat_time: int = 4
 
 var Inventory = preload("res://Resources/Items/Inventory.tres")
 
-onready var droppedItem = preload("res://Scenes/Inventory/DroppedItem.tscn")
+onready var dropped_item = preload("res://Scenes/Inventory/DroppedItem.tscn")
 onready var animationPlayer = $AnimationPlayer2
 onready var animationTree = $AnimationTree3
 onready var animationState = animationTree.get("parameters/AnimationNodeStateMachine/playback")
@@ -34,8 +35,10 @@ onready var swordHitbox = $SlashHitboxPosition/Hitbox1/CollisionShape2D
 onready var swordHitbox2 = $SlashHitboxPosition/Hitbox2/CollisionShape2D
 onready var collisionShape = $CollisionShape2D
 onready var Inventorycontainer = $GUI/InventoryContainer
+onready var combat_timer = $CombatTimer
 onready var hurtbox = $Hurtbox
 onready var sprite = $Sprite2
+
 
 
 func _ready() -> void:
@@ -62,6 +65,7 @@ func _on_RollTimer_timeout() -> void:
 func take_damage(damage: int) -> void:
 	current_hp -= int(damage / float(playerstats.defense))
 	emit_signal("health_changed", current_hp, playerstats.max_hp)
+	combat_timer.start(combat_time)
 	if current_hp <= 0:
 		die()
 		
@@ -113,7 +117,7 @@ func level_up() -> void:
 func _on_items_dropped(index: int) -> void:
 	var item = Inventory.items[index]
 	Inventory.remove_item(index)
-	var droppeditem = droppedItem.instance()
+	var droppeditem = dropped_item.instance()
 	droppeditem.position = global_position + (animationTree.get("parameters/AnimationNodeStateMachine/Idle/blend_position") * 50)
 	droppeditem.itemresource = item
 	get_parent().add_child(droppeditem)
@@ -157,9 +161,3 @@ func _on_item_used(index: int) -> void:
 		gain_experience(item.experience_receive)
 	#current_mp += item.mana_restore
 	
-
-func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("Inventory"):
-		Inventorycontainer.visible = !Inventorycontainer.visible
-		stateMachine.transition_to("Idle")
-		can_input = !can_input

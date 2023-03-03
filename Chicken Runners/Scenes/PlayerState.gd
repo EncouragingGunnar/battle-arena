@@ -11,9 +11,7 @@ func _ready():
 	yield(owner, "ready")
 	player = owner as Player
 	assert(player != null)
-	
-	#animationTree = player.get_node("AnimationTree")
-	#animationState = animationTree.get("parameters/playback")
+
 
 	
 func update(_delta: float):

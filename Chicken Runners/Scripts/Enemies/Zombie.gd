@@ -199,7 +199,7 @@ func _can_see_player() -> bool:
 
 func _look_at_player() -> void:
 	if is_instance_valid(player):
-		sight.look_at(player.global_position)
+		sight.look_at(player.global_position + Vector2(0, 6))
 
 func _on_PathTimer_timeout():
 	can_update_pathfinding = true

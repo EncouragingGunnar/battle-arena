@@ -4,4 +4,4 @@
 
 [node name="World" type="Node2D"]
 
-[node name="Level" parent="." instance=ExtResource( 1 )]
+[node name="Dungeon" parent="." instance=ExtResource( 1 )]
