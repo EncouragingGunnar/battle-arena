@@ -1,23 +1,23 @@
 [gd_resource type="Resource" load_steps=3 format=2]
 
 [ext_resource path="res://Scripts/Items/EquipmentItem.gd" type="Script" id=1]
-[ext_resource path="res://Textures/Items/gloves_01d.png" type="Texture" id=2]
+[ext_resource path="res://Textures/Items/necklace_01a.png" type="Texture" id=2]
 
 [resource]
 script = ExtResource( 1 )
-name = "Godlike Gloves"
-item_description = "+ 100 hp, + 50 melee damage
-Makes you extremely powerful"
+name = "Necklace of Health"
+item_description = "+30 health
+Makes you more healthy!"
 texture = ExtResource( 2 )
-rarity = 3
-equipment_type = 2
+rarity = 1
+equipment_type = 0
 level_requirement = 0
-melee_damage_increase = 50
+melee_damage_increase = 0
 melee_attack_speed_increase = 0.0
 bow_damage_increase = 0
 bow_attack_speed_increase = 0.0
 defense_increase = 0
-max_health_increase = 100
+max_health_increase = 30
 knockback_resistance_increase = 0.0
 knockback_strength_increase = 0
 max_mana_increase = 0

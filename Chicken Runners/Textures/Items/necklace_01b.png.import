@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/gloves_01b.png-2704ecd57cc4ff388e12a89a522ab9ba.stex"
+path="res://.import/necklace_01b.png-5a24b9fbb62e96255c36733341214dfb.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Items/gloves_01b.png"
-dest_files=[ "res://.import/gloves_01b.png-2704ecd57cc4ff388e12a89a522ab9ba.stex" ]
+source_file="res://Textures/Items/necklace_01b.png"
+dest_files=[ "res://.import/necklace_01b.png-5a24b9fbb62e96255c36733341214dfb.stex" ]
 
 [params]
 

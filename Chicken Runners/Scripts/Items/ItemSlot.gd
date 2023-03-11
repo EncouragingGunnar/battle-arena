@@ -99,7 +99,7 @@ func drop_data(_position, data: Dictionary) -> void:
 		else:
 			Inventory.swap_items(new_index, item_index)
 			
-	elif new_item != null and item.name == new_item.name and item.get("stack_size") and slot_type != 6:
+	elif new_item != null and item.name == new_item.name and item.get("stack_size") and slot_type == item_slot_type:
 		if item.amount + new_item.amount <= item.stack_size:
 			Inventory.change_item_quantity(new_index, item.amount)
 			Inventory.remove_item(item_index)

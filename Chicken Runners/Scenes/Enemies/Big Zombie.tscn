@@ -83,8 +83,8 @@ shape = SubResource( 10 )
 [node name="Hurtbox" parent="." instance=ExtResource( 3 )]
 collision_layer = 2
 collision_mask = 192
-knockbackResistance = 100
-invincibilityTime = 0.4
+knockback_resistance = 100
+invincibility_time = 0.3
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
 position = Vector2( 0, 3.5 )
@@ -111,7 +111,6 @@ one_shot = true
 collision_layer = 32
 collision_mask = 4
 damage = 30
-knockbackStrength = 100
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
 position = Vector2( 0, 3.5 )
@@ -119,7 +118,7 @@ shape = SubResource( 13 )
 
 [node name="LineOfSight" type="RayCast2D" parent="."]
 enabled = true
-cast_to = Vector2( 250, 0 )
+cast_to = Vector2( 200, 0 )
 collision_mask = 9
 
 [node name="ChargeTween" type="Tween" parent="."]
@@ -130,7 +129,7 @@ position = Vector2( 0, 26.5 )
 [node name="MonsterPosition2" type="Position2D" parent="."]
 position = Vector2( 0, -20.75 )
 
-[connection signal="body_entered" from="Hurtbox" to="." method="_on_Hurtbox_body_entered"]
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
 
 [editable path="Hurtbox"]
 [editable path="Hitbox"]

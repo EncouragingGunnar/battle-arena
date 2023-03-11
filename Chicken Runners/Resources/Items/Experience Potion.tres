@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/Items/ConsumableItem.gd" type="Script" id=1]
+[ext_resource path="res://Textures/Items/potion_02c.png" type="Texture" id=2]
+
+[resource]
+script = ExtResource( 1 )
+name = "Experience Potion"
+item_description = "+40 xp
+Gives experience!"
+texture = ExtResource( 2 )
+amount = 4
+stack_size = 16
+hp_restore = 0
+experience_receive = 40
+mp_restore = 0

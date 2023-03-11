@@ -12,6 +12,7 @@ var can_attack: bool = true
 var experience_dropped: int = 80
 
 
+
 const MAX_SPEED = 45
 const ACCEL = 150
 const MAX_DISTANCE_TO_PLAYER = 150
@@ -139,7 +140,7 @@ func _chase_state(delta: float) -> void:
 		_update_pathfinding(player.global_position)
 		var direction = global_position.direction_to(agent.get_next_location())
 		velocity = velocity.move_toward(direction * MAX_SPEED, ACCEL *  delta)
-		sprite.play("Run")	
+		sprite.play("Run")
 		
 	
 	if _can_see_player() and distance_to_player < MIN_DISTANCE_TO_PLAYER:

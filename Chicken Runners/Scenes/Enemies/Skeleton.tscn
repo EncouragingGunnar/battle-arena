@@ -76,7 +76,7 @@ wanderRange = 40
 material = SubResource( 19 )
 frames = SubResource( 9 )
 animation = "Run"
-frame = 3
+frame = 2
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -117,7 +117,7 @@ one_shot = true
 
 [node name="LineOfSight" type="RayCast2D" parent="."]
 enabled = true
-cast_to = Vector2( 250, 0 )
+cast_to = Vector2( 150, 0 )
 
 [node name="Hitbox" parent="." instance=ExtResource( 6 )]
 collision_layer = 32

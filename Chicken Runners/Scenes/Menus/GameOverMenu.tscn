@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scripts/GameOverMenu.gd" type="Script" id=1]
 [ext_resource path="res://fonts and themes/font.ttf" type="DynamicFontData" id=2]
@@ -20,6 +20,10 @@ color = Color( 1, 1, 1, 1 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 40
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 32
 font_data = ExtResource( 2 )
 
 [node name="GameOver" type="Control"]
@@ -54,11 +58,26 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -165.0
-margin_top = -88.0
-margin_bottom = -47.0
+margin_left = -166.0
+margin_top = -148.0
+margin_right = -1.0
+margin_bottom = -107.0
 rect_scale = Vector2( 2, 2 )
 custom_fonts/font = SubResource( 2 )
 text = "Game Over!"
+
+[node name="CoinsLabel" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -130.0
+margin_top = -50.0
+margin_right = 128.0
+margin_bottom = -18.0
+custom_fonts/font = SubResource( 8 )
+text = "You collected 1 coin!"
+align = 1
+valign = 1
 
 [connection signal="pressed" from="MenuButton" to="." method="_on_MenuButton_pressed"]

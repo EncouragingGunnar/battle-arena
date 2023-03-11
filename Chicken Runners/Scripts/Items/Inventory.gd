@@ -8,7 +8,7 @@ signal item_equipped(index)
 signal item_unequipped(index)
 
 var items = [
-	null, null, preload("res://Resources/Items/HealthPotion.tres").duplicate(), preload("res://Resources/Items/Godlike Gloves.tres").duplicate(), null, null, null, null, null, null, null, null, null, null, null, null, null, null
+	null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
 	]
 
 var data = {}

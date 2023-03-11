@@ -2652,7 +2652,7 @@ nodes/AnimationNodeStateMachine/node = ExtResource( 15 )
 nodes/AnimationNodeStateMachine/position = Vector2( -260, 120 )
 nodes/TimeScale/node = SubResource( 287 )
 nodes/TimeScale/position = Vector2( 100, 140 )
-node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "AnimationNodeStateMachine" ]
+node_connections = [ "TimeScale", 0, "AnimationNodeStateMachine", "output", 0, "TimeScale" ]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=289]
 

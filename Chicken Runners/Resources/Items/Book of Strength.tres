@@ -1,20 +1,20 @@
 [gd_resource type="Resource" load_steps=3 format=2]
 
 [ext_resource path="res://Scripts/Items/EquipmentItem.gd" type="Script" id=1]
-[ext_resource path="res://Textures/Items/gloves_01e.png" type="Texture" id=2]
+[ext_resource path="res://Textures/Items/book_03b.png" type="Texture" id=2]
 
 [resource]
 script = ExtResource( 1 )
-name = "Gloves of Strength"
-item_description = "+ 10 Damage
+name = "Book of Strength"
+item_description = "+10 strength
 Makes you stronger
 Requires level 3!"
 texture = ExtResource( 2 )
 rarity = 2
-equipment_type = 2
+equipment_type = 5
 level_requirement = 3
 melee_damage_increase = 10
-melee_attack_speed_increase = 0.1
+melee_attack_speed_increase = 0.0
 bow_damage_increase = 0
 bow_attack_speed_increase = 0.0
 defense_increase = 0

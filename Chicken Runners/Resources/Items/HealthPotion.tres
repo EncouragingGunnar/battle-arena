@@ -9,7 +9,7 @@ name = "Health Potion"
 item_description = "+ 20 Health
 Restores your health after a tough battle"
 texture = ExtResource( 1 )
-amount = 8
+amount = 3
 stack_size = 16
 hp_restore = 20
 experience_receive = 0

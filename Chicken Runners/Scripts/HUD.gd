@@ -2,8 +2,8 @@ extends CanvasLayer
 
 onready var healthbar = $HealthBar
 onready var healthlabel = $HealthBar/HealthBarLabel
-onready var manabar = $ManaBar
-onready var manalabel = $ManaBar/ManaBarLabel
+#onready var manabar = $ManaBar
+#onready var manalabel = $ManaBar/ManaBarLabel
 onready var xpbar = $XPBar
 onready var xplabel = $XPBar/XPLabel
 onready var levellabel = $LevelLabel
@@ -15,7 +15,7 @@ onready var leveluptimer = $XPBar/LevelUpLabel/LevelUpTimer
 
 func _ready() -> void:
 	healthbar.value = 100
-	manabar.value = 100
+	#manabar.value = 100
 	xpbar.value = 0
 	leveluplabel.percent_visible = 0
 	

@@ -2,7 +2,7 @@ class_name Player
 extends KinematicBody2D
 
 signal health_changed(health)
-signal mana_changed(mp, max_mp)
+#signal mana_changed(mp, max_mp)
 signal coins_changed()
 signal xp_changed()
 signal leveled_up()
@@ -118,7 +118,8 @@ func _on_items_dropped(index: int) -> void:
 	var item = Inventory.items[index]
 	Inventory.remove_item(index)
 	var droppeditem = dropped_item.instance()
-	droppeditem.position = global_position + (animationTree.get("parameters/AnimationNodeStateMachine/Idle/blend_position") * 50)
+	droppeditem.throw_direction = animationTree.get("parameters/AnimationNodeStateMachine/Idle/blend_position")
+	droppeditem.position = global_position + (animationTree.get("parameters/AnimationNodeStateMachine/Idle/blend_position") * 20)
 	droppeditem.itemresource = item
 	get_parent().add_child(droppeditem)
 	
@@ -135,8 +136,8 @@ func _on_items_equipped(item: EquipmentItem) -> void:
 	hurtbox.knockback_resistance += item.knockback_resistance_increase
 	$SlashHitboxPosition/Hitbox2.knockback_strength += item.knockback_strength_increase
 	playerstats.max_mp += item.max_mana_increase
-	if item.max_mana_increase > 0:
-		emit_signal("mana_changed", current_mp, playerstats.max_mp)
+	#if item.max_mana_increase > 0:
+		#emit_signal("mana_changed", current_mp, playerstats.max_mp)
 
 func _on_items_unequipped(item: EquipmentItem) -> void:
 	playerstats.melee_damage -= item.melee_damage_increase
@@ -148,8 +149,8 @@ func _on_items_unequipped(item: EquipmentItem) -> void:
 	hurtbox.knockback_resistance -= item.knockback_resistance_increase
 	$SlashHitboxPosition/Hitbox2.knockback_strength -= item.knockback_strength_increase
 	playerstats.max_mp -= item.max_mana_increase
-	if item.max_mana_increase > 0:
-		emit_signal("mana_changed", current_mp, playerstats.max_mp)
+	#if item.max_mana_increase > 0:
+		#emit_signal("mana_changed", current_mp, playerstats.max_mp)
 
 func _on_item_used(index: int) -> void:
 	var item = Inventory.items[index]
@@ -157,7 +158,9 @@ func _on_item_used(index: int) -> void:
 		Inventory.change_item_quantity(index, -1)
 	if item.hp_restore > 0:
 		gain_health(item.hp_restore)
+		Inventory.change_item_quantity(index, -1)
 	if item.experience_receive > 0:
 		gain_experience(item.experience_receive)
+		Inventory.change_item_quantity(index, -1)
 	#current_mp += item.mana_restore
 	
