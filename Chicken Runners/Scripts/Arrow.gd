@@ -8,7 +8,10 @@ var arrow_direction := Vector2.ZERO
 var knockback_strength: int
 var bow_damage: int
 
-func _ready() -> void:	
+func _ready() -> void:
+	"""
+	sätter pilen till toppen och sätter direction mot där den är på väg
+	"""	
 	set_as_toplevel(true)
 	look_at(position + arrow_direction)
 	hitbox.damage = bow_damage

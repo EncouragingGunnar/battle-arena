@@ -1,10 +1,10 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Scripts/Menu.gd" type="Script" id=1]
 [ext_resource path="res://fonts and themes/font.ttf" type="DynamicFontData" id=2]
 
 [sub_resource type="DynamicFont" id=13]
-size = 64
+size = 48
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=1]
@@ -16,11 +16,13 @@ color = Color( 1, 1, 1, 1 )
 
 [sub_resource type="StyleBoxLine" id=4]
 
-[sub_resource type="StyleBoxLine" id=5]
+[sub_resource type="StyleBoxLine" id=14]
 
 [sub_resource type="StyleBoxEmpty" id=6]
 
 [sub_resource type="StyleBoxEmpty" id=7]
+
+[sub_resource type="StyleBoxLine" id=5]
 
 [sub_resource type="DynamicFont" id=2]
 size = 48
@@ -62,12 +64,31 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -154.0
-margin_top = -194.0
-margin_right = 154.0
-margin_bottom = -130.0
+margin_left = -120.0
+margin_top = -184.0
+margin_right = 120.0
+margin_bottom = -120.0
 custom_fonts/font = SubResource( 13 )
 text = "Battle Arena"
+
+[node name="Label2" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -632.0
+margin_top = -74.0
+margin_right = -200.0
+margin_bottom = 124.0
+custom_fonts/font = SubResource( 13 )
+text = "Controls
+W, A, S, D to move
+Also works with 
+arrow keys
+Left click to shoot
+Right click to melee 
+E to open inventory
+ESC to pause"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_left = 0.5
@@ -88,7 +109,7 @@ custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 1 )
 custom_styles/hover = SubResource( 3 )
 custom_styles/pressed = SubResource( 4 )
-custom_styles/focus = SubResource( 5 )
+custom_styles/focus = SubResource( 14 )
 custom_styles/disabled = SubResource( 6 )
 custom_styles/normal = SubResource( 7 )
 text = "Start Level 1"

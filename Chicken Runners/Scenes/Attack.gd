@@ -21,6 +21,9 @@ func update(_delta: float):
 	
 	
 func physics_update(delta: float):
+	"""
+	kontrollerar vilken tangent som har blivit nedtryckt, can input sätts till sann i animation
+	"""
 	if player.can_input:
 		if Input.is_action_just_pressed("ui_down") or Input.is_action_just_pressed("ui_up") or Input.is_action_just_pressed("ui_left") or Input.is_action_just_pressed("ui_right"):
 			if Input.is_action_pressed("Sprint"):
@@ -44,6 +47,9 @@ func handle_input(_event: InputEvent):
 	pass
 	
 func exit():
+	"""
+	sätter tillbaka animationspeed, avaktiverar hitbox och sätter can input till false
+	"""
 	player.animationTree.set("parameters/TimeScale/scale", player.playerstats.animation_speed)
 	player.swordHitbox2.set_deferred("disabled", true)
 	player.can_input = true

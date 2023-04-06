@@ -3,6 +3,9 @@ extends PlayerState
 
 
 func enter(msg := {}):
+	"""
+	som idle state fast spelaren är i förrådet
+	"""
 	player.in_inventory = !player.in_inventory
 	player.Inventorycontainer.visible = !player.Inventorycontainer.visible
 	player.animationState.travel("Idle")

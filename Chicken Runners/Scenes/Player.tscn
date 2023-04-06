@@ -2652,7 +2652,7 @@ nodes/AnimationNodeStateMachine/node = ExtResource( 15 )
 nodes/AnimationNodeStateMachine/position = Vector2( -260, 120 )
 nodes/TimeScale/node = SubResource( 287 )
 nodes/TimeScale/position = Vector2( 100, 140 )
-node_connections = [ "TimeScale", 0, "AnimationNodeStateMachine", "output", 0, "TimeScale" ]
+node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "AnimationNodeStateMachine" ]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=289]
 
@@ -2695,7 +2695,7 @@ animation_state_name = "Attack2"
 script = ExtResource( 7 )
 
 [node name="RollTimer" type="Timer" parent="StateMachine/Roll"]
-wait_time = 0.2
+wait_time = 0.5
 
 [node name="RangedAttack" type="Node" parent="StateMachine"]
 script = ExtResource( 8 )

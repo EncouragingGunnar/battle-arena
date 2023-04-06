@@ -6,6 +6,9 @@ onready var knockbackTween = $"../../KnockbackTween"
 
 
 func enter(msg := {}):
+	"""
+	ställer in nödvändiga variabler
+	"""
 	assert(msg.has("knockback_stats"))
 	if player.in_inventory:
 		player.in_inventory = !player.in_inventory
@@ -18,6 +21,9 @@ func enter(msg := {}):
 
 	
 func update(delta: float) -> void:
+	"""
+	hårdvarutimer som kollar om knockback time är slut och sedan kan man trycka på tangenter
+	"""
 	current_knockback_time -= delta
 	if current_knockback_time > 0:
 		return

@@ -154,13 +154,13 @@ func _on_items_unequipped(item: EquipmentItem) -> void:
 
 func _on_item_used(index: int) -> void:
 	var item = Inventory.items[index]
-	if current_hp < playerstats.max_hp or current_mp < playerstats.max_mp:
-		Inventory.change_item_quantity(index, -1)
-	if item.hp_restore > 0:
-		gain_health(item.hp_restore)
-		Inventory.change_item_quantity(index, -1)
 	if item.experience_receive > 0:
 		gain_experience(item.experience_receive)
 		Inventory.change_item_quantity(index, -1)
+	if current_hp < playerstats.max_hp or current_mp < playerstats.max_mp:
+		if item.hp_restore > 0:
+			gain_health(item.hp_restore)
+			Inventory.change_item_quantity(index, -1)
+	
 	#current_mp += item.mana_restore
 	

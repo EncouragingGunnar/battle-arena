@@ -3,6 +3,9 @@ extends PlayerState
 var run_stop_time: float
 
 func enter(msg := {}):
+	"""
+	ställer in nödvändiga variabler, kollar om ska spela run stop om inte det gå till idle
+	"""
 	if msg.has("do_run_stop"):
 		player.animationState.travel("RunStop")
 		run_stop_time = 0.4
@@ -11,6 +14,9 @@ func enter(msg := {}):
 
 
 func update(delta: float):
+	"""
+	kontrollerar om run stop timer är slut om slut spela idle och kan byta state
+	"""
 	if run_stop_time >= 0:
 		run_stop_time -= delta
 		
