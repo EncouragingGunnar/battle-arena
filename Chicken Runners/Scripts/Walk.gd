@@ -6,6 +6,9 @@ func enter(_msg := {}):
 
 
 func physics_update(delta: float):
+	"""
+	liknar run men rör sig med walk speed i move toward
+	"""
 	var input_vector = Vector2.ZERO
 	input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	input_vector.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
@@ -28,6 +31,9 @@ func physics_update(delta: float):
 		
 
 func handle_input(_event: InputEvent):
+	"""
+	hanterar nödvändiga inputs
+	"""
 	if Input.is_action_just_pressed("Sprint"):
 		state_machine.transition_to("Run")
 	if Input.is_action_just_pressed("ui_left_click"):

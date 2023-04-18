@@ -23,6 +23,11 @@ export (Texture) var slot_texture
 var can_use_item: bool = true
 
 func display_item(item: Item) -> void:
+	"""
+	tar in ett item och visar upp dess texture och amount
+	om inget item finns visa inget
+	anropas av itemslotcontainer
+	"""
 	if item and item.get("stack_size"):
 		itemtexture.texture = item.texture
 		amountlabel.text = str(item.amount)
@@ -37,17 +42,32 @@ func display_item(item: Item) -> void:
 		amountlabel.text = ""
 		
 func can_equip_item(item: Item) -> bool:
+	"""
+	tar in ett item
+	kontrollerar om ett equipmentitem kan användas
+	"""
 	if item is EquipmentItem and item.level_requirement <= Globals.level:
 		return true
 	return false
 		
 func item_matches_slot_type(item: Item) -> bool:
+	"""
+	tar in ett item
+	kontrollerar om ett equipmentitem kan flyttas till en viss slot av en viss typ
+	"""
 	if item.equipment_type == slot_type:
 		return true
 	return false
 	
 		
 func get_drag_data(_position):
+	"""
+	inbyggd funktion i godot, tar in position som jag inte använder
+	skapar data som dictionary med item och item index
+	skapar också en drag preview som använder texture 
+	så man kan dra runt föremålet man plockat uppvisuellt
+	returnerar data, används i can drop data och drop data
+	"""
 	var item_index = slot_number
 	var item = Inventory.items[item_index]
 	if item != null:
@@ -67,9 +87,19 @@ func get_drag_data(_position):
 
 		
 func can_drop_data(_position, data: Dictionary):
+	"""
+	inbyggd funktion, tar in data, kontrollerar att data är av typen dictionary och att data innehåller item
+	"""
 	return typeof(data) == TYPE_DICTIONARY and data.has("item")
 
 func drop_data(_position, data: Dictionary) -> void:
+	"""
+	inbyggd funktion, kallas när man släpper det föremål man drar
+	tar in data, letar upp vad som finns på den slot där man befinner sig
+	kontrollerar sen om den kan släppa föremålet på en plats
+	gör logik med item stacking
+	använder funktionerna från inventory
+	"""
 	var item_index = data.get("item_index")
 	var new_index = slot_number
 	var item = Inventory.items[item_index]
@@ -117,6 +147,10 @@ func drop_data(_position, data: Dictionary) -> void:
 		pass
 
 func _on_ItemSlot_gui_input(_event) -> void:
+	"""
+	kontrollerar om det sker en gui input ovanför itemslot
+	(se till att noder ovanför skickar vidare input och inte tar upp den)
+	"""
 	if Inventory.items[slot_number] == null:
 		return
 	if Input.is_action_pressed("Drop"):
@@ -134,6 +168,9 @@ func _on_ItemSlot_gui_input(_event) -> void:
 
 
 func _on_ItemSlot_mouse_entered() -> void:
+	"""
+	om man håller över slot ska ett tooltip visas
+	"""
 	if Inventory.items[slot_number] != null:
 		iteminfo.find_node("ItemNameLabel").text = Inventory.items[slot_number].name
 		iteminfo.find_node("ItemDescriptionLabel").text = Inventory.items[slot_number].item_description

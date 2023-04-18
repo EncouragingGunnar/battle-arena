@@ -7,6 +7,9 @@ export var initial_state := NodePath()
 
 onready var state: State = get_node(initial_state)
 
+#grundklass för player state machine, tar in ett initial state
+#gjord efter guide gdquest state machine
+
 func _ready():
 	yield(owner, "ready")
 	for child in get_children():

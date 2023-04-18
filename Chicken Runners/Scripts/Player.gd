@@ -42,6 +42,9 @@ onready var sprite = $Sprite2
 
 
 func _ready() -> void:
+	"""
+	ställer in nödvändiga variabler
+	"""
 	randomize()
 	animationTree.active = true
 	animationTree.set("parameters/TimeScale/scale", playerstats.animation_speed)
@@ -60,9 +63,17 @@ func _ready() -> void:
 	
 	
 func _on_RollTimer_timeout() -> void:
+	"""
+	rolltimer aktiveras av roll state
+	"""
 	can_roll = true
 
 func take_damage(damage: int) -> void:
+	"""
+	tar in damage
+	sänker current hp med damage delat med defense, signalerar till hud
+	kontrollerar om död
+	"""
 	current_hp -= int(damage / float(playerstats.defense))
 	emit_signal("health_changed", current_hp, playerstats.max_hp)
 	combat_timer.start(combat_time)
@@ -70,10 +81,16 @@ func take_damage(damage: int) -> void:
 		die()
 		
 func die() -> void:
+	"""
+	om död ladda in game over menu
+	"""
 	queue_free()
 	Transition.load_scene("res://Scenes/Menus/GameOverMenu.tscn")
 
 func gain_health(hp) -> void:
+	"""
+	liknande funktion som take damage, men kontrollerar mot max hp
+	"""
 	if hp + current_hp >= playerstats.max_hp:
 		current_hp = playerstats.max_hp
 	else:
@@ -81,25 +98,46 @@ func gain_health(hp) -> void:
 	emit_signal("health_changed", current_hp, playerstats.max_hp)
 	
 func set_max_hp(max_hp: int) -> void:
+	"""
+	ändrar max hp till nya max hp, tar in ett nytt max hp
+	"""
 	playerstats.max_hp = max_hp
 	if current_hp > max_hp:
 		current_hp = max_hp
 	emit_signal("health_changed", current_hp, max_hp)
 
 func set_knockback_stats(impulse: Vector2) -> void:
+	"""
+	går in i hurt state sätter knockback stats till impulse
+	"""
 	stateMachine.transition_to("Hurt", {knockback_stats = impulse})
 	
 func input_ready() -> void:
+	"""
+	anropas av states
+	"""
 	can_input = true
 	
 func collect_coin() -> void:
+	"""
+	tar upp en coin
+	"""
 	Globals.coins += 1
 	emit_signal("coins_changed")
 	
 func get_required_xp_to_level_up() -> int:
+	"""
+	får ut krävd xp för att levla upp enligt en avancerad algoritm
+	"""
 	return int(round(pow(Globals.level, 1.4) * 10))
 
 func gain_experience(experience_gained: int) -> void:
+	"""
+	tar in experience gained, anropas av monster när de dör
+	kontrollerar om experience är större än krävd experience
+	om den är levla upp
+	och skicka signal xp changed för att uppdatera hud
+	"""
 	experience += experience_gained
 	while experience >= experience_required:
 		experience -= experience_required
@@ -107,6 +145,9 @@ func gain_experience(experience_gained: int) -> void:
 	emit_signal("xp_changed", experience, experience_required)
 
 func level_up() -> void:
+	"""
+	ökar level med 1, ökar hp och experience required
+	"""
 	Globals.level += 1
 	experience_required = get_required_xp_to_level_up()
 	emit_signal("leveled_up")
@@ -115,6 +156,11 @@ func level_up() -> void:
 	emit_signal("health_changed", playerstats.max_hp, playerstats.max_hp)
 	
 func _on_items_dropped(index: int) -> void:
+	"""
+	droppar ett item från inventory genom att ta det håll man tittar
+	droppar åt det hållet och ger droppeditem en itemresource med item som droppas
+	ta sedan bort item från inventory
+	"""
 	var item = Inventory.items[index]
 	Inventory.remove_item(index)
 	var droppeditem = dropped_item.instance()
@@ -124,9 +170,15 @@ func _on_items_dropped(index: int) -> void:
 	get_parent().add_child(droppeditem)
 	
 func change_hit_opacity(value: float) -> void:
+	"""
+	ändrar sprite färg till vit för hit effect, anropas av hurt state
+	"""
 	sprite.material.set_shader_param("hit_opacity", value)
 
 func _on_items_equipped(item: EquipmentItem) -> void:
+	"""
+	ökar stats med de stats item har, tar in ett equipmentitem
+	"""
 	playerstats.melee_damage += item.melee_damage_increase
 	playerstats.bow_damage += item.bow_damage_increase
 	playerstats.melee_attack_speed += item.melee_attack_speed_increase
@@ -140,6 +192,9 @@ func _on_items_equipped(item: EquipmentItem) -> void:
 		#emit_signal("mana_changed", current_mp, playerstats.max_mp)
 
 func _on_items_unequipped(item: EquipmentItem) -> void:
+	"""
+	minskar stats med de stats item har, tar in ett equipmentitem
+	"""
 	playerstats.melee_damage -= item.melee_damage_increase
 	playerstats.bow_damage -= item.bow_damage_increase
 	playerstats.melee_attack_speed -= item.melee_attack_speed_increase
@@ -153,6 +208,9 @@ func _on_items_unequipped(item: EquipmentItem) -> void:
 		#emit_signal("mana_changed", current_mp, playerstats.max_mp)
 
 func _on_item_used(index: int) -> void:
+	"""
+	ökar stats med de som item har och tar bort en av dem för att det användes
+	"""
 	var item = Inventory.items[index]
 	if item.experience_receive > 0:
 		gain_experience(item.experience_receive)

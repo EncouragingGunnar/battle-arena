@@ -1,6 +1,10 @@
 extends Resource
 class_name PlayerStats
 
+"""
+sparar ett antal variabler
+"""
+
 export (int) var ACCEL = 650
 export (int) var WALK_MAX_SPEED = 60
 export (int) var RUN_MAX_SPEED = 100

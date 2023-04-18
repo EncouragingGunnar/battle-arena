@@ -11,6 +11,9 @@ onready var collisionShape = $CollisionShape2D
 
 
 func create_hit_effect(attacker_position: Vector2) -> void:
+	"""
+	skapar en hit effect från attacker position, hiteffect fås från hitbox om den finns
+	"""
 	if hit_effect != null:
 		var hiteffect = hit_effect.instance()
 		hiteffect.emitting = true
@@ -18,6 +21,9 @@ func create_hit_effect(attacker_position: Vector2) -> void:
 		add_child(hiteffect)
 
 func _on_Hurtbox_area_entered(area: Hitbox) -> void:	
+	"""
+	gör skada och sätter knockback stats och aktiverar invincibility
+	"""
 	if owner.has_method("take_damage"):
 		owner.take_damage(area.damage)
 	if owner.has_method("set_knockback_stats"):
@@ -29,6 +35,9 @@ func _on_Hurtbox_area_entered(area: Hitbox) -> void:
 	create_hit_effect(area.global_position)
 	
 func _on_InvincibilityTimer_timeout() -> void:
+	"""
+	avaktiverar invincibility
+	"""
 	collisionShape.set_deferred("disabled", false)
 	
 

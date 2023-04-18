@@ -8,6 +8,9 @@ var roll_direction = Vector2()
 
 
 func enter(_msg := {}):
+	"""
+	ställer in nödvändiga variabler
+	"""
 	player.animationState.travel("Roll")
 	current_roll_time = roll_time
 	roll_direction = player.animationTree.get("parameters/AnimationNodeStateMachine/Roll/blend_position")
@@ -18,6 +21,9 @@ func enter(_msg := {}):
 	player.hurtbox.monitoring = false
 	
 func update(delta: float) -> void:
+	"""
+	kontrollerar om roll time är slut om den är det kan man byta state
+	"""
 	current_roll_time -= delta
 	if current_roll_time > 0:
 		return

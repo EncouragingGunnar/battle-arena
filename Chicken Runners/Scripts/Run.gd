@@ -5,6 +5,14 @@ func enter(_msg := {}):
 
 
 func physics_update(delta: float):
+	"""
+	tar in en input vector med get action strength
+	gör om den till en vektor med längden 1
+	sätter animationtree blend position till denna vektor
+	sätter velocity med hjälp av move toward
+	rör sig med move and slite
+	kontrollerar om velocity är 0 i båda led, byt då till idle och gör ett run stop
+	"""
 	var input_vector = Vector2.ZERO
 	input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	input_vector.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
@@ -29,6 +37,9 @@ func physics_update(delta: float):
 		
 
 func handle_input(_event: InputEvent):
+	"""
+	hanterar nödvändiga inputs
+	"""
 	if Input.is_action_just_released("Sprint"):
 		state_machine.transition_to("Walk")
 	if Input.is_action_just_pressed("ui_left_click"):

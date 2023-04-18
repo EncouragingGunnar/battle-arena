@@ -2,6 +2,9 @@ extends PlayerState
 
 
 func enter(_msg := {}):
+	"""
+	ställer in nödvändiga variabler
+	"""
 	player.velocity = Vector2.ZERO
 	player.animationTree.set("parameters/TimeScale/scale", player.playerstats.bow_attack_speed)
 	var attack_vector = player.global_position.direction_to(player.get_global_mouse_position())
@@ -14,9 +17,15 @@ func update(_delta: float):
 	pass
 
 func attack_animation_finished():
+	"""
+	anropas i animationplayer
+	"""
 	state_machine.transition_to("Idle")
 	
 func shoot_arrow():
+	"""
+	anropas i animationplayer, skapar en arrow, ställer in dess variabler och skjuter
+	"""
 	var arrow = player.Arrow.instance()
 	arrow.knockback_strength = player.playerstats.player_knockback_strength
 	arrow.bow_damage = player.playerstats.bow_damage

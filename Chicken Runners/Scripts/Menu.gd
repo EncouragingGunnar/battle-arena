@@ -5,6 +5,9 @@ func _ready() -> void:
 
 
 func _on_StartButton_pressed() -> void:
+	"""
+	transition är global
+	"""
 	Transition.load_scene("res://Scenes/Forest.tscn")
 
 

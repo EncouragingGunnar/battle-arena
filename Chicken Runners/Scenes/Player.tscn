@@ -2695,7 +2695,7 @@ animation_state_name = "Attack2"
 script = ExtResource( 7 )
 
 [node name="RollTimer" type="Timer" parent="StateMachine/Roll"]
-wait_time = 0.5
+wait_time = 2.0
 
 [node name="RangedAttack" type="Node" parent="StateMachine"]
 script = ExtResource( 8 )

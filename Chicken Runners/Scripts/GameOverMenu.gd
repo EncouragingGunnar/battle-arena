@@ -3,6 +3,9 @@ extends Control
 onready var coinslabel = $CoinsLabel
 
 func _ready():
+	"""
+	visar hur många coins man samlat upp
+	"""
 	coinslabel.text = "You collected " + str(Globals.coins) + " Coins!"
 	
 
